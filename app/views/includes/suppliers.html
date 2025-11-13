@@ -1,0 +1,529 @@
+{# <!-- Where this file is included, set nunjucks variables for supplierID, supplierName and supplierLabelText to change the defaults 
+    {% set supplierID = "supplier-id" %}
+    {% set supplierName = "supplier-name" %}
+    {% set supplierLabelText = "Select a supplier" %}
+    
+    To remove the hint, set supplierHint to an empty string
+    {% set supplierHint = ""}
+    
+    To change the hint, set supplierHint to the hint text
+    {% set supplierHint = "Type to search for a supplier" %}
+    --> #}
+
+     
+    
+    <div class="nhsuk-form-group">
+      {{ select({
+        id: supplierID | default("supplier-picker", false),
+        name: supplierName | default("supplier-picker", false),
+        classes:"govuk-input--width-20",
+        label: {
+          text: supplierLabelText | default("Select a supplier", false),
+          classes:'nhsuk-!-font-weight-bold',
+          name: supplierName | default("supplier-picker", false)
+        },
+        hint: {
+          text: supplierHint | default("Search by manufacturer or supplier name", false)
+        },
+        value: supplierValue or data[supplierName or supplierID or "supplier"] or "",
+        items: [
+      {
+          value: "",
+          text: ""
+      },
+      {
+        value: "3M Healthcare",
+        text: "3M Healthcare"
+      },
+      {
+        value: "Abbott Laboratories",
+        text: "Abbott Laboratories"
+      },
+      {
+        value: "Abingdon Health",
+        text: "Abingdon Health"
+      },
+      {
+        value: "Advanced Medical Systems",
+        text: "Advanced Medical Systems"
+      },
+      {
+        value: "Agilent Technologies",
+        text: "Agilent Technologies"
+      },
+      {
+        value: "Air Liquide Healthcare",
+        text: "Air Liquide Healthcare"
+      },
+      {
+        value: "AliveCor",
+        text: "AliveCor"
+      },
+      {
+        value: "Allergan",
+        text: "Allergan"
+      },
+      {
+        value: "Alere International",
+        text: "Alere International"
+      },
+      {
+        value: "Ambu A/S",
+        text: "Ambu A/S"
+      },
+      {
+        value: "Amdipharm Mercury",
+        text: "Amdipharm Mercury"
+      },
+      {
+        value: "Amsino Medical UK",
+        text: "Amsino Medical UK"
+      },
+      {
+        value: "Arjo UK",
+        text: "Arjo UK"
+      },
+      {
+        value: "ArjoHuntleigh",
+        text: "ArjoHuntleigh"
+      },
+      {
+        value: "Aspen Surgical Products",
+        text: "Aspen Surgical Products"
+      },
+      {
+        value: "AstraZeneca UK",
+        text: "AstraZeneca UK"
+      },
+      {
+        value: "B. Braun Medical",
+        text: "B. Braun Medical"
+      },
+      {
+        value: "Bard Ltd",
+        text: "Bard Ltd"
+      },
+      {
+        value: "Baxter Healthcare",
+        text: "Baxter Healthcare"
+      },
+      {
+        value: "Bayer Healthcare",
+        text: "Bayer Healthcare"
+      },
+      {
+        value: "BD (Becton Dickinson)",
+        text: "BD (Becton Dickinson)"
+      },
+      {
+        value: "Bio-Rad Laboratories",
+        text: "Bio-Rad Laboratories"
+      },
+      {
+        value: "Biomerieux UK",
+        text: "Biomerieux UK"
+      },
+      {
+        value: "Boehringer Ingelheim",
+        text: "Boehringer Ingelheim"
+      },
+      {
+        value: "Boston Scientific",
+        text: "Boston Scientific"
+      },
+      {
+        value: "Bristol Myers Squibb",
+        text: "Bristol Myers Squibb"
+      },
+      {
+        value: "Butterfly Healthcare",
+        text: "Butterfly Healthcare"
+      },
+      {
+        value: "Cardinal Health UK",
+        text: "Cardinal Health UK"
+      },
+      {
+        value: "Cardiac Science",
+        text: "Cardiac Science"
+      },
+      {
+        value: "Cardiac Solutions Ltd",
+        text: "Cardiac Solutions Ltd"
+      },
+      {
+        value: "CareFusion UK",
+        text: "CareFusion UK"
+      },
+      {
+        value: "Carl Zeiss Meditec",
+        text: "Carl Zeiss Meditec"
+      },
+      {
+        value: "Celgene Ltd",
+        text: "Celgene Ltd"
+      },
+      {
+        value: "Cerner UK",
+        text: "Cerner UK"
+      },
+      {
+        value: "Chiesi Ltd",
+        text: "Chiesi Ltd"
+      },
+      {
+        value: "CliniMed Ltd",
+        text: "CliniMed Ltd"
+      },
+      {
+        value: "Clinisupplies Ltd",
+        text: "Clinisupplies Ltd"
+      },
+      {
+        value: "Coloplast Ltd",
+        text: "Coloplast Ltd"
+      },
+      {
+        value: "ConvaTec Ltd",
+        text: "ConvaTec Ltd"
+      },
+      {
+        value: "Cook Medical",
+        text: "Cook Medical"
+      },
+      {
+        value: "Covidien UK",
+        text: "Covidien UK"
+      },
+      {
+        value: "CryoLife Europa",
+        text: "CryoLife Europa"
+      },
+      {
+        value: "Dansac Ltd",
+        text: "Dansac Ltd"
+      },
+      {
+        value: "Dentsply Sirona",
+        text: "Dentsply Sirona"
+      },
+      {
+        value: "DePuy Synthes",
+        text: "DePuy Synthes"
+      },
+      {
+        value: "Derma UK",
+        text: "Derma UK"
+      },
+      {
+        value: "Edwards Lifesciences",
+        text: "Edwards Lifesciences"
+      },
+      {
+        value: "Eli Lilly and Company",
+        text: "Eli Lilly and Company"
+      },
+      {
+        value: "Essity UK",
+        text: "Essity UK"
+      },
+      {
+        value: "Ethicon",
+        text: "Ethicon"
+      },
+      {
+        value: "Fisher & Paykel Healthcare",
+        text: "Fisher & Paykel Healthcare"
+      },
+      {
+        value: "Fresenius Kabi",
+        text: "Fresenius Kabi"
+      },
+      {
+        value: "Fresenius Medical Care",
+        text: "Fresenius Medical Care"
+      },
+      {
+        value: "GE Healthcare",
+        text: "GE Healthcare"
+      },
+      {
+        value: "Genzyme Therapeutics",
+        text: "Genzyme Therapeutics"
+      },
+      {
+        value: "Getinge UK",
+        text: "Getinge UK"
+      },
+      {
+        value: "Gilead Sciences",
+        text: "Gilead Sciences"
+      },
+      {
+        value: "GlaxoSmithKline (GSK)",
+        text: "GlaxoSmithKline (GSK)"
+      },
+      {
+        value: "Grifols UK",
+        text: "Grifols UK"
+      },
+      {
+        value: "Halyard Health",
+        text: "Halyard Health"
+      },
+      {
+        value: "Hartmann UK",
+        text: "Hartmann UK"
+      },
+      {
+        value: "Hillrom (formerly Hill-Rom)",
+        text: "Hillrom (formerly Hill-Rom)"
+      },
+      {
+        value: "Hologic UK",
+        text: "Hologic UK"
+      },
+      {
+        value: "Hollister Ltd",
+        text: "Hollister Ltd"
+      },
+      {
+        value: "Hospira UK",
+        text: "Hospira UK"
+      },
+      {
+        value: "Huntleigh Healthcare",
+        text: "Huntleigh Healthcare"
+      },
+      {
+        value: "Illumina UK",
+        text: "Illumina UK"
+      },
+      {
+        value: "Intersurgical Ltd",
+        text: "Intersurgical Ltd"
+      },
+      {
+        value: "Intuitive Surgical",
+        text: "Intuitive Surgical"
+      },
+      {
+        value: "Invacare UK",
+        text: "Invacare UK"
+      },
+      {
+        value: "Johnson & Johnson Medical",
+        text: "Johnson & Johnson Medical"
+      },
+      {
+        value: "Karl Storz Endoscopy",
+        text: "Karl Storz Endoscopy"
+      },
+      {
+        value: "Kimal Healthcare",
+        text: "Kimal Healthcare"
+      },
+      {
+        value: "Kimberly-Clark Health Care",
+        text: "Kimberly-Clark Health Care"
+      },
+      {
+        value: "Laerdal Medical",
+        text: "Laerdal Medical"
+      },
+      {
+        value: "Lohmann & Rauscher",
+        text: "Lohmann & Rauscher"
+      },
+      {
+        value: "Mallinckrodt Pharmaceuticals",
+        text: "Mallinckrodt Pharmaceuticals"
+      },
+      {
+        value: "Masimo Europe",
+        text: "Masimo Europe"
+      },
+      {
+        value: "Medela UK",
+        text: "Medela UK"
+      },
+      {
+        value: "MedTech Innovations",
+        text: "MedTech Innovations"
+      },
+      {
+        value: "Medtronic UK",
+        text: "Medtronic UK"
+      },
+      {
+        value: "Merck Sharp & Dohme (MSD)",
+        text: "Merck Sharp & Dohme (MSD)"
+      },
+      {
+        value: "Mölnlycke Health Care",
+        text: "Mölnlycke Health Care"
+      },
+      {
+        value: "Mylan UK Healthcare",
+        text: "Mylan UK Healthcare"
+      },
+      {
+        value: "Natus Medical",
+        text: "Natus Medical"
+      },
+      {
+        value: "Nihon Kohden UK",
+        text: "Nihon Kohden UK"
+      },
+      {
+        value: "Novartis UK",
+        text: "Novartis UK"
+      },
+      {
+        value: "Novo Nordisk",
+        text: "Novo Nordisk"
+      },
+      {
+        value: "Olympus Medical",
+        text: "Olympus Medical"
+      },
+      {
+        value: "ORPAK Medical",
+        text: "ORPAK Medical"
+      },
+      {
+        value: "Ortho Clinical Diagnostics",
+        text: "Ortho Clinical Diagnostics"
+      },
+      {
+        value: "Owen Mumford",
+        text: "Owen Mumford"
+      },
+      {
+        value: "Paul Hartmann Ltd",
+        text: "Paul Hartmann Ltd"
+      },
+      {
+        value: "Pentax Medical",
+        text: "Pentax Medical"
+      },
+      {
+        value: "PerkinElmer UK",
+        text: "PerkinElmer UK"
+      },
+      {
+        value: "Pfizer UK",
+        text: "Pfizer UK"
+      },
+      {
+        value: "Philips Healthcare",
+        text: "Philips Healthcare"
+      },
+      {
+        value: "Premier Medical",
+        text: "Premier Medical"
+      },
+      {
+        value: "Qiagen UK",
+        text: "Qiagen UK"
+      },
+      {
+        value: "ResMed UK",
+        text: "ResMed UK"
+      },
+      {
+        value: "Roche Diagnostics",
+        text: "Roche Diagnostics"
+      },
+      {
+        value: "Salts Healthcare",
+        text: "Salts Healthcare"
+      },
+      {
+        value: "Sanofi UK",
+        text: "Sanofi UK"
+      },
+      {
+        value: "Schülke UK",
+        text: "Schülke UK"
+      },
+      {
+        value: "SecurMed Ltd",
+        text: "SecurMed Ltd"
+      },
+      {
+        value: "Shire Pharmaceuticals",
+        text: "Shire Pharmaceuticals"
+      },
+      {
+        value: "Siemens Healthineers",
+        text: "Siemens Healthineers"
+      },
+      {
+        value: "Smith & Nephew",
+        text: "Smith & Nephew"
+      },
+      {
+        value: "Smiths Medical",
+        text: "Smiths Medical"
+      },
+      {
+        value: "SonoSite Ltd",
+        text: "SonoSite Ltd"
+      },
+      {
+        value: "Stryker UK",
+        text: "Stryker UK"
+      },
+      {
+        value: "Sysmex UK",
+        text: "Sysmex UK"
+      },
+      {
+        value: "Teleflex Medical",
+        text: "Teleflex Medical"
+      },
+      {
+        value: "Teva UK",
+        text: "Teva UK"
+      },
+      {
+        value: "Thermo Fisher Scientific",
+        text: "Thermo Fisher Scientific"
+      },
+      {
+        value: "Trelleborg Healthcare",
+        text: "Trelleborg Healthcare"
+      },
+      {
+        value: "UCB Pharma",
+        text: "UCB Pharma"
+      },
+      {
+        value: "Unilever Medical",
+        text: "Unilever Medical"
+      },
+      {
+        value: "Varian Medical Systems",
+        text: "Varian Medical Systems"
+      },
+      {
+        value: "Vygon UK",
+        text: "Vygon UK"
+      },
+      {
+        value: "Welch Allyn",
+        text: "Welch Allyn"
+      },
+      {
+        value: "Zimmer Biomet",
+        text: "Zimmer Biomet"
+      },
+      {
+        value: "Zoll Medical UK",
+        text: "Zoll Medical UK"
+      }
+      
+        ]
+      }) }}
+    </div>
