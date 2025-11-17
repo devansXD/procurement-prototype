@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Portal | Compass - NHS Value-Based Procurement</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react.dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const SupplierPortalApp = () => {
+            const [view, setView] = useState('landing'); // landing, login, register, registrationSuccess
+            const [loginForm, setLoginForm] = useState({ email: '', password: '' });
+            const [registerForm, setRegisterForm] = useState({
+                companyName: '',
+                companyNumber: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+                contactName: '',
+                phone: '',
+                companyType: '',
+                productCategories: [],
+                acceptTerms: false
+            });
+            const [showPassword, setShowPassword] = useState(false);
+
+            const handleLoginChange = (e) => {
+                setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+            };
+
+            const handleRegisterChange = (e) => {
+                const { name, value, type, checked } = e.target;
+                if (type === 'checkbox') {
+                    setRegisterForm({ ...registerForm, [name]: checked });
+                } else {
+                    setRegisterForm({ ...registerForm, [name]: value });
+                }
+            };
+
+            const handleCategoryToggle = (category) => {
+                const categories = registerForm.productCategories.includes(category)
+                    ? registerForm.productCategories.filter(c => c !== category)
+                    : [...registerForm.productCategories, category];
+                setRegisterForm({ ...registerForm, productCategories: categories });
+            };
+
+            const handleLogin = (e) => {
+                e.preventDefault();
+                console.log('Login attempt:', loginForm);
+                alert('Login functionality would authenticate here');
+            };
+
+            const handleRegister = (e) => {
+                e.preventDefault();
+                if (registerForm.password !== registerForm.confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                setView('registrationSuccess');
+            };
+
+            // Landing Page
+            if (view === 'landing') {
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        {/* Header */}
+                        <header className="bg-blue-600 text-white py-6 px-6 shadow-md">
+                            <div className="max-w-7xl mx-auto flex justify-between items-center">
+                                <div>
+                                    <h1 className="text-3xl font-bold mb-1">Compass</h1>
+                                    <p className="text-lg opacity-90">Value-Based Procurement for Medical Technologies</p>
+                                    <p className="text-sm mt-1 opacity-75">Supplier Portal</p>
+                                </div>
+                                <button
+                                    onClick={() => setView('login')}
+                                    className="bg-white text-blue-600 px-6 py-2 rounded-md hover:bg-gray-100 transition font-semibold"
+                                >
+                                    Sign In
+                                </button>
+                            </div>
+                        </header>
+
+                        <div className="max-w-7xl mx-auto py-12 px-6">
+                            {/* Hero Section */}
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                                    Submit Once, Reach the Entire NHS
+                                </h2>
+                                <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                                    Compass enables suppliers to submit standardized product data and clinical evidence once, 
+                                    making it accessible to NHS procurement professionals across the entire system.
+                                </p>
+                                <div className="flex justify-center gap-4">
+                                    <button
+                                        onClick={() => setView('register')}
+                                        className="bg-blue-600 text-white px-8 py-4 rounded-md hover:bg-blue-700 transition font-semibold text-lg"
+                                    >
+                                        Register Your Company
+                                    </button>
+                                    <button
+                                        onClick={() => setView('login')}
+                                        className="bg-white border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-md hover:bg-gray-50 transition font-semibold text-lg"
+                                    >
+                                        Existing User Login
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Benefits Grid */}
+                            <div className="grid md:grid-cols-3 gap-8 mb-16">
+                                <div className="bg-white rounded-lg shadow-md p-6">
+                                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Reduce Burden</h3>
+                                    <p className="text-gray-600">
+                                        Stop duplicating effort. Submit your product information and evidence once, instead of responding to hundreds of individual NHS requests.
+                                    </p>
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow-md p-6">
+                                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Accelerate Adoption</h3>
+                                    <p className="text-gray-600">
+                                        Get your innovations in front of NHS decision-makers faster. Standardized evidence helps procurement teams make confident choices.
+                                    </p>
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow-md p-6">
+                                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                        </svg>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2">Build Trust</h3>
+                                    <p className="text-gray-600">
+                                        Demonstrate value through standardized, evidence-based submissions. Support value-based procurement with transparent clinical data.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Key Information Boxes */}
+                            <div className="grid md:grid-cols-2 gap-8 mb-16">
+                                <div className="bg-blue-50 border-l-4 border-blue-500 p-6">
+                                    <h3 className="text-lg font-bold text-blue-900 mb-3">What You'll Submit</h3>
+                                    <ul className="space-y-2 text-blue-900">
+                                        <li className="flex items-start">
+                                            <span className="text-blue-600 mr-2">•</span>
+                                            <span>Product registration details (linked to MHRA database)</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-blue-600 mr-2">•</span>
+                                            <span>Clinical evidence aligned with Value-Based Procurement domains</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-blue-600 mr-2">•</span>
+                                            <span>Approved body evaluations (NICE, ODEP, etc.)</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-blue-600 mr-2">•</span>
+                                            <span>Sustainability and environmental data</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-blue-600 mr-2">•</span>
+                                            <span>Real-world evidence from NHS deployments</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div className="bg-green-50 border-l-4 border-green-500 p-6">
+                                    <h3 className="text-lg font-bold text-green-900 mb-3">What We DON'T Collect</h3>
+                                    <ul className="space-y-2 text-green-900">
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span><strong>Price data</strong> - Pricing remains between you and buyers</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span><strong>Basic specifications</strong> - Use your PIM system for product specs</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span><strong>Commercial terms</strong> - Direct negotiations stay direct</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span><strong>Proprietary data</strong> - Only evidence meant for NHS visibility</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* Who Should Register */}
+                            <div className="bg-white rounded-lg shadow-md p-8 mb-16">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Who Should Register?</h3>
+                                <div className="grid md:grid-cols-4 gap-6">
+                                    <div className="text-center">
+                                        <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                            </svg>
+                                        </div>
+                                        <h4 className="font-semibold text-gray-900">Medical Device<br/>Manufacturers</h4>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <h4 className="font-semibold text-gray-900">Diagnostic &<br/>Imaging Suppliers</h4>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <h4 className="font-semibold text-gray-900">Digital Health<br/>Technology Providers</h4>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                            </svg>
+                                        </div>
+                                        <h4 className="font-semibold text-gray-900">SMEs &<br/>Innovators</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* CTA Section */}
+                            <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-xl p-12 text-center text-white">
+                                <h3 className="text-3xl font-bold mb-4">Ready to Get Started?</h3>
+                                <p className="text-xl mb-8 opacity-90">
+                                    Join the NHS supplier passporting system and simplify your procurement journey
+                                </p>
+                                <button
+                                    onClick={() => setView('register')}
+                                    className="bg-white text-blue-600 px-10 py-4 rounded-md hover:bg-gray-100 transition font-semibold text-lg"
+                                >
+                                    Register Now - It's Free
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Footer */}
+                        <footer className="bg-gray-800 text-white py-6 px-6 mt-16">
+                            <div className="max-w-7xl mx-auto">
+                                <div className="grid grid-cols-3 gap-8">
+                                    <div>
+                                        <h4 className="font-semibold mb-2">About Compass</h4>
+                                        <p className="text-sm text-gray-300">
+                                            A central digital platform enabling value-based procurement for NHS medical technologies.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Data Sources</h4>
+                                        <ul className="text-sm text-gray-300 space-y-1">
+                                            <li>• NICE Medtech Guidance</li>
+                                            <li>• ODEP Accreditation</li>
+                                            <li>• DTAC Passporting</li>
+                                            <li>• NHS Trust Evaluations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Scope Alignment</h4>
+                                        <p className="text-sm text-gray-300">
+                                            This prototype demonstrates <strong>Must Have</strong> features: approved body evaluations, passporting, PIM integration, and side-by-side comparison.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
+                                    <p>Compass Alpha Prototype | NHS Medtech Directorate | For testing and feedback purposes only</p>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                );
+            }
+
+            // Login View
+            if (view === 'login') {
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        <header className="bg-blue-600 text-white py-6 px-6 shadow-md">
+                            <div className="max-w-7xl mx-auto flex justify-between items-center">
+                                <div className="cursor-pointer" onClick={() => setView('landing')}>
+                                    <h1 className="text-3xl font-bold mb-1">Compass</h1>
+                                    <p className="text-lg opacity-90">Value-Based Procurement for Medical Technologies</p>
+                                    <p className="text-sm mt-1 opacity-75">Supplier Portal</p>
+                                </div>
+                                <button
+                                    onClick={() => setView('landing')}
+                                    className="text-white hover:opacity-80 transition"
+                                >
+                                    ← Back to Home
+                                </button>
+                            </div>
+                        </header>
+
+                        <div className="max-w-md mx-auto py-12 px-6">
+                            <div className="bg-white rounded-lg shadow-lg p-8">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-2">Sign In</h2>
+                                <p className="text-gray-600 mb-6">Access your supplier dashboard</p>
+
+                                <form onSubmit={handleLogin} className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Email Address
+                                        </label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={loginForm.email}
+                                            onChange={handleLoginChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="your.email@company.com"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Password
+                                        </label>
+                                        <div className="relative">
+                                            <input
+                                                type={showPassword ? "text" : "password"}
+                                                name="password"
+                                                value={loginForm.password}
+                                                onChange={handleLoginChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="Enter your password"
+                                                required
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+                                            >
+                                                {showPassword ? (
+                                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                                    </svg>
+                                                ) : (
+                                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                    </svg>
+                                                )}
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between text-sm">
+                                        <label className="flex items-center">
+                                            <input type="checkbox" className="mr-2" />
+                                            <span className="text-gray-700">Remember me</span>
+                                        </label>
+                                        <a href="#" className="text-blue-600 hover:underline">
+                                            Forgot password?
+                                        </a>
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition font-semibold"
+                                    >
+                                        Sign In
+                                    </button>
+                                </form>
+
+                                <div className="mt-6 text-center">
+                                    <p className="text-gray-600">
+                                        Don't have an account?{' '}
+                                        <button
+                                            onClick={() => setView('register')}
+                                            className="text-blue-600 font-semibold hover:underline"
+                                        >
+                                            Register here
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                                <p className="text-sm text-blue-900">
+                                    <strong>Need help?</strong> Contact our support team at suppliers@compass.nhs.uk
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Footer */}
+                        <footer className="bg-gray-800 text-white py-6 px-6 mt-12">
+                            <div className="max-w-7xl mx-auto">
+                                <div className="grid grid-cols-3 gap-8">
+                                    <div>
+                                        <h4 className="font-semibold mb-2">About Compass</h4>
+                                        <p className="text-sm text-gray-300">
+                                            A central digital platform enabling value-based procurement for NHS medical technologies.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Data Sources</h4>
+                                        <ul className="text-sm text-gray-300 space-y-1">
+                                            <li>• NICE Medtech Guidance</li>
+                                            <li>• ODEP Accreditation</li>
+                                            <li>• DTAC Passporting</li>
+                                            <li>• NHS Trust Evaluations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Scope Alignment</h4>
+                                        <p className="text-sm text-gray-300">
+                                            This prototype demonstrates <strong>Must Have</strong> features: approved body evaluations, passporting, PIM integration, and side-by-side comparison.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
+                                    <p>Compass Alpha Prototype | NHS Medtech Directorate | For testing and feedback purposes only</p>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                );
+            }
+
+            // Registration View
+            if (view === 'register') {
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        <header className="bg-blue-600 text-white py-6 px-6 shadow-md">
+                            <div className="max-w-7xl mx-auto flex justify-between items-center">
+                                <div className="cursor-pointer" onClick={() => setView('landing')}>
+                                    <h1 className="text-3xl font-bold mb-1">Compass</h1>
+                                    <p className="text-lg opacity-90">Value-Based Procurement for Medical Technologies</p>
+                                    <p className="text-sm mt-1 opacity-75">Supplier Portal</p>
+                                </div>
+                                <button
+                                    onClick={() => setView('landing')}
+                                    className="text-white hover:opacity-80 transition"
+                                >
+                                    ← Back to Home
+                                </button>
+                            </div>
+                        </header>
+
+                        <div className="max-w-3xl mx-auto py-12 px-6">
+                            <div className="bg-white rounded-lg shadow-lg p-8">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-2">Register Your Company</h2>
+                                <p className="text-gray-600 mb-6">Join the NHS supplier passporting system</p>
+
+                                <form onSubmit={handleRegister} className="space-y-6">
+                                    {/* Company Information */}
+                                    <div className="border-b pb-6">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Company Information</h3>
+                                        
+                                        <div className="space-y-4">
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                    Company Name <span className="text-red-600">*</span>
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="companyName"
+                                                    value={registerForm.companyName}
+                                                    onChange={handleRegisterChange}
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="Enter your registered company name"
+                                                    required
+                                                />
+                                            </div>
+
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                        Company Number
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        name="companyNumber"
+                                                        value={registerForm.companyNumber}
+                                                        onChange={handleRegisterChange}
+                                                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                        placeholder="e.g., 12345678"
+                                                    />
+                                                </div>
+
+                                                <div>
+                                                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                        Company Type <span className="text-red-600">*</span>
+                                                    </label>
+                                                    <select
+                                                        name="companyType"
+                                                        value={registerForm.companyType}
+                                                        onChange={handleRegisterChange}
+                                                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                        required
+                                                    >
+                                                        <option value="">Select type</option>
+                                                        <option value="manufacturer">Manufacturer</option>
+                                                        <option value="distributor">Distributor</option>
+                                                        <option value="sme">SME / Startup</option>
+                                                        <option value="large-enterprise">Large Enterprise</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Product Categories */}
+                                    <div className="border-b pb-6">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Product Categories</h3>
+                                        <p className="text-sm text-gray-600 mb-4">Select all that apply to your products</p>
+                                        
+                                        <div className="grid grid-cols-2 gap-3">
+                                            {['Diagnostic Imaging', 'Surgical Instruments', 'Patient Monitoring', 'Cardiac Devices', 
+                                              'Respiratory Equipment', 'Laboratory Equipment', 'Infusion Devices', 'Digital Health'].map(category => (
+                                                <label key={category} className="flex items-center p-3 border border-gray-300 rounded-md hover:bg-gray-50 cursor-pointer">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={registerForm.productCategories.includes(category)}
+                                                        onChange={() => handleCategoryToggle(category)}
+                                                        className="mr-3 w-4 h-4"
+                                                    />
+                                                    <span className="text-sm">{category}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Contact Information */}
+                                    <div className="border-b pb-6">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Primary Contact</h3>
+                                        
+                                        <div className="space-y-4">
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                    Contact Name <span className="text-red-600">*</span>
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="contactName"
+                                                    value={registerForm.contactName}
+                                                    onChange={handleRegisterChange}
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="Full name"
+                                                    required
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                    Email Address <span className="text-red-600">*</span>
+                                                </label>
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    value={registerForm.email}
+                                                    onChange={handleRegisterChange}
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="contact@company.com"
+                                                    required
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                    Phone Number <span className="text-red-600">*</span>
+                                                </label>
+                                                <input
+                                                    type="tel"
+                                                    name="phone"
+                                                    value={registerForm.phone}
+                                                    onChange={handleRegisterChange}
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="+44 20 1234 5678"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Account Security */}
+                                    <div className="border-b pb-6">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Account Security</h3>
+                                        
+                                        <div className="space-y-4">
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                    Password <span className="text-red-600">*</span>
+                                                </label>
+                                                <input
+                                                    type="password"
+                                                    name="password"
+                                                    value={registerForm.password}
+                                                    onChange={handleRegisterChange}
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="Create a strong password"
+                                                    required
+                                                />
+                                                <p className="text-xs text-gray-500 mt-1">
+                                                    Must be at least 8 characters with uppercase, lowercase, and numbers
+                                                </p>
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                    Confirm Password <span className="text-red-600">*</span>
+                                                </label>
+                                                <input
+                                                    type="password"
+                                                    name="confirmPassword"
+                                                    value={registerForm.confirmPassword}
+                                                    onChange={handleRegisterChange}
+                                                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                    placeholder="Re-enter your password"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Terms and Conditions */}
+                                    <div>
+                                        <label className="flex items-start">
+                                            <input
+                                                type="checkbox"
+                                                name="acceptTerms"
+                                                checked={registerForm.acceptTerms}
+                                                onChange={handleRegisterChange}
+                                                className="mt-1 mr-3 w-5 h-5"
+                                                required
+                                            />
+                                            <span className="text-sm text-gray-700">
+                                                I confirm that I am authorized to register this company on Compass, and I agree to the{' '}
+                                                <a href="#" className="text-blue-600 hover:underline">Terms of Service</a> and{' '}
+                                                <a href="#" className="text-blue-600 hover:underline">Data Processing Agreement</a>.
+                                                I understand that submitted information will be visible to NHS procurement teams.
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div className="flex gap-4">
+                                        <button
+                                            type="button"
+                                            onClick={() => setView('login')}
+                                            className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-md hover:bg-gray-300 transition font-semibold"
+                                        >
+                                            Already have an account?
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            disabled={!registerForm.acceptTerms}
+                                            className={`flex-1 py-3 rounded-md transition font-semibold ${
+                                                registerForm.acceptTerms
+                                                    ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                            }`}
+                                        >
+                                            Create Account
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        {/* Footer */}
+                        <footer className="bg-gray-800 text-white py-6 px-6 mt-12">
+                            <div className="max-w-7xl mx-auto">
+                                <div className="grid grid-cols-3 gap-8">
+                                    <div>
+                                        <h4 className="font-semibold mb-2">About Compass</h4>
+                                        <p className="text-sm text-gray-300">
+                                            A central digital platform enabling value-based procurement for NHS medical technologies.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Data Sources</h4>
+                                        <ul className="text-sm text-gray-300 space-y-1">
+                                            <li>• NICE Medtech Guidance</li>
+                                            <li>• ODEP Accreditation</li>
+                                            <li>• DTAC Passporting</li>
+                                            <li>• NHS Trust Evaluations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Scope Alignment</h4>
+                                        <p className="text-sm text-gray-300">
+                                            This prototype demonstrates <strong>Must Have</strong> features: approved body evaluations, passporting, PIM integration, and side-by-side comparison.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
+                                    <p>Compass Alpha Prototype | NHS Medtech Directorate | For testing and feedback purposes only</p>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                );
+            }
+
+            // Registration Success
+            if (view === 'registrationSuccess') {
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        <header className="bg-blue-600 text-white py-6 px-6 shadow-md">
+                            <div className="max-w-7xl mx-auto">
+                                <h1 className="text-3xl font-bold mb-1">Compass</h1>
+                                <p className="text-lg opacity-90">Value-Based Procurement for Medical Technologies</p>
+                                <p className="text-sm mt-1 opacity-75">Supplier Portal</p>
+                            </div>
+                        </header>
+
+                        <div className="max-w-3xl mx-auto py-12 px-6">
+                            <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-green-500">
+                                <div className="flex items-center mb-6">
+                                    <svg className="w-16 h-16 text-green-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <div>
+                                        <h2 className="text-3xl font-bold text-gray-900">Registration Successful!</h2>
+                                        <p className="text-gray-600 mt-1">Welcome to the Compass supplier community</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                                    <h3 className="text-sm font-semibold text-blue-900 mb-2">Next Steps</h3>
+                                    <ol className="text-sm text-blue-900 space-y-2">
+                                        <li className="flex items-start">
+                                            <span className="font-bold mr-2">1.</span>
+                                            <span>Check your email ({registerForm.email}) for a verification link</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="font-bold mr-2">2.</span>
+                                            <span>Verify your email address to activate your account</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="font-bold mr-2">3.</span>
+                                            <span>Your account will be reviewed by our team (typically 1-2 business days)</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="font-bold mr-2">4.</span>
+                                            <span>Once approved, you can begin submitting product data</span>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                                    <h4 className="font-semibold text-gray-900 mb-3">While you wait...</h4>
+                                    <ul className="text-sm text-gray-700 space-y-2">
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Review the <a href="#" className="text-blue-600 hover:underline">Submission Guidelines</a></span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Download <a href="#" className="text-blue-600 hover:underline">Evidence Templates</a></span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Familiarize yourself with <a href="#" className="text-blue-600 hover:underline">Value-Based Procurement domains</a></span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Gather your MHRA registration details and clinical evidence</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div className="flex gap-4">
+                                    <button
+                                        onClick={() => setView('landing')}
+                                        className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition font-semibold"
+                                    >
+                                        Return to Home
+                                    </button>
+                                    <button
+                                        onClick={() => setView('login')}
+                                        className="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-md hover:bg-gray-300 transition font-semibold"
+                                    >
+                                        Go to Login
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Footer */}
+                        <footer className="bg-gray-800 text-white py-6 px-6 mt-12">
+                            <div className="max-w-7xl mx-auto">
+                                <div className="grid grid-cols-3 gap-8">
+                                    <div>
+                                        <h4 className="font-semibold mb-2">About Compass</h4>
+                                        <p className="text-sm text-gray-300">
+                                            A central digital platform enabling value-based procurement for NHS medical technologies.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Data Sources</h4>
+                                        <ul className="text-sm text-gray-300 space-y-1">
+                                            <li>• NICE Medtech Guidance</li>
+                                            <li>• ODEP Accreditation</li>
+                                            <li>• DTAC Passporting</li>
+                                            <li>• NHS Trust Evaluations</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold mb-2">Scope Alignment</h4>
+                                        <p className="text-sm text-gray-300">
+                                            This prototype demonstrates <strong>Must Have</strong> features: approved body evaluations, passporting, PIM integration, and side-by-side comparison.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
+                                    <p>Compass Alpha Prototype | NHS Medtech Directorate | For testing and feedback purposes only</p>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                );
+            }
+
+            return null;
+        };
+
+        ReactDOM.render(<SupplierPortalApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>
