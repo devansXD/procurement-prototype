@@ -1,0 +1,72 @@
+
+
+.nhsuk-multi-file-upload {
+  margin-bottom: 40px;
+}
+
+.nhsuk-multi-file-upload--enhanced .nhsuk-multi-file-upload__button {
+  display: none;
+}
+
+.nhsuk-multi-file-upload__dropzone {
+  display: flex;
+  padding: nhsuk-spacing(9) nhsuk-spacing(3);
+  transition:
+    outline-offset 0.1s ease-in-out,
+    background-color 0.1s linear;
+  outline: 3px dashed nhsuk-colour("black");
+  text-align: center;
+}
+
+.nhsuk-multi-file-upload__dropzone label {
+  display: inline-block;
+  width: auto;
+  margin-bottom: 0;
+}
+
+.nhsuk-multi-file-upload__dropzone p {
+  margin-right: 10px;
+  margin-bottom: 0;
+  padding-top: 7px;
+}
+
+.nhsuk-multi-file-upload__dropzone [type="file"] {
+  position: absolute;
+  left: -9999em;
+}
+
+.nhsuk-multi-file-upload--dranhser {
+  outline-color: #6f777b;
+  background: #b1b4b6;
+}
+
+.nhsuk-multi-file-upload--focused {
+  outline: none;
+  color: $nhsuk-focus-text-colour;
+  background-color: $nhsuk-focus-colour;
+  box-shadow:
+    0 -2px $nhsuk-focus-colour,
+    0 4px $nhsuk-focus-text-colour;
+}
+
+.nhsuk-multi-file-upload__error {
+  color: nhsuk-colour("red");
+  font-weight: bold;
+}
+
+.nhsuk-multi-file-upload__success {
+  color: nhsuk-colour("green");
+  font-weight: bold;
+}
+
+.nhsuk-multi-file-upload__error svg {
+  margin-right: nhsuk-spacing(2);
+  float: left;
+  fill: currentcolor;
+}
+
+.nhsuk-multi-file-upload__success svg {
+  margin-right: nhsuk-spacing(2);
+  float: left;
+  fill: currentcolor;
+}

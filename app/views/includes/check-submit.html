@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Evaluation | Compass - NHS Procurement</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .nhs-blue { background-color: #005EB8; }
+        .nhs-blue-text { color: #005EB8; }
+        .drag-active {
+            border-color: #005EB8;
+            background-color: #E8EDEE;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useRef } = React;
+
+        const TrustUploadApp = () => {
+            const [uploadedFiles, setUploadedFiles] = useState([]);
+            const [currentStep, setCurrentStep] = useState(1);
+            const [dragActive, setDragActive] = useState(false);
+            const [formData, setFormData] = useState({
+                trustName: '',
+                evaluationType: '',
+                productCategory: '',
+                productName: '',
+                evaluationDate: '',
+                leadClinician: '',
+                department: '',
+                notes: ''
+            });
+            const [submitted, setSubmitted] = useState(false);
+            const fileInputRef = useRef(null);
+
+            const handleDrag = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.type === "dragenter" || e.type === "dragover") {
+                    setDragActive(true);
+                } else if (e.type === "dragleave") {
+                    setDragActive(false);
+                }
+            };
+
+            const handleDrop = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setDragActive(false);
+                
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                    handleFiles(e.dataTransfer.files);
+                }
+            };
+
+            const handleFileInput = (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    handleFiles(e.target.files);
+                }
+            };
+
+            const handleFiles = (files) => {
+                const fileArray = Array.from(files).map(file => ({
+                    name: file.name,
+                    size: (file.size / 1024 / 1024).toFixed(2),
+                    type: file.type,
+                    uploadDate: new Date().toISOString()
+                }));
+                setUploadedFiles(prev => [...prev, ...fileArray]);
+            };
+
+            const removeFile = (index) => {
+                setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+            };
+
+            const handleInputChange = (e) => {
+                setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                });
+            };
+
+            const handleSubmit = () => {
+                setSubmitted(true);
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+            };
+
+            const isStepValid = (step) => {
+                if (step === 1) {
+                    return formData.trustName && formData.evaluationType && formData.productCategory;
+                }
+                if (step === 2) {
+                    return uploadedFiles.length > 0;
+                }
+                return true;
+            };
+
+            if (submitted) {
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        {/* Header */}
+                        <header className="nhs-blue text-white py-4 px-6 shadow-md">
+                            <div className="max-w-7xl mx-auto">
+                                <h1 className="text-2xl font-bold">Compass</h1>
+                                <p className="text-sm opacity-90">NHS Value-Based Procurement Platform</p>
+                            </div>
+                        </header>
+
+                        <div className="max-w-4xl mx-auto py-12 px-6">
+                            <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-green-500">
+                                <div className="flex items-center mb-6">
+                                    <svg className="w-16 h-16 text-green-500 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <div>
+                                        <h2 className="text-3xl font-bold text-gray-900">Evaluation Submitted Successfully</h2>
+                                        <p className="text-gray-600 mt-1">Your submission has been received and is now under review</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                                    <div className="flex">
+                                        <svg className="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <div>
+                                            <h3 className="text-sm font-semibold text-blue-900">Reference Number</h3>
+                                            <p className="text-lg font-mono font-bold text-blue-900">EVAL-{Date.now().toString().slice(-8)}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4 mb-6">
+                                    <h3 className="font-semibold text-lg text-gray-900">Submission Summary</h3>
+                                    <div className="grid grid-cols-2 gap-4 text-sm">
+                                        <div>
+                                            <span className="text-gray-600">Trust:</span>
+                                            <p className="font-semibold">{formData.trustName}</p>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-600">Evaluation Type:</span>
+                                            <p className="font-semibold">{formData.evaluationType}</p>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-600">Product Category:</span>
+                                            <p className="font-semibold">{formData.productCategory}</p>
+                                        </div>
+                                        <div>
+                                            <span className="text-gray-600">Documents Uploaded:</span>
+                                            <p className="font-semibold">{uploadedFiles.length} file(s)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                                    <h4 className="font-semibold text-gray-900 mb-2">What happens next?</h4>
+                                    <ul className="space-y-2 text-sm text-gray-700">
+                                        <li className="flex items-start">
+                                            <span className="nhs-blue-text font-bold mr-2">1.</span>
+                                            <span>Your evaluation will be reviewed by the Compass clinical team (typically within 3-5 working days)</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="nhs-blue-text font-bold mr-2">2.</span>
+                                            <span>Once approved, your evaluation will be visible to all NHS procurement teams across the system</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="nhs-blue-text font-bold mr-2">3.</span>
+                                            <span>Other trusts can reference your evaluation in their procurement decisions</span>
+                                        </li>
+                                        <li className="flex items-start">
+                                            <span className="nhs-blue-text font-bold mr-2">4.</span>
+                                            <span>You'll receive an email notification when your evaluation is published</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div className="flex gap-4">
+                                    <button 
+                                        onClick={() => window.location.reload()}
+                                        className="nhs-blue text-white px-6 py-3 rounded-md hover:opacity-90 transition font-semibold"
+                                    >
+                                        Submit Another Evaluation
+                                    </button>
+                                    <button 
+                                        className="bg-gray-200 text-gray-700 px-6 py-3 rounded-md hover:bg-gray-300 transition font-semibold"
+                                    >
+                                        View My Submissions
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="min-h-screen bg-gray-50">
+                    {/* Header */}
+                    <header className="nhs-blue text-white py-4 px-6 shadow-md">
+                        <div className="max-w-7xl mx-auto">
+                            <h1 className="text-2xl font-bold">Compass</h1>
+                            <p className="text-sm opacity-90">NHS Value-Based Procurement Platform</p>
+                        </div>
+                    </header>
+
+                    <div className="max-w-6xl mx-auto py-8 px-6">
+                        {/* Page Title */}
+                        <div className="mb-8">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-2">Upload Medtech Evaluation</h2>
+                            <p className="text-gray-600">Share your trust's clinical evaluation to support value-based procurement across the NHS</p>
+                        </div>
+
+                        {/* Info Banner */}
+                        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+                            <div className="flex">
+                                <svg className="w-6 h-6 text-blue-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div>
+                                    <h3 className="text-sm font-semibold text-blue-900 mb-2">Why share your evaluation?</h3>
+                                    <ul className="text-sm text-blue-900 space-y-1">
+                                        <li>• Help other NHS organizations make evidence-based procurement decisions</li>
+                                        <li>• Reduce duplication of evaluation efforts across the system</li>
+                                        <li>• Build a national evidence base for medical technology value</li>
+                                        <li>• Support faster adoption of proven innovations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Progress Steps */}
+                        <div className="mb-8">
+                            <div className="flex items-center justify-between">
+                                {[1, 2, 3].map((step) => (
+                                    <div key={step} className="flex items-center flex-1">
+                                        <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 font-bold ${
+                                            currentStep >= step 
+                                                ? 'nhs-blue text-white border-blue-600' 
+                                                : 'bg-white text-gray-400 border-gray-300'
+                                        }`}>
+                                            {step}
+                                        </div>
+                                        <div className="ml-3 flex-1">
+                                            <p className={`text-sm font-semibold ${currentStep >= step ? 'nhs-blue-text' : 'text-gray-500'}`}>
+                                                {step === 1 && 'Evaluation Details'}
+                                                {step === 2 && 'Upload Documents'}
+                                                {step === 3 && 'Review & Submit'}
+                                            </p>
+                                        </div>
+                                        {step < 3 && (
+                                            <div className={`h-1 w-full mx-4 ${currentStep > step ? 'nhs-blue' : 'bg-gray-300'}`}></div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Step 1: Evaluation Details */}
+                        {currentStep === 1 && (
+                            <div className="bg-white rounded-lg shadow-md p-8">
+                                <h3 className="text-xl font-bold text-gray-900 mb-6">Evaluation Details</h3>
+                                
+                                <div className="space-y-6">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            NHS Trust / Organization <span className="text-red-600">*</span>
+                                        </label>
+                                        <select
+                                            name="trustName"
+                                            value={formData.trustName}
+                                            onChange={handleInputChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            required
+                                        >
+                                            <option value="">Select your trust</option>
+                                            <option value="Leeds Teaching Hospitals NHS Trust">Leeds Teaching Hospitals NHS Trust</option>
+                                            <option value="Manchester University NHS Foundation Trust">Manchester University NHS Foundation Trust</option>
+                                            <option value="Guy's and St Thomas' NHS Foundation Trust">Guy's and St Thomas' NHS Foundation Trust</option>
+                                            <option value="Oxford University Hospitals NHS Foundation Trust">Oxford University Hospitals NHS Foundation Trust</option>
+                                            <option value="Cambridge University Hospitals NHS Foundation Trust">Cambridge University Hospitals NHS Foundation Trust</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Evaluation Type <span className="text-red-600">*</span>
+                                        </label>
+                                        <select
+                                            name="evaluationType"
+                                            value={formData.evaluationType}
+                                            onChange={handleInputChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            required
+                                        >
+                                            <option value="">Select evaluation type</option>
+                                            <option value="Clinical Effectiveness Review">Clinical Effectiveness Review</option>
+                                            <option value="Real-World Evidence Study">Real-World Evidence Study</option>
+                                            <option value="Cost-Effectiveness Analysis">Cost-Effectiveness Analysis</option>
+                                            <option value="Safety & Performance Assessment">Safety & Performance Assessment</option>
+                                            <option value="Post-Market Surveillance">Post-Market Surveillance</option>
+                                            <option value="Comparative Evaluation">Comparative Evaluation</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Product Category <span className="text-red-600">*</span>
+                                        </label>
+                                        <select
+                                            name="productCategory"
+                                            value={formData.productCategory}
+                                            onChange={handleInputChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            required
+                                        >
+                                            <option value="">Select category</option>
+                                            <option value="Diagnostic Imaging">Diagnostic Imaging</option>
+                                            <option value="Surgical Instruments">Surgical Instruments</option>
+                                            <option value="Patient Monitoring">Patient Monitoring</option>
+                                            <option value="Cardiac Devices">Cardiac Devices</option>
+                                            <option value="Respiratory Equipment">Respiratory Equipment</option>
+                                            <option value="Laboratory Equipment">Laboratory Equipment</option>
+                                            <option value="Infusion Devices">Infusion Devices</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Product Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="productName"
+                                            value={formData.productName}
+                                            onChange={handleInputChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="Enter the specific product name"
+                                        />
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                Evaluation Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                name="evaluationDate"
+                                                value={formData.evaluationDate}
+                                                onChange={handleInputChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                                Department
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="department"
+                                                value={formData.department}
+                                                onChange={handleInputChange}
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                placeholder="e.g., Cardiology"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Lead Clinician / Evaluator
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="leadClinician"
+                                            value={formData.leadClinician}
+                                            onChange={handleInputChange}
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="Enter name"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            Additional Notes
+                                        </label>
+                                        <textarea
+                                            name="notes"
+                                            value={formData.notes}
+                                            onChange={handleInputChange}
+                                            rows="4"
+                                            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder="Any additional context or notes about this evaluation"
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-end mt-8">
+                                    <button
+                                        onClick={() => setCurrentStep(2)}
+                                        disabled={!isStepValid(1)}
+                                        className={`px-8 py-3 rounded-md font-semibold transition ${
+                                            isStepValid(1)
+                                                ? 'nhs-blue text-white hover:opacity-90'
+                                                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                        }`}
+                                    >
+                                        Continue to Upload Documents
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Step 2: Upload Documents */}
+                        {currentStep === 2 && (
+                            <div className="bg-white rounded-lg shadow-md p-8">
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">Upload Documents</h3>
+                                <p className="text-gray-600 mb-6">Upload your evaluation reports, clinical evidence, and supporting documentation</p>
+
+                                {/* Drag and Drop Zone */}
+                                <div
+                                    className={`border-2 border-dashed rounded-lg p-12 text-center mb-6 transition ${
+                                        dragActive ? 'drag-active' : 'border-gray-300 hover:border-blue-400'
+                                    }`}
+                                    onDragEnter={handleDrag}
+                                    onDragLeave={handleDrag}
+                                    onDragOver={handleDrag}
+                                    onDrop={handleDrop}
+                                >
+                                    <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                    <p className="text-lg font-semibold text-gray-700 mb-2">
+                                        Drag and drop your files here
+                                    </p>
+                                    <p className="text-sm text-gray-500 mb-4">or</p>
+                                    <input
+                                        ref={fileInputRef}
+                                        type="file"
+                                        multiple
+                                        onChange={handleFileInput}
+                                        className="hidden"
+                                        accept=".pdf,.doc,.docx,.xlsx,.xls"
+                                    />
+                                    <button
+                                        onClick={() => fileInputRef.current.click()}
+                                        className="nhs-blue text-white px-6 py-3 rounded-md hover:opacity-90 transition font-semibold"
+                                    >
+                                        Browse Files
+                                    </button>
+                                    <p className="text-xs text-gray-500 mt-4">
+                                        Accepted formats: PDF, Word, Excel • Max size: 25MB per file
+                                    </p>
+                                </div>
+
+                                {/* File Type Guidance */}
+                                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                                    <h4 className="font-semibold text-gray-900 mb-3">Recommended document types:</h4>
+                                    <div className="grid grid-cols-2 gap-3 text-sm">
+                                        <div className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Clinical evaluation reports</span>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Real-world evidence studies</span>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Cost-effectiveness analyses</span>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Safety and performance data</span>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Patient outcome measures</span>
+                                        </div>
+                                        <div className="flex items-start">
+                                            <span className="text-green-600 mr-2">✓</span>
+                                            <span>Comparative evaluations</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Uploaded Files List */}
+                                {uploadedFiles.length > 0 && (
+                                    <div className="mb-6">
+                                        <h4 className="font-semibold text-gray-900 mb-3">Uploaded Files ({uploadedFiles.length})</h4>
+                                        <div className="space-y-2">
+                                            {uploadedFiles.map((file, index) => (
+                                                <div key={index} className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-4">
+                                                    <div className="flex items-center flex-1">
+                                                        <svg className="w-8 h-8 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                        </svg>
+                                                        <div>
+                                                            <p className="font-semibold text-gray-900">{file.name}</p>
+                                                            <p className="text-sm text-gray-600">{file.size} MB</p>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => removeFile(index)}
+                                                        className="text-red-600 hover:text-red-800 transition ml-4"
+                                                    >
+                                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="flex justify-between mt-8">
+                                    <button
+                                        onClick={() => setCurrentStep(1)}
+                                        className="bg-gray-200 text-gray-700 px-6 py-3 rounded-md hover:bg-gray-300 transition font-semibold"
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                        onClick={() => setCurrentStep(3)}
+                                        disabled={!isStepValid(2)}
+                                        className={`px-8 py-3 rounded-md font-semibold transition ${
+                                            isStepValid(2)
+                                                ? 'nhs-blue text-white hover:opacity-90'
+                                                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                        }`}
+                                    >
+                                        Continue to Review
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Step 3: Review & Submit */}
+                        {currentStep === 3 && (
+                            <div className="bg-white rounded-lg shadow-md p-8">
+                                <h3 className="text-xl font-bold text-gray-900 mb-6">Review & Submit</h3>
+
+                                <div className="space-y-6 mb-8">
+                                    <div className="border-b pb-4">
+                                        <h4 className="font-semibold text-gray-900 mb-3">Evaluation Details</h4>
+                                        <div className="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <span className="text-gray-600">NHS Trust:</span>
+                                                <p className="font-semibold">{formData.trustName}</p>
+                                            </div>
+                                            <div>
+                                                <span className="text-gray-600">Evaluation Type:</span>
+                                                <p className="font-semibold">{formData.evaluationType}</p>
+                                            </div>
+                                            <div>
+                                                <span className="text-gray-600">Product Category:</span>
+                                                <p className="font-semibold">{formData.productCategory}</p>
+                                            </div>
+                                            {formData.productName && (
+                                                <div>
+                                                    <span className="text-gray-600">Product Name:</span>
+                                                    <p className="font-semibold">{formData.productName}</p>
+                                                </div>
+                                            )}
+                                            {formData.evaluationDate && (
+                                                <div>
+                                                    <span className="text-gray-600">Evaluation Date:</span>
+                                                    <p className="font-semibold">{formData.evaluationDate}</p>
+                                                </div>
+                                            )}
+                                            {formData.department && (
+                                                <div>
+                                                    <span className="text-gray-600">Department:</span>
+                                                    <p className="font-semibold">{formData.department}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="border-b pb-4">
+                                        <h4 className="font-semibold text-gray-900 mb-3">Uploaded Documents ({uploadedFiles.length})</h4>
+                                        <div className="space-y-2">
+                                            {uploadedFiles.map((file, index) => (
+                                                <div key={index} className="flex items-center bg-gray-50 rounded p-3">
+                                                    <svg className="w-6 h-6 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                    </svg>
+                                                    <span className="text-sm">{file.name}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                                        <div className="flex">
+                                            <svg className="w-6 h-6 text-yellow-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                            </svg>
+                                            <div className="text-sm">
+                                                <h5 className="font-semibold text-yellow-900 mb-1">Important Declarations</h5>
+                                                <ul className="space-y-1 text-yellow-900">
+                                                    <li>• I confirm that this evaluation was conducted by our NHS organization</li>
+                                                    <li>• The uploaded documents contain accurate clinical evidence</li>
+                                                    <li>• I have authority to share this evaluation on behalf of my trust</li>
+                                                    <li>• This evaluation may be viewed by NHS procurement teams across the system</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start">
+                                        <input
+                                            type="checkbox"
+                                            id="declaration"
+                                            className="mt-1 mr-3 w-5 h-5"
+                                            required
+                                        />
+                                        <label htmlFor="declaration" className="text-sm text-gray-700">
+                                            I confirm that I have read and agree to the declarations above, and that all information provided is accurate to the best of my knowledge
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-between">
+                                    <button
+                                        onClick={() => setCurrentStep(2)}
+                                        className="bg-gray-200 text-gray-700 px-6 py-3 rounded-md hover:bg-gray-300 transition font-semibold"
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                        onClick={handleSubmit}
+                                        className="nhs-blue text-white px-8 py-3 rounded-md hover:opacity-90 transition font-semibold"
+                                    >
+                                        Submit Evaluation
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Footer */}
+                    <footer className="bg-gray-800 text-white py-6 px-6 mt-12">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="grid grid-cols-3 gap-8 text-sm">
+                                <div>
+                                    <h4 className="font-semibold mb-2">About Compass</h4>
+                                    <p className="text-gray-300">
+                                        A central digital platform enabling value-based procurement for NHS medical technologies.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold mb-2">For NHS Organizations</h4>
+                                    <ul className="text-gray-300 space-y-1">
+                                        <li>• Upload evaluations</li>
+                                        <li>• Access evidence repository</li>
+                                        <li>• Compare products</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold mb-2">Need Help?</h4>
+                                    <p className="text-gray-300">
+                                        Contact: compass-support@nhs.uk<br />
+                                        Mon-Fri, 9am-5pm
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
+                                <p>Compass Alpha | NHS Medtech Directorate | For authorized NHS users only</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<TrustUploadApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>
