@@ -1,9 +1,12 @@
-// Import NHS.UK frontend library
-@import "nhsuk-frontend/dist/nhsuk";
+@import 'nhsuk-frontend/dist/nhsuk/nhsuk';
 
 // Add your custom CSS/Sass styles below.
 @import 'components/autocomplete';
 @import 'components/multi-file-upload';
+@import 'components/nhs-hero';
+@import 'components/search-filter';
+@import 'components/radios';
+@import 'components/buttons';
 
 .nhsuk-width-container {
   max-width: 1100px;

@@ -1,14 +1,14 @@
 <!-- Use this page as the index for your project -->
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 <!-- Extends the layout from /app/views/layout.html -->
-{% extends 'layout-hero-current.html' %}
+{% extends 'layout-hero.html' %}
 <!--
   In /app/views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
 {% set pageName = "Compass - Value-Based Procurement for Medical Technologies" %}
-{% set serviceHeader = "Compass - Homepage" %}
+{% set serviceHeader = "Compass - Sign in" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -35,40 +35,6 @@
   </div>
 </div>
 
-
-<!-- Get Started Section -->
-<div class="nhsuk-grid-row nhsuk-u-margin-top-7" id="get-started">
-  <div class="nhsuk-grid-column-two-thirds">
-    
-    <h2 class="nhsuk-heading-l">Get started with Compass</h2>
-    
-    {{ actionLink({
-      "text": "Search for medical technologies",
-      "href": "/search"
-    }) }}
-
-    <p class="nhsuk-u-margin-top-4">Or learn more about:</p>
-    
-    <ul class="nhsuk-list">
-      <li>
-        <a href="#data-sources">Our data sources and how we maintain quality</a>
-      </li>
-      <li>
-        <a href="#how-it-works">How to use Compass in your procurement process</a>
-      </li>
-      <li>
-        <a href="#contribute">Contributing your trust's evaluations</a>
-      </li>
-      <li>
-        <a href="#contact">Contact the Compass team</a>
-      </li>
-    </ul>
-
-  </div>
-  
-  
-</div>
-
 <!-- Key Features Cards -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
   <div class="nhsuk-grid-column-full">
@@ -88,9 +54,9 @@
 
   <div class="nhsuk-grid-column-one-third nhsuk-card-group__item">
     {{ card({
-      "heading": "Real-world evaluations",
+      "heading": "Side-by-side comparison",
       "headingLevel": 3,
-      "descriptionHtml": "<p>Read and share evaluations from NHS trusts using the technologies in practice, providing insights beyond formal guidance.</p>"
+      "descriptionHtml": "<p>Compare up to 3 medical technologies at once, viewing their clinical evidence, regulatory status, and peer evaluations together to support decision-making.</p>"
     }) }}
   </div>
 
@@ -159,7 +125,46 @@
 
 </div>
 
+<!-- Get Started Section -->
+<div class="nhsuk-grid-row nhsuk-u-margin-top-7" id="get-started">
+  <div class="nhsuk-grid-column-two-thirds">
+    
+    <h2 class="nhsuk-heading-l">Get started with Compass</h2>
+    
+    {{ actionLink({
+      "text": "Search for medical technologies",
+      "href": "/search"
+    }) }}
 
+    <p class="nhsuk-u-margin-top-4">Or learn more about:</p>
+    
+    <ul class="nhsuk-list">
+      <li>
+        <a href="#data-sources">Our data sources and how we maintain quality</a>
+      </li>
+      <li>
+        <a href="#how-it-works">How to use Compass in your procurement process</a>
+      </li>
+      <li>
+        <a href="#contribute">Contributing your trust's evaluations</a>
+      </li>
+      <li>
+        <a href="#contact">Contact the Compass team</a>
+      </li>
+    </ul>
+
+  </div>
+  
+  <div class="nhsuk-grid-column-one-third">
+    {{ card({
+      "feature": true,
+      "heading": "Need help?",
+      "headingLevel": 3,
+      "descriptionHtml": "<p>Get in touch with the Compass team for support, training, or to share feedback.</p>
+      <p><a href='mailto:compass@nhs.net'>compass@nhs.net</a></p>"
+    }) }}
+  </div>
+</div>
 
 <!-- Data Sources Section -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7" id="data-sources">
@@ -282,11 +287,12 @@
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-7">
   <div class="nhsuk-grid-column-full">
     
-    <h2 class="nhsuk-heading-l">Get started with Compass</h2>
-    
-    {{ actionLink({
-      "text": "Search for medical technologies",
-      "href": "/search"
+    {{ card({
+      "feature": true,
+      "heading": "Ready to start using Compass?",
+      "headingLevel": 2,
+      "descriptionHtml": "<p class='nhsuk-body-l'>Search our database of medical technologies and access centralised evidence to support your next procurement decision.</p>
+      <a href='search' class='nhsuk-button nhsuk-u-margin-bottom-0'>Search for technologies</a>"
     }) }}
 
   </div>
