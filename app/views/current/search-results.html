@@ -1,6 +1,6 @@
 {% extends 'layout-signed-out.html' %}
 
-{% set pageName = "Search results - Compass" %}
+{% set pageName = "Search medical technologies - Compass" %}
 {% set serviceHeader = "Compass" %}
 
 {% block beforeContent %}
@@ -9,7 +9,7 @@
 {{ breadcrumb({
   items: [
     {
-      href: "#",
+      href: "/",
       text: "Home"
     }
   ],
@@ -17,18 +17,21 @@
   text: "Search results"
 }) }}
 {% endblock %}
+
 {% block content %}
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">Search results</h1>
     
     {# Search bar #}
-    <div class="app-filters nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
+  <div class="app-filters nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
       <div class="app-filters-container">
         <form action="/user-admin" method="get" novalidate="">
           <div class="nhsuk-form-group nhsuk-u-margin-bottom-0">
             <label class="nhsuk-label" for="q">
-              Search active users by name or email
+              Search again by product name, category, or supplier
             </label>
             <input class="nhsuk-input nhsuk-input--width-20" id="q" name="q" type="search" value="">
 
@@ -44,7 +47,7 @@
         </form>
       </div>
       </div>
-<!-- END ROW -->
+
   </div>
 </div>
 
@@ -53,4568 +56,797 @@
   {# Filters Sidebar #}
   <app-auto-submit class="app-grid-column-filters">
       
-  
-
-  
-
-
-
-
-<div class="nhsuk-card nhsuk-card--feature app-filters">
-  <div class="nhsuk-card__content nhsuk-card__content--feature">
-    <h3 class="nhsuk-card__heading nhsuk-card__heading--feature">
-      Find session
+    <div class="nhsuk-card nhsuk-card--feature app-filters">
+      <div class="nhsuk-card__content nhsuk-card__content--feature">
+        <h3 class="nhsuk-card__heading nhsuk-card__heading--feature">
+          Filter results
+        </h3>
       
-    </h3>
-  
-    
+        {# Product Category Filter #}
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+              Product category
+            </legend>
+            
+            <div id="category-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-infusion" name="[category]" type="checkbox" value="infusion" checked="">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-infusion">
+                  Infusion devices
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-surgical" name="[category]" type="checkbox" value="surgical">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-surgical">
+                  Surgical instruments
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-monitoring" name="[category]" type="checkbox" value="monitoring">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-monitoring">
+                  Patient monitoring
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-diagnostic" name="[category]" type="checkbox" value="diagnostic">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-diagnostic">
+                  Diagnostic equipment
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-cardiology" name="[category]" type="checkbox" value="cardiology">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-cardiology">
+                  Cardiology devices
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-respiratory" name="[category]" type="checkbox" value="respiratory">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-respiratory">
+                  Respiratory equipment
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-imaging" name="[category]" type="checkbox" value="imaging">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-imaging">
+                  Imaging systems
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="category-laboratory" name="[category]" type="checkbox" value="laboratory">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-laboratory">
+                  Laboratory equipment
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
+        {# Available Data Types Filter #}
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+              Available data
+            </legend>
+            
+            <div id="data-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="data-clinical" name="[data]" type="checkbox" value="clinical-outcomes">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-clinical">
+                  Clinical outcomes
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="data-safety" name="[data]" type="checkbox" value="safety">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-safety">
+                  Patient safety data
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="data-cost" name="[data]" type="checkbox" value="cost-analysis">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-cost">
+                  Cost analysis
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="data-trust" name="[data]" type="checkbox" value="trust-evaluations">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-trust">
+                  Trust evaluations
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="data-sustainability" name="[data]" type="checkbox" value="sustainability">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-sustainability">
+                  Sustainability data
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="data-integration" name="[data]" type="checkbox" value="system-integration">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-integration">
+                  System integration
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
+        {# Clinical Trial Status Filter #}
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+              Clinical trial status
+            </legend>
+            
+            <div id="trial-items" class="nhsuk-radios nhsuk-radios--small" data-module="nhsuk-radios" data-nhsuk-radios-init="">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="trial-any" name="[trial]" type="radio" value="any" checked="">
+                <label class="nhsuk-label nhsuk-radios__label" for="trial-any">
+                  Any
+                </label>
+              </div>
+              
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="trial-yes" name="[trial]" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="trial-yes">
+                  Clinical trial available
+                </label>
+              </div>
+              
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="trial-no" name="[trial]" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="trial-no">
+                  No clinical trial
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
-<div class="nhsuk-form-group app-form-group--search-input">
-  <label class="nhsuk-label nhsuk-u-visually-hidden" for="q">
-    Search
-  </label>
-
-
-  <div class="nhsuk-input__wrapper">
-    
-    
-    <input class="nhsuk-input" id="q" name="[q]" type="search" autocomplete="off" formaction="" formmethod="post">
-    
-        <button class="nhsuk-button" data-module="nhsuk-button" type="submit" data-nhsuk-button-init="">
-      <svg class="nhsuk-icon nhsuk-icon--search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" role="img" aria-label="Search">
-    
-      <title>Search</title>
-    
-    
-      <path d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"></path>
-    
-    </svg>
-    
-    </button>
-    
-  </div>
-
-</div>
-
-
-
-    
-
-    
-
-
-
-<div class="nhsuk-form-group">
-
-  <fieldset class="nhsuk-fieldset">
-  
-  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
-  
-    Programme
-  
-  </legend>
-  
-
-  <div id="programme_id-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
-    
-    
-      
-  
-  
-    
-    
-    
-    
-    
-    <div class="nhsuk-checkboxes__item">
-      <input class="nhsuk-checkboxes__input" id="programme_id" name="[programme_id]" type="checkbox" value="flu">
-      <label class="nhsuk-label nhsuk-checkboxes__label" for="programme_id">
-        Flu
-      </label>
-      
+        {# Supplier Type Filter #}
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+              Supplier type
+            </legend>
+            
+            <div id="supplier-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="supplier-sme" name="[supplier]" type="checkbox" value="sme">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="supplier-sme">
+                  SME
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="supplier-uk" name="[supplier]" type="checkbox" value="uk-made">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="supplier-uk">
+                  UK manufactured
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        
+        <div class="nhsuk-button-group">
+          <button class="nhsuk-button nhsuk-button--secondary app-button--small" data-module="nhsuk-button" formaction="" formmethod="post" role="search" type="submit" hidden="" data-nhsuk-button-init="">
+            Update results
+          </button>
+        </div>
+      </div>
     </div>
-    
-  
 
-    
-      
-  
-  
-    
-    
-    
-    
-    
-    <div class="nhsuk-checkboxes__item">
-      <input class="nhsuk-checkboxes__input" id="programme_id-2" name="[programme_id]" type="checkbox" value="hpv">
-      <label class="nhsuk-label nhsuk-checkboxes__label" for="programme_id-2">
-        HPV
-      </label>
-      
-    </div>
-    
-  
-
-    
-      
-  
-  
-    
-    
-    
-    
-    
-    <div class="nhsuk-checkboxes__item">
-      <input class="nhsuk-checkboxes__input" id="programme_id-3" name="[programme_id]" type="checkbox" value="menacwy">
-      <label class="nhsuk-label nhsuk-checkboxes__label" for="programme_id-3">
-        MenACWY
-      </label>
-      
-    </div>
-    
-  
-
-    
-      
-  
-  
-    
-    
-    
-    
-    
-    <div class="nhsuk-checkboxes__item">
-      <input class="nhsuk-checkboxes__input" id="programme_id-4" name="[programme_id]" type="checkbox" value="mmr">
-      <label class="nhsuk-label nhsuk-checkboxes__label" for="programme_id-4">
-        MMR
-      </label>
-      
-    </div>
-    
-  
-
-    
-      
-  
-  
-    
-    
-    
-    
-    
-    <div class="nhsuk-checkboxes__item">
-      <input class="nhsuk-checkboxes__input" id="programme_id-5" name="[programme_id]" type="checkbox" value="td-ipv">
-      <label class="nhsuk-label nhsuk-checkboxes__label" for="programme_id-5">
-        Td/IPV
-      </label>
-      
-    </div>
-    
-  
-
-    
-    
-  </div>
-
-</fieldset>
-
-</div>
-
-
-    
-
-{% from 'radios/macro.njk' import radios %}
-
-{{ radios({
-  idPrefix: "filter",
-  name: "filter",
-  fieldset: {
-    legend: {
-      text: "Filter",
-      classes: "nhsuk-fieldset__legend--m",
-      isPageHeading: true
-    }
-  },
-  classes: "nhsuk-radios--small",
-  items: [
-    {
-      value: "monthly",
-      text: "Monthly"
-    },
-    {
-      value: "yearly",
-      text: "Yearly"
-    }
-  ]
-}) }}
-
-
-    
-
-
-<div class="nhsuk-form-group">
-
-  <fieldset class="nhsuk-fieldset">
-  
-  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
-  
-    Type
-  
-  </legend>
-  
-
-  <div id="type-items" class="nhsuk-radios nhsuk-radios--small" data-module="nhsuk-radios" data-nhsuk-radios-init="">
-    
-    
-      
-  
-    
-    
-    
-    <div class="nhsuk-radios__item">
-      <input class="nhsuk-radios__input" id="type" name="[type]" type="radio" value="none" checked="">
-      <label class="nhsuk-label nhsuk-radios__label" for="type">
-        Any
-      </label>
-      
-    </div>
-    
-  
-    
-      
-  
-    
-    
-    
-    <div class="nhsuk-radios__item">
-      <input class="nhsuk-radios__input" id="type-2" name="[type]" type="radio" value="School session">
-      <label class="nhsuk-label nhsuk-radios__label" for="type-2">
-        School session
-      </label>
-      
-    </div>
-    
-  
-    
-      
-  
-    
-    
-    
-    <div class="nhsuk-radios__item">
-      <input class="nhsuk-radios__input" id="type-3" name="[type]" type="radio" value="Community clinic">
-      <label class="nhsuk-label nhsuk-radios__label" for="type-3">
-        Community clinic
-      </label>
-      
-    </div>
-    
-  
-    
-    
-  </div>
-
-</fieldset>
-
-</div>
-
-
-    
-    
-<div class="nhsuk-button-group">
-
-
-
-
-
-  
-    
-  
-
-
-
-
-<button class="nhsuk-button nhsuk-button--secondary app-button--small" data-module="nhsuk-button" formaction="" formmethod="post" role="search" type="submit" hidden="" data-nhsuk-button-init="">
-  Update results
-</button>
-
-
-
-</div>
-
-
-  
-  
-  
-  </div>
-</div>
-
-
-    </app-auto-submit>
+  </app-auto-submit>
 
   {# Results Column #}
-<div class="app-grid-column-results">
-      
+  <div class="app-grid-column-results">
+    
+    <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-2">Medical technologies</h3>
+    <p class="nhsuk-caption-m nhsuk-u-margin-bottom-4">
+      Showing <b>1</b> to <b>25</b> of <b>143</b> products
+    </p>
+
+    {# Result 1 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/smartpump-300">SmartPump 300 Infusion System</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          MedTech Innovations Ltd
+        </p>
+        <p class="nhsuk-body">
+          Advanced infusion pump with integrated drug library, dose error reduction software, and wireless connectivity for electronic health records.
+        </p>
         
-      
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>12</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
+              <strong class="nhsuk-tag nhsuk-tag--green">Sustainability</strong>
+            </dd>
+          </div>
+        </dl>
 
-      <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-2">All sessions
-</h3><p class="nhsuk-caption-m nhsuk-u-margin-bottom-4">
-  Showing <b>1</b> to <b>40</b> of <b>57</b> sessions
-</p>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
+          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
+          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
+        </p>
+      </div>
+    </div>
 
-      
-
-
-
-
-  
-    
-  
-
-
-
-
-<a class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" href="/sessions/new" draggable="false" role="button" data-nhsuk-button-init="">
-  Add a new session
-</a>
-
-
-
-
-      
+    {# Result 2 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/safeflow-iv">SafeFlow IV Administration Set</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          Global Medical Supplies plc
+        </p>
+        <p class="nhsuk-body">
+          Anti-free-flow IV set with integrated air elimination filter. Compatible with all major infusion pump brands. Reduces medication errors by 45%.
+        </p>
         
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/716">President Kennedy School Academy</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        34 children
-      </dd>
-      
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>8</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Monday, 1 September 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 31 August
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 3 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/portapump-mini">PortaPump Mini Ambulatory Pump</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          CareTech Solutions
+        </p>
+        <p class="nhsuk-body">
+          Lightweight portable infusion pump designed for ambulatory patients. Features programmable delivery rates, alarm system, and 7-day battery life.
+        </p>
         
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>5</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
+            </dd>
+          </div>
+        </dl>
 
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/349">Cardinal Wiseman Catholic School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        31 children
-      </dd>
-      
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
+          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
+        </p>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 4 September 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 3 September
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 4 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/precisedose-pca">PreciseDose PCA System</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          Pain Management Technologies
+        </p>
+        <p class="nhsuk-body">
+          Patient-controlled analgesia system with advanced safety features, lockout intervals, and comprehensive audit trail for clinical governance.
+        </p>
         
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>15</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
+            </dd>
+          </div>
+        </dl>
 
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/187">Cardinal Newman Catholic School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        25 children
-      </dd>
-      
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
+          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
+        </p>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Tuesday, 9 September 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 8 September
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 5 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/multiflow-hub">MultiFlow Central Infusion Hub</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          MedTech Innovations Ltd
+        </p>
+        <p class="nhsuk-body">
+          Centralized infusion management system supporting up to 8 simultaneous infusions. Real-time monitoring dashboard with automated alerts.
+        </p>
         
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>9</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
+              <strong class="nhsuk-tag nhsuk-tag--green">Sustainability</strong>
+            </dd>
+          </div>
+        </dl>
 
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/960">Grace Academy Coventry</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        17 children
-      </dd>
-      
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
+          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
+          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
+        </p>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 10 September 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 9 September
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 6 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/neonatal-ivac">Neonatal IV Access Kit</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          Pediatric Care Systems
+        </p>
+        <p class="nhsuk-body">
+          Specialized IV access kit designed for neonatal and pediatric patients. Ultra-fine gauge needles with safety mechanisms to prevent needlestick injuries.
+        </p>
         
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/948">Parkgate Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        76 children
-      </dd>
-      
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>6</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 10 September 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 9 September
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 7 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/elastomeric-pump">ElastoFlow Disposable Infusion Pump</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          Disposable Medical Ltd
+        </p>
+        <p class="nhsuk-body">
+          Single-use elastomeric infusion pump for continuous medication delivery. Ideal for chemotherapy and antibiotic administration in ambulatory settings.
+        </p>
         
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>11</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
+              <strong class="nhsuk-tag nhsuk-tag--green">Sustainability</strong>
+            </dd>
+          </div>
+        </dl>
 
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/032">Caludon Castle School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        42 children
-      </dd>
-      
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
+          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
+        </p>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 1 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 30 September
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 8 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/volumetric-plus">VoluMetric Plus Infusion Controller</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          Global Medical Supplies plc
+        </p>
+        <p class="nhsuk-body">
+          High-precision volumetric infusion pump with pressure monitoring and occlusion detection. Suitable for critical care environments.
+        </p>
         
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/054">Meadow Park School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        33 children
-      </dd>
-      
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>14</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Yes
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 15 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 14 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 9 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/smartsyringe-driver">SmartSyringe Driver Pro</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          CareTech Solutions
+        </p>
+        <p class="nhsuk-body">
+          Programmable syringe driver for controlled medication delivery. Features barcode scanning for medication verification and automated documentation.
+        </p>
         
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>7</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
+            </dd>
+          </div>
+        </dl>
 
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/285">Finham Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        70 children
-      </dd>
-      
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
+          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
+          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
+        </p>
+      </div>
     </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Monday, 20 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 19 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
 
-  
-  </div>
-</div>
-
-
-      
+    {# Result 10 #}
+    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
+      <div class="nhsuk-card__content">
+        <h4 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="/product/gravity-iv-set">Gravity IV Administration Set Ultra</a>
+        </h4>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
+          MedSupply Direct
+        </p>
+        <p class="nhsuk-body">
+          Standard gravity-fed IV administration set with precision flow regulator. Available in multiple drop sizes for various fluid types.
+        </p>
         
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/368">Coundon Court</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        30 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Tuesday, 21 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 20 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/093">West Coventry Academy</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        35 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 22 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 21 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/945">Sacred Heart Catholic Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        89 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 23 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 22 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/765">Lyng Hall School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        28 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 30 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 29 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/112">Barr’s Hill School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        34 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 31 October 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 30 October
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/064">St Gregory’s Catholic Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        89 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 6 November 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 5 November
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/479">Blue Coat Church of England School and Music College</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        27 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Completed
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 7 November 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 6 November
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/346">Stoke Park School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        31 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        In progress
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Tuesday, 9 December 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Closed 8 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/232">Community clinic</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        0 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">Flu</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Monday, 29 December 2025
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Open from 8 December until 28 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/042">Meadow Park School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        16 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Monday, 5 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 15 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/893">Grace Academy Coventry</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        17 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Tuesday, 6 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 16 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/795">Cardinal Newman Catholic School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        13 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 8 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 18 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/755">Parkgate Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        76 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 8 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 18 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/653">Cardinal Newman Catholic School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        25 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 14 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 24 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/094">Caludon Castle School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        28 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Tuesday, 20 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 30 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/176">Barr’s Hill School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        15 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 21 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 31 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/643">West Coventry Academy</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        35 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 21 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 31 December
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/552">Coundon Court</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        16 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 22 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 1 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/252">President Kennedy School Academy</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        34 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 22 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 1 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/500">Meadow Park School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        33 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 22 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 1 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/558">Stoke Park School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        31 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 22 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 1 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/975">Cardinal Wiseman Catholic School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        18 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 23 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 2 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/988">Finham Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        70 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Wednesday, 28 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 7 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/049">Grace Academy Coventry</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        12 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 29 January 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 8 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/511">Caludon Castle School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        42 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 6 February 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 16 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/590">President Kennedy School Academy</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        15 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Monday, 9 February 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 19 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/326">West Coventry Academy</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        15 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 12 February 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 22 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/924">St Gregory’s Catholic Primary School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        89 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Reception and years 1, 2, 3, 4, 5 and 6
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 13 February 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 23 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/090">Cardinal Wiseman Catholic School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        31 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 13 February 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 23 January
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/196">Barr’s Hill School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        34 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 5 March 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 12 February
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/452">Lyng Hall School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        28 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">MMR</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 7, 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Thursday, 5 March 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 12 February
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-        
-
-
-
-
-<div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-  <div class="nhsuk-card__content">
-    <h4 class="nhsuk-card__heading nhsuk-heading-s">
-        <a class="nhsuk-card__link" href="/sessions/254">Lyng Hall School</a>
-    </h4>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<dl class="nhsuk-summary-list">
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Children
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        19 children
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Programmes
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        <strong class="nhsuk-tag  nhsuk-tag--transparent">HPV</strong>
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Year groups
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Years 8, 9, 10 and 11
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Status
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Scheduled
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
-        Session date
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Friday, 6 March 2026
-      </dd>
-      
-    </div>
-    
-  
-    
-    <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-      <dt class="nhsuk-summary-list__key">
-        Consent period
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        Opens 13 February
-      </dd>
-      
-    </div>
-    
-  
-</dl>
-
-  
-  </div>
-</div>
-
-
-      
-
-      
-<nav class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
-
-
-  <ul class="nhsuk-pagination__list">
-  
-    <li class="nhsuk-pagination__item nhsuk-pagination__item--current">
-    
-      <a class="nhsuk-pagination__link" href="?page=1&amp;limit=40" aria-label="Page 1" aria-current="page">
-        1
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Category
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Infusion devices
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Trust evaluations
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong>3</strong> available
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Clinical trial
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              No
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
+            <dt class="nhsuk-summary-list__key">
+              Available data
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    {# Pagination #}
+    <nav class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
+      <ul class="nhsuk-pagination__list">
+        <li class="nhsuk-pagination__item nhsuk-pagination__item--current">
+          <a class="nhsuk-pagination__link" href="?page=1&amp;limit=25" aria-label="Page 1" aria-current="page">
+            1
+          </a>
+        </li>
+        <li class="nhsuk-pagination__item">
+          <a class="nhsuk-pagination__link" href="?page=2&amp;limit=25" aria-label="Page 2">
+            2
+          </a>
+        </li>
+        <li class="nhsuk-pagination__item">
+          <a class="nhsuk-pagination__link" href="?page=3&amp;limit=25" aria-label="Page 3">
+            3
+          </a>
+        </li>
+        <li class="nhsuk-pagination__item">
+          <a class="nhsuk-pagination__link" href="?page=4&amp;limit=25" aria-label="Page 4">
+            4
+          </a>
+        </li>
+        <li class="nhsuk-pagination__item">
+          <a class="nhsuk-pagination__link" href="?page=5&amp;limit=25" aria-label="Page 5">
+            5
+          </a>
+        </li>
+        <li class="nhsuk-pagination__item">
+          <a class="nhsuk-pagination__link" href="?page=6&amp;limit=25" aria-label="Page 6">
+            6
+          </a>
+        </li>
+      </ul>
+
+      <a href="?page=2&amp;limit=25" class="nhsuk-pagination__next" rel="next">
+        <span class="nhsuk-pagination__title">
+          Next<span class="nhsuk-u-visually-hidden"> page</span>
+        </span>
+        <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+          <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"></path>
+        </svg>
       </a>
-    
-    </li>
-  
-    <li class="nhsuk-pagination__item">
-    
-      <a class="nhsuk-pagination__link" href="?page=2&amp;limit=40" aria-label="Page 2">
-        2
-      </a>
-    
-    </li>
-  
-  </ul>
+    </nav>
 
-  <a href="?page=2&amp;limit=40" class="nhsuk-pagination__next" rel="next">
-    <span class="nhsuk-pagination__title">
-    
-      Next<span class="nhsuk-u-visually-hidden"> page</span>
-    
-    </span>
-    <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-    
-    
-      <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"></path>
-    
-    </svg>
-  </a>
-
-
-
-</nav>
-
-    </div>
+  </div>
 
 </div>
 

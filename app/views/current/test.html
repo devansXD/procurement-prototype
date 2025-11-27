@@ -1,848 +1,97 @@
-{% extends 'layout-signed-out.html' %}
-
-{% set pageName = "Search medical technologies - Compass" %}
+<!-- Use this page as the index for your project -->
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout-signed-in.html' %}
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+{% set pageName = "Compass - " %}
 {% set serviceHeader = "Compass" %}
 
 {% block beforeContent %}
-{% from "breadcrumb/macro.njk" import breadcrumb %}
-
-{{ breadcrumb({
-  items: [
-    {
-      href: "/",
-      text: "Home"
-    }
-  ],
-  href: "#",
-  text: "Search results"
-}) }}
 {% endblock %}
 
 {% block content %}
 
-<div class="nhsuk-grid-row">
+
+
+
+<!-- NHS 10 Year Plan Context -->
+<div class="nhsuk-grid-row nhsuk-u-margin-top-7">
+  <div class="nhsuk-grid-column-two-thirds">
+    
+  <h1 class='nhsuk-heading-l'>Share your evaluation</h1>
+      
+  <p class="nhsuk-body nhsuk-body-l"> Help other NHS trusts make informed decisions by sharing your product evaluation. </p>
+
+
+{% include "includes/suppliers.html" %}
+  </div>
+</div>
+
+<!-- NHS 10 Year Plan Context -->
+<div class="nhsuk-grid-row nhsuk-u-margin-top-7">
   <div class="nhsuk-grid-column-full">
-    
-    {# Search bar #}
-    <div class="nhsuk-u-margin-bottom-5">
-      <form action="/search" method="get">
-        <div class="nhsuk-form-group">
-          <label class="nhsuk-label nhsuk-label--l" for="search">
-            Search medical technologies
-          </label>
-          <div class="nhsuk-hint">
-            Search by product name, manufacturer, or category
-          </div>
-          <div class="nhsuk-input__wrapper">
-            <input class="nhsuk-input nhsuk-input--width-30" id="search" name="search" type="search" value="infusion">
-          </div>
-          <button type="submit" class="nhsuk-button nhsuk-!-margin-top-3" data-module="nhsuk-button">
-            Search
-          </button>
-        </div>
-      </form>
-    </div>
+    <h2 class="nhsuk-heading-m">Recent evaluations at your trust</h2>
 
-  </div>
-</div>
-
-<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-row">
   
-  {# Filters Sidebar #}
-  <app-auto-submit class="app-grid-column-filters">
-      
-    <div class="nhsuk-card nhsuk-card--feature app-filters">
-      <div class="nhsuk-card__content nhsuk-card__content--feature">
-        <h3 class="nhsuk-card__heading nhsuk-card__heading--feature">
-          Filter results
-        </h3>
-      
-        {# Product Category Filter #}
-        <div class="nhsuk-form-group">
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
-              Product category
-            </legend>
-            
-            <div id="category-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-infusion" name="[category]" type="checkbox" value="infusion" checked="">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-infusion">
-                  Infusion devices
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-surgical" name="[category]" type="checkbox" value="surgical">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-surgical">
-                  Surgical instruments
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-monitoring" name="[category]" type="checkbox" value="monitoring">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-monitoring">
-                  Patient monitoring
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-diagnostic" name="[category]" type="checkbox" value="diagnostic">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-diagnostic">
-                  Diagnostic equipment
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-cardiology" name="[category]" type="checkbox" value="cardiology">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-cardiology">
-                  Cardiology devices
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-respiratory" name="[category]" type="checkbox" value="respiratory">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-respiratory">
-                  Respiratory equipment
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-imaging" name="[category]" type="checkbox" value="imaging">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-imaging">
-                  Imaging systems
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="category-laboratory" name="[category]" type="checkbox" value="laboratory">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="category-laboratory">
-                  Laboratory equipment
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        {# Available Data Types Filter #}
-        <div class="nhsuk-form-group">
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
-              Available data
-            </legend>
-            
-            <div id="data-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="data-clinical" name="[data]" type="checkbox" value="clinical-outcomes">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-clinical">
-                  Clinical outcomes
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="data-safety" name="[data]" type="checkbox" value="safety">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-safety">
-                  Patient safety data
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="data-cost" name="[data]" type="checkbox" value="cost-analysis">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-cost">
-                  Cost analysis
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="data-trust" name="[data]" type="checkbox" value="trust-evaluations">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-trust">
-                  Trust evaluations
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="data-sustainability" name="[data]" type="checkbox" value="sustainability">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-sustainability">
-                  Sustainability data
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="data-integration" name="[data]" type="checkbox" value="system-integration">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="data-integration">
-                  System integration
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        {# Clinical Trial Status Filter #}
-        <div class="nhsuk-form-group">
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
-              Clinical trial status
-            </legend>
-            
-            <div id="trial-items" class="nhsuk-radios nhsuk-radios--small" data-module="nhsuk-radios" data-nhsuk-radios-init="">
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="trial-any" name="[trial]" type="radio" value="any" checked="">
-                <label class="nhsuk-label nhsuk-radios__label" for="trial-any">
-                  Any
-                </label>
-              </div>
-              
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="trial-yes" name="[trial]" type="radio" value="yes">
-                <label class="nhsuk-label nhsuk-radios__label" for="trial-yes">
-                  Clinical trial available
-                </label>
-              </div>
-              
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="trial-no" name="[trial]" type="radio" value="no">
-                <label class="nhsuk-label nhsuk-radios__label" for="trial-no">
-                  No clinical trial
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        {# Supplier Type Filter #}
-        <div class="nhsuk-form-group">
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
-              Supplier type
-            </legend>
-            
-            <div id="supplier-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="supplier-sme" name="[supplier]" type="checkbox" value="sme">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="supplier-sme">
-                  SME
-                </label>
-              </div>
-              
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="supplier-uk" name="[supplier]" type="checkbox" value="uk-made">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="supplier-uk">
-                  UK manufactured
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        
-        <div class="nhsuk-button-group">
-          <button class="nhsuk-button nhsuk-button--secondary app-button--small" data-module="nhsuk-button" formaction="" formmethod="post" role="search" type="submit" hidden="" data-nhsuk-button-init="">
-            Update results
-          </button>
-        </div>
-      </div>
-    </div>
-
-  </app-auto-submit>
-
-  {# Results Column #}
-  <div class="app-grid-column-results">
+  <div class="nhsuk-grid-column-one-half">
     
-    <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-2">Medical technologies</h3>
-    <p class="nhsuk-caption-m nhsuk-u-margin-bottom-4">
-      Showing <b>1</b> to <b>25</b> of <b>143</b> products
-    </p>
 
-    {# Result 1 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/smartpump-300">SmartPump 300 Infusion System</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          MedTech Innovations Ltd
-        </p>
-        <p class="nhsuk-body">
-          Advanced infusion pump with integrated drug library, dose error reduction software, and wireless connectivity for electronic health records.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>12</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Yes
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
-              <strong class="nhsuk-tag nhsuk-tag--green">Sustainability</strong>
-            </dd>
-          </div>
-        </dl>
 
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
-          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
-          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
-        </p>
-      </div>
-    </div>
 
-    {# Result 2 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/safeflow-iv">SafeFlow IV Administration Set</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          Global Medical Supplies plc
-        </p>
-        <p class="nhsuk-body">
-          Anti-free-flow IV set with integrated air elimination filter. Compatible with all major infusion pump brands. Reduces medication errors by 45%.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>8</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Yes
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
 
-    {# Result 3 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/portapump-mini">PortaPump Mini Ambulatory Pump</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          CareTech Solutions
-        </p>
-        <p class="nhsuk-body">
-          Lightweight portable infusion pump designed for ambulatory patients. Features programmable delivery rates, alarm system, and 7-day battery life.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>5</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              No
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
-            </dd>
-          </div>
-        </dl>
+<div class="nhsuk-card nhsuk-card--clickable">
+  <div class="nhsuk-card__content">
+    <h3 class="nhsuk-card__heading">
+      Acme Ultrasound System X200
+    </h3>
+    <p><span class="nhsuk-tag nhsuk-tag--green">Evaluated</span></p>
+  <p><a href="">View or update</a></p>
+  
+  </div>
+</div>
 
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
-          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
-        </p>
-      </div>
-    </div>
+  </div>
 
-    {# Result 4 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/precisedose-pca">PreciseDose PCA System</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          Pain Management Technologies
-        </p>
-        <p class="nhsuk-body">
-          Patient-controlled analgesia system with advanced safety features, lockout intervals, and comprehensive audit trail for clinical governance.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>15</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Yes
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
-            </dd>
-          </div>
-        </dl>
+  <div class="nhsuk-grid-column-one-half">
+    
 
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
-          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
-        </p>
-      </div>
-    </div>
 
-    {# Result 5 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/multiflow-hub">MultiFlow Central Infusion Hub</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          MedTech Innovations Ltd
-        </p>
-        <p class="nhsuk-body">
-          Centralized infusion management system supporting up to 8 simultaneous infusions. Real-time monitoring dashboard with automated alerts.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>9</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Yes
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
-              <strong class="nhsuk-tag nhsuk-tag--green">Sustainability</strong>
-            </dd>
-          </div>
-        </dl>
 
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
-          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
-          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
-        </p>
-      </div>
-    </div>
 
-    {# Result 6 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/neonatal-ivac">Neonatal IV Access Kit</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          Pediatric Care Systems
-        </p>
-        <p class="nhsuk-body">
-          Specialized IV access kit designed for neonatal and pediatric patients. Ultra-fine gauge needles with safety mechanisms to prevent needlestick injuries.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>6</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              No
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-
-    {# Result 7 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/elastomeric-pump">ElastoFlow Disposable Infusion Pump</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          Disposable Medical Ltd
-        </p>
-        <p class="nhsuk-body">
-          Single-use elastomeric infusion pump for continuous medication delivery. Ideal for chemotherapy and antibiotic administration in ambulatory settings.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>11</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Yes
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
-              <strong class="nhsuk-tag nhsuk-tag--green">Sustainability</strong>
-            </dd>
-          </div>
-        </dl>
-
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
-          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
-        </p>
-      </div>
-    </div>
-
-    {# Result 8 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/volumetric-plus">VoluMetric Plus Infusion Controller</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          Global Medical Supplies plc
-        </p>
-        <p class="nhsuk-body">
-          High-precision volumetric infusion pump with pressure monitoring and occlusion detection. Suitable for critical care environments.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>14</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Yes
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Clinical outcomes</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-
-    {# Result 9 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/smartsyringe-driver">SmartSyringe Driver Pro</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          CareTech Solutions
-        </p>
-        <p class="nhsuk-body">
-          Programmable syringe driver for controlled medication delivery. Features barcode scanning for medication verification and automated documentation.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>7</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              No
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Safety data</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue">System integration</strong>
-            </dd>
-          </div>
-        </dl>
-
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-3">
-          <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
-          <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
-        </p>
-      </div>
-    </div>
-
-    {# Result 10 #}
-    <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
-      <div class="nhsuk-card__content">
-        <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/gravity-iv-set">Gravity IV Administration Set Ultra</a>
-        </h4>
-        <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-          MedSupply Direct
-        </p>
-        <p class="nhsuk-body">
-          Standard gravity-fed IV administration set with precision flow regulator. Available in multiple drop sizes for various fluid types.
-        </p>
-        
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Category
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Infusion devices
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Trust evaluations
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong>3</strong> available
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Clinical trial
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              No
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
-            <dt class="nhsuk-summary-list__key">
-              Available data
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <strong class="nhsuk-tag nhsuk-tag--blue">Cost analysis</strong>
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-
-    {# Pagination #}
-    <nav class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
-      <ul class="nhsuk-pagination__list">
-        <li class="nhsuk-pagination__item nhsuk-pagination__item--current">
-          <a class="nhsuk-pagination__link" href="?page=1&amp;limit=25" aria-label="Page 1" aria-current="page">
-            1
-          </a>
-        </li>
-        <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=2&amp;limit=25" aria-label="Page 2">
-            2
-          </a>
-        </li>
-        <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=3&amp;limit=25" aria-label="Page 3">
-            3
-          </a>
-        </li>
-        <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=4&amp;limit=25" aria-label="Page 4">
-            4
-          </a>
-        </li>
-        <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=5&amp;limit=25" aria-label="Page 5">
-            5
-          </a>
-        </li>
-        <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=6&amp;limit=25" aria-label="Page 6">
-            6
-          </a>
-        </li>
-      </ul>
-
-      <a href="?page=2&amp;limit=25" class="nhsuk-pagination__next" rel="next">
-        <span class="nhsuk-pagination__title">
-          Next<span class="nhsuk-u-visually-hidden"> page</span>
-        </span>
-        <svg class="nhsuk-icon nhsuk-icon--arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
-          <path d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"></path>
-        </svg>
-      </a>
-    </nav>
+<div class="nhsuk-card nhsuk-card--clickable">
+  <div class="nhsuk-card__content">
+    <h3 class="nhsuk-card__heading">
+        SmartPump Infusion Device Pro
+    </h3>
+    <p><span class="nhsuk-tag nhsuk-tag--green">Evaluated</span></p>
+  <p><a href="">View or update</a></p>
+  
+  </div>
+</div>
 
   </div>
 
 </div>
+
+    </div>
+    </div>
+
+{% endblock %}
+
+  
+{% block pageScripts %}
+<script src="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+    selectElement: document.querySelector('#supplier-picker')
+  })
+</script>
+
 
 {% endblock %}
