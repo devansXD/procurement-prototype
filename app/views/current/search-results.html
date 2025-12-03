@@ -28,7 +28,7 @@
     {# Search bar #}
   <div class="app-filters nhsuk-u-margin-top-5 nhsuk-u-margin-bottom-5">
       <div class="app-filters-container">
-        <form action="/user-admin" method="get" novalidate="">
+        <form action="" method="get" novalidate="">
           <div class="nhsuk-form-group nhsuk-u-margin-bottom-0">
             <label class="nhsuk-label" for="q">
               Search again by product name, category, or supplier
@@ -123,6 +123,48 @@
                 <input class="nhsuk-checkboxes__input" id="category-laboratory" name="[category]" type="checkbox" value="laboratory">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="category-laboratory">
                   Laboratory equipment
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {# NEW: Trust Similarity Filter #}
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--s">
+              Evaluated by trusts like mine
+            </legend>
+            <div class="nhsuk-hint" id="trust-hint">
+              Show products evaluated by trusts similar in size, type, or region
+            </div>
+            
+            <div id="trust-items" class="nhsuk-checkboxes nhsuk-checkboxes--small" data-module="nhsuk-checkboxes" data-nhsuk-checkboxes-init="">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="trust-similar" name="[trust]" type="checkbox" value="similar">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="trust-similar">
+                  Similar size/type to my trust
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="trust-teaching" name="[trust]" type="checkbox" value="teaching">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="trust-teaching">
+                  Teaching hospitals
+                </label>
+              </div>
+              
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="trust-region" name="[trust]" type="checkbox" value="region">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="trust-region">
+                  In my region
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="trust-specialist" name="[trust]" type="checkbox" value="specialist">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="trust-specialist">
+                  Specialist trusts
                 </label>
               </div>
             </div>
@@ -257,11 +299,11 @@
       Showing <b>1</b> to <b>25</b> of <b>143</b> products
     </p>
 
-    {# Result 1 #}
+    {# Result 1 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/smartpump-300">SmartPump 300 Infusion System</a>
+          <a class="nhsuk-card__link" href="product-page?smartpump-300">SmartPump 300 Infusion System</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           MedTech Innovations Ltd
@@ -279,22 +321,42 @@
               Infusion devices
             </dd>
           </div>
+          
+          {# NEW: Show which trusts are using #}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>12</strong> available
+              <strong>8 trusts</strong> including Guy's and St Thomas', Royal Free, Leeds Teaching Hospitals
             </dd>
           </div>
+          
+          {# ENHANCED: Show evaluation variety and recency #}
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Yes
+              <strong>12 evaluations</strong> from 8 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Nov 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including clinical trials, pilot studies, and usage reports
+              </span>
             </dd>
           </div>
+          
+          {# NEW: Show procurement outcomes #}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 6 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 2 trusts</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -315,11 +377,11 @@
       </div>
     </div>
 
-    {# Result 2 #}
+    {# Result 2 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/safeflow-iv">SafeFlow IV Administration Set</a>
+          <a class="nhsuk-card__link" href="product-page?safeflow-iv">SafeFlow IV Administration Set</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           Global Medical Supplies plc
@@ -337,22 +399,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>8</strong> available
+              <strong>5 trusts</strong> including University College London Hospitals, Manchester University
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Yes
+              <strong>8 evaluations</strong> from 5 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Oct 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including clinical trials and comparative studies
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 4 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--yellow">Excluded: 1 trust</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -367,11 +446,11 @@
       </div>
     </div>
 
-    {# Result 3 #}
+    {# Result 3 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/portapump-mini">PortaPump Mini Ambulatory Pump</a>
+          <a class="nhsuk-card__link" href="product-page?portapump-mini">PortaPump Mini Ambulatory Pump</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           CareTech Solutions
@@ -389,22 +468,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>5</strong> available
+              <strong>3 trusts</strong> including Cambridge University Hospitals, Oxford University Hospitals
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              No
+              <strong>5 evaluations</strong> from 3 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Sep 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including pilot studies and usage reports
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 2 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 1 trust</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -422,11 +518,11 @@
       </div>
     </div>
 
-    {# Result 4 #}
+    {# Result 4 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/precisedose-pca">PreciseDose PCA System</a>
+          <a class="nhsuk-card__link" href="product-page?precisedose-pca">PreciseDose PCA System</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           Pain Management Technologies
@@ -444,22 +540,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>15</strong> available
+              <strong>12 trusts</strong> including Imperial College Healthcare, King's College Hospital, Birmingham
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Yes
+              <strong>15 evaluations</strong> from 12 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Dec 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including clinical trials, business cases, and comparative studies
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 10 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 2 trusts</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -478,11 +591,11 @@
       </div>
     </div>
 
-    {# Result 5 #}
+    {# Result 5 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/multiflow-hub">MultiFlow Central Infusion Hub</a>
+          <a class="nhsuk-card__link" href="product-page?multiflow-hub">MultiFlow Central Infusion Hub</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           MedTech Innovations Ltd
@@ -500,22 +613,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>9</strong> available
+              <strong>7 trusts</strong> including Sheffield Teaching Hospitals, Newcastle upon Tyne
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Yes
+              <strong>9 evaluations</strong> from 7 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Nov 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including technical assessments and usage reports
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 5 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 2 trusts</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -536,11 +666,11 @@
       </div>
     </div>
 
-    {# Result 6 #}
+    {# Result 6 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/neonatal-ivac">Neonatal IV Access Kit</a>
+          <a class="nhsuk-card__link" href="product-page?neonatal-ivac">Neonatal IV Access Kit</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           Pediatric Care Systems
@@ -558,22 +688,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>6</strong> available
+              <strong>4 trusts</strong> including Great Ormond Street Hospital, Alder Hey Children's Hospital
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              No
+              <strong>6 evaluations</strong> from 4 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Oct 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including pilot studies and safety assessments
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 3 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 1 trust</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -587,11 +734,11 @@
       </div>
     </div>
 
-    {# Result 7 #}
+    {# Result 7 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/elastomeric-pump">ElastoFlow Disposable Infusion Pump</a>
+          <a class="nhsuk-card__link" href="product-page?elastomeric-pump">ElastoFlow Disposable Infusion Pump</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           Disposable Medical Ltd
@@ -609,22 +756,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>11</strong> available
+              <strong>9 trusts</strong> including Christie NHS Foundation Trust, Royal Marsden
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Yes
+              <strong>11 evaluations</strong> from 9 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Nov 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including clinical trials and patient satisfaction studies
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 8 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 1 trust</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -643,11 +807,11 @@
       </div>
     </div>
 
-    {# Result 8 #}
+    {# Result 8 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/volumetric-plus">VoluMetric Plus Infusion Controller</a>
+          <a class="nhsuk-card__link" href="product-page?volumetric-plus">VoluMetric Plus Infusion Controller</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           Global Medical Supplies plc
@@ -665,22 +829,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>14</strong> available
+              <strong>11 trusts</strong> including Royal Brompton, Papworth, Liverpool Heart and Chest
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Yes
+              <strong>14 evaluations</strong> from 11 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Dec 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including technical assessments and comparative studies
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 9 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 2 trusts</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -695,11 +876,11 @@
       </div>
     </div>
 
-    {# Result 9 #}
+    {# Result 9 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/smartsyringe-driver">SmartSyringe Driver Pro</a>
+          <a class="nhsuk-card__link" href="product-page?smartsyringe-driver">SmartSyringe Driver Pro</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           CareTech Solutions
@@ -717,22 +898,39 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>7</strong> available
+              <strong>6 trusts</strong> including Brighton and Sussex, Portsmouth Hospitals
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              No
+              <strong>7 evaluations</strong> from 6 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Sep 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including technical assessments and pilot studies
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 4 trusts</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 2 trusts</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -751,11 +949,11 @@
       </div>
     </div>
 
-    {# Result 10 #}
+    {# Result 10 - ENHANCED #}
     <div class="nhsuk-card nhsuk-card--clickable app-card--compact">
       <div class="nhsuk-card__content">
         <h4 class="nhsuk-card__heading nhsuk-heading-s">
-          <a class="nhsuk-card__link" href="/product/gravity-iv-set">Gravity IV Administration Set Ultra</a>
+          <a class="nhsuk-card__link" href="product-page?gravity-iv-set">Gravity IV Administration Set Ultra</a>
         </h4>
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
           MedSupply Direct
@@ -773,22 +971,38 @@
               Infusion devices
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Trust evaluations
+              Trusts using this
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <strong>3</strong> available
+              <strong>2 trusts</strong> including Northumbria Healthcare
             </dd>
           </div>
+          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Clinical trial
+              Shared evaluations
             </dt>
             <dd class="nhsuk-summary-list__value">
-              No
+              <strong>3 evaluations</strong> from 2 trusts <span class="nhsuk-u-secondary-text-color">(most recent: Aug 2024)</span>
+              <br>
+              <span class="nhsuk-body-s nhsuk-u-secondary-text-color">
+                Including usage reports
+              </span>
             </dd>
           </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Procurement outcomes
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured: 2 trusts</strong>
+            </dd>
+          </div>
+          
           <div class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border">
             <dt class="nhsuk-summary-list__key">
               Available data
@@ -805,38 +1019,38 @@
     <nav class="nhsuk-pagination nhsuk-pagination--numbered" role="navigation" aria-label="Pagination">
       <ul class="nhsuk-pagination__list">
         <li class="nhsuk-pagination__item nhsuk-pagination__item--current">
-          <a class="nhsuk-pagination__link" href="?page=1&amp;limit=25" aria-label="Page 1" aria-current="page">
+          <a class="nhsuk-pagination__link" href="product-page??page=1&amp;limit=25" aria-label="Page 1" aria-current="page">
             1
           </a>
         </li>
         <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=2&amp;limit=25" aria-label="Page 2">
+          <a class="nhsuk-pagination__link" href="product-page??page=2&amp;limit=25" aria-label="Page 2">
             2
           </a>
         </li>
         <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=3&amp;limit=25" aria-label="Page 3">
+          <a class="nhsuk-pagination__link" href="product-page??page=3&amp;limit=25" aria-label="Page 3">
             3
           </a>
         </li>
         <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=4&amp;limit=25" aria-label="Page 4">
+          <a class="nhsuk-pagination__link" href="product-page??page=4&amp;limit=25" aria-label="Page 4">
             4
           </a>
         </li>
         <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=5&amp;limit=25" aria-label="Page 5">
+          <a class="nhsuk-pagination__link" href="product-page??page=5&amp;limit=25" aria-label="Page 5">
             5
           </a>
         </li>
         <li class="nhsuk-pagination__item">
-          <a class="nhsuk-pagination__link" href="?page=6&amp;limit=25" aria-label="Page 6">
+          <a class="nhsuk-pagination__link" href="product-page??page=6&amp;limit=25" aria-label="Page 6">
             6
           </a>
         </li>
       </ul>
 
-      <a href="?page=2&amp;limit=25" class="nhsuk-pagination__next" rel="next">
+      <a href="product-page??page=2&amp;limit=25" class="nhsuk-pagination__next" rel="next">
         <span class="nhsuk-pagination__title">
           Next<span class="nhsuk-u-visually-hidden"> page</span>
         </span>
