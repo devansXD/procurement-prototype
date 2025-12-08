@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout-signed-out.html' %}
+{% extends 'layout.html' %}
 <!--
   In /views/layout.html you can:
     - change the header and footer
@@ -31,64 +31,36 @@ Sign in - {{ serviceName }}
 {% block content %}
 
 <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-two-thirds">
-    
-
-<h1>Sign in</h1>
-
-  {{ input({
-    label: {
-      text: "Email address"
-    },
-    id: "email",
-    name: "email",
-    classes: "nhsuk-input--width-10",
-    type: "email"
-  }) }}
 
 
-{{ input({
-  id: "password",
-  classes: "nhsuk-input--width-10",
-  name: "password",
-  type: "password",
-  formGroup: {
-    attributes: {
-      "data-module": "password-reveal"
-    }
-  },
-  label: {
-    text: "Password",
-    classes: "govuk-label--m"
-  },
-  value: "1234ABC!"
-}) }}
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">Sign in to Compass</h1>
+  
+  
+  
+  
+  
+    <p>You are currently not signed in. You must sign in to access to access this service.</p>
+  
+ 
+  
+  
+    <form action="dashboard" method="post">
+  
+      <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+       Sign in to service with NHS Mail
+      </button>
 
 
 
-
-{{ checkboxes({
-  idPrefix: "example",
-  name: "example",
-  classes: "nhsuk-checkboxes--small",
-  items: [
-    {
-      value: "remember-me",
-      text: "Remember me on this device"
-    }
-  ]
-}) }}
-
-{% from "button/macro.njk" import button %}
-
-{{ button({
-  text: "Continue",
-  href: "dashboard"
-}) }}
-
-    
-      
-        </div>
-      </div>
+    <p><a href="sign-in">Sign in another way</a></p>
+  
+  
+    </form>
+  
+  
+  </div>
+</div>
 
 {% endblock %}

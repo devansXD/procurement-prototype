@@ -12,11 +12,11 @@
   <link href="/css/main.css" rel="stylesheet">
 {% endblock %}
 
+
+
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
- {% from 'header/macro.njk' import header %}
-
 {{ header({
   logo: {
     href: "/",
@@ -26,36 +26,42 @@
     text: "Compass",
     href: "/"
   },
+
   account: {
     items: [
-      
 
       {
-        text: "Sign in",
-        href: "#"
+        text: "Log in",
+        href: "sign-in-nhs"
       }
     ]
   },
   navigation: {
     items: [
       {
-        text: "Home",
+        text: "Search",
+        href: "search"
+      },
+      {
+        text: "About this service",
+        href: "#"
+        
+      },
+      {
+        text: "Latest news",
         href: "#"
       },
       {
-        text: "",
+        text: "Data standards",
         href: "#"
       },
       {
-        text: "Find a supplier",
+        text: "Case studies",
         href: "#"
       }
     ]
   }
 }) }}
-
-
-
 {% endblock %}
 
 <!-- Edit the footer -->

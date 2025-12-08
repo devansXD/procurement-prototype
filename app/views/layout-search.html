@@ -15,12 +15,51 @@
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
- {{ header({
-    service: {
-      text: serviceName,
-      href: "/"
-    }
-  }) }}
+{{ header({
+  logo: {
+    href: "/",
+    ariaLabel: "Compass"
+  },
+  service: {
+    text: "Compass",
+    href: "/"
+  },
+
+  account: {
+    items: [
+
+      {
+        text: "Log in",
+        href: "sign-in-nhs"
+      }
+    ]
+  },
+  navigation: {
+    items: [
+      {
+        text: "Search",
+        href: "search"
+      },
+      {
+        text: "About this service",
+        href: "#"
+        
+      },
+      {
+        text: "Latest news",
+        href: "#"
+      },
+      {
+        text: "Data standards",
+        href: "#"
+      },
+      {
+        text: "Case studies",
+        href: "#"
+      }
+    ]
+  }
+}) }}
 
 <div class="nhsuk-hero">
   <div class="nhsuk-width-container nhsuk-hero--border">
