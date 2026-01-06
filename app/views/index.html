@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /app/views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layout-hero-index.html' %}
 <!--
   In /app/views/layout.html you can:
     - change the header and footer
@@ -39,10 +39,11 @@
     </h1>
 
 
-     <h2 class="govuk-heading-m">Procurement team journey - v1</h2>
+     <h2 class="govuk-heading-m">Procurement team journey - current</h2>
 
 
     <ul class="nhsuk-list">
+      <li><a href="current/sign-up-trusts-1">Sign up</a></li>
       <li><a href="current/homepage">Homepage</a></li>
       <li><a href="current/dashboard">Trust dashboard</a></li>
       <li><a href="current/share-evaluation">Share evaluation</a></li>
@@ -67,12 +68,13 @@
     <h3 class="nhsuk-heading-s">Email notifications</h3>
 
     <ul class="nhsuk-list">
-      <li><a href="current/emails/notify">Procurement team - </a></li>
-  
-   
-      
-      
+      <li><a href="current/create-account/email-verification">Procurement - verify email</a></li>
+       <li><a href="current/create-account/email-welcome">Procurement - new account</a></li>
     </ul>
+
+    <h2 class="nhsuk-heading-m">Previous versions</h2>
+
+    <p><a href="./v1/homepage">Version 1</a></p>
 
 
 

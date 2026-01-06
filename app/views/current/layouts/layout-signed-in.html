@@ -10,15 +10,13 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.css">
 {% endblock %}
-
-
-
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
+ {% from 'header/macro.njk' import header %}
+
 {{ header({
   logo: {
     href: "/",
@@ -28,74 +26,45 @@
     text: "",
     href: "/"
   },
-
   account: {
     items: [
+      {
+        text: "Kelvin Simpson (Regional Manager)",
+        icon: true
+      },
 
       {
-        text: "Log in",
-        href: "sign-in-nhs"
+        text: "Log out",
+        href: "#"
       }
     ]
   },
   navigation: {
     items: [
       {
-        text: "Search",
-        href: "search"
-      },
- 
-      {
-        text: "Latest news",
+        text: "Home",
         href: "#"
       },
       {
-        text: "Data standards",
+        text: "",
         href: "#"
       },
       {
-        text: "Case studies",
+        text: "Find a supplier",
         href: "#"
       }
     ]
   }
 }) }}
+
+
+
 {% endblock %}
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-  {{ footer({
-    meta: {
-      items: [
-        {
-          href: "/",
-          text: "Help and support"
-        },
-        {
-          href: "/cookies",
-          text: "Cookies"
-        },
-        {
-          href: "/privacy",
-          text: "Privacy"
-        },
-        {
-          href: "/terms",
-          text: "Terms and conditions"
-        },
-        {
-          href: "/accessibility",
-          text: "Accessibility statement"
-        },
-
-        {
-          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-          text: "Reset data"
-        }
-      ]
-    }
-  }) }}
+  {% include "includes/footer.html" %}
 {% endblock %}
 
 {% block bodyEnd %}
@@ -108,6 +77,7 @@
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
     <!-- For adding page specific JavaScript -->
-    {% block pageScripts %}{% endblock %}
+    {% block pageScripts %}
+    {% endblock %}
   {% endblock %}
 {% endblock %}

@@ -24,6 +24,7 @@ router.use(function (req, res, next) {
   res.locals.date = function (
     format = { day: 'numeric', month: 'long', year: 'numeric' },
     diff = { year: 0, month: 0, day: 0 },
+    
   ) {
     var date = new Date()
     if ('day' in diff) {
@@ -107,7 +108,11 @@ router.post('/redirect-test', function(request, response) {
   }
   
 })
+// Version-specific routes
+router.use('/current', require('./views/current/routes'))
 
+// When you duplicate to v2:
+// router.use('/v2', require('./views/v2/routes'))
 // END 
 
 module.exports = router

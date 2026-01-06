@@ -10,74 +10,24 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/nhsuk-frontend.min.css">
 {% endblock %}
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
- {{ header({
+  {{ header({
     service: {
       text: serviceName,
       href: "/"
     }
   }) }}
-
-<div class="nhsuk-hero">
-  <div class="nhsuk-width-container nhsuk-hero--border">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-one-half nhsuk-u-one-half-tablet">
-        <div class="nhsuk-hero__wrapper">
-          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Supplier catalogue</h1>
-
-          <p>Search, evaluate and choose a supplier based on good clinical outcomes.</p>
-
-        
-
-          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
 {% endblock %}
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-  {{ footer({
-    meta: {
-      items: [
-        {
-          href: "/",
-          text: "Help and support"
-        },
-        {
-          href: "/cookies",
-          text: "Cookies"
-        },
-        {
-          href: "/privacy",
-          text: "Privacy"
-        },
-        {
-          href: "/terms",
-          text: "Terms and conditions"
-        },
-        {
-          href: "/accessibility",
-          text: "Accessibility statement"
-        },
-
-        {
-          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-          text: "Reset data"
-        }
-      ]
-    }
-  }) }}
+  {% include "includes/footer.html" %}
 {% endblock %}
 
 {% block bodyEnd %}

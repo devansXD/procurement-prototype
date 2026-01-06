@@ -10,7 +10,11 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.css">
 {% endblock %}
+
+
+
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
@@ -36,10 +40,7 @@
   },
   navigation: {
     items: [
-      {
-        text: "Search",
-        href: "search"
-      },
+  
       {
         text: "About this service",
         href: "#"
@@ -60,72 +61,12 @@
     ]
   }
 }) }}
-
-<div class="nhsuk-hero">
-  <div class="nhsuk-width-container nhsuk-hero--border">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-        <div class="nhsuk-hero__wrapper">
-          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">Supplier catalogue</h1>   
-    <div class="nhsuk-form-group">
-    <form action="search-results" method="get" novalidate="">
-          <div class="nhsuk-form-group nhsuk-u-margin-bottom-0">
-            <label class="nhsuk-label" for="q">
-              Search by supplier name, product name or product category
-            </label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="q" name="q" type="search" value="">
-
-            
-
-
-
-
-  
-    
-  
-
-
-
-
-<button class="nhsuk-button nhsuk-button--reverse nhsuk-u-margin-left-2 app-button--small nhsuk-u-margin-bottom-0" data-module="nhsuk-button" type="submit" data-nhsuk-button-init="">
-  Search
-</button>
-
-
-
-          </div>
-        </form>
-    </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
 {% endblock %}
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-  {{ footer({
-    meta: {
-      items: [
-        {
-          href: "/",
-          text: "Home"
-        },
-        {
-          href: "/example-templates",
-          text: "Page templates"
-        },
-        {
-          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-          text: "Reset data"
-        }
-      ]
-    }
-  }) }}
+  {% include "includes/footer.html" %}
 {% endblock %}
 
 {% block bodyEnd %}

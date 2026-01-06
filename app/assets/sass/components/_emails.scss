@@ -1,0 +1,42 @@
+// Email preview styles
+// Add to application.scss: @import "email";
+
+.app-email__body {
+  background-color: $color_nhsuk-grey-5;
+}
+
+.app-email__metadata {
+  max-width: 600px !important;
+  margin: 0 auto;
+  padding: nhsuk-spacing(4) nhsuk-spacing(4);
+}
+
+.app-email__container {
+  max-width: 600px !important;
+  margin: 0 auto;
+  background-color: $color_nhsuk-white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-email__header {
+  background-color: $color_nhsuk-blue;
+  padding: nhsuk-spacing(4);
+  max-width: 600px;
+  margin: 0 auto;
+
+  img {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.app-email__message {
+  padding: nhsuk-spacing(5);
+}
+
+.app-email__footer {
+  background-color: $color_nhsuk-grey-5;
+  padding: nhsuk-spacing(4);
+  max-width: 600px !important;
+  margin: 0 auto;
+  border-top: 1px solid $color_nhsuk-grey-4;
+}
