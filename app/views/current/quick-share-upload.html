@@ -28,7 +28,7 @@
   
     <h1 class="nhsuk-heading-l">Share your evaluation</h1>
     
-    <p class="nhsuk-body">Upload your existing evaluation report for <strong>SmartPump Infusion Device Pro</strong></p>
+  <p class="nhsuk-body">Upload your existing evaluation report for <strong>{{ data['product-picker'] }}</strong></p>
 
     
       <p>We'll just need a few key details to help other trusts find your evaluation.</p>
@@ -125,6 +125,8 @@
       <h2 class="nhsuk-heading-m">A few quick details</h2>
       <p class="nhsuk-body-s nhsuk-u-secondary-text-color">This helps other trusts understand the context of your evaluation</p>
 
+    
+
       {{ input({
         label: {
           text: "Your trust",
@@ -138,41 +140,19 @@
         }
       }) }}
 
-      {{ select({
-        id: "trust-department",
-        name: "trust-department",
+        {{ input({
         label: {
-          text: "Department",
+          text: "Trust department",
           classes: "nhsuk-label--s"
         },
+        id: "department-name",
+        name: "department-name",
         hint: {
-          text: "Select the department that conducted this evaluation"
-        },
-        items: [
-          { value: "", text: "Select a department", selected: true },
-          { value: "anaesthetics", text: "Anaesthetics" },
-          { value: "cardiology", text: "Cardiology" },
-          { value: "clinical-engineering", text: "Clinical Engineering" },
-          { value: "critical-care", text: "Critical Care / ICU" },
-          { value: "diagnostics", text: "Diagnostics and Imaging" },
-          { value: "emergency", text: "Emergency Medicine" },
-          { value: "general-surgery", text: "General Surgery" },
-          { value: "haematology", text: "Haematology" },
-          { value: "infection-control", text: "Infection Control" },
-          { value: "maternity", text: "Maternity and Obstetrics" },
-          { value: "medical-devices", text: "Medical Devices" },
-          { value: "oncology", text: "Oncology" },
-          { value: "paediatrics", text: "Paediatrics" },
-          { value: "pathology", text: "Pathology" },
-          { value: "pharmacy", text: "Pharmacy" },
-          { value: "procurement", text: "Procurement" },
-          { value: "radiology", text: "Radiology" },
-          { value: "renal", text: "Renal Medicine" },
-          { value: "respiratory", text: "Respiratory Medicine" },
-          { value: "theatre", text: "Theatre and Perioperative" },
-          { value: "other", text: "Other" }
-        ]
+          text: "E.g., Cardiology, IT Services, Procurement"
+        }
       }) }}
+
+    
 
       {{ input({
         label: {
@@ -186,7 +166,7 @@
         }
       }) }}
 
-    {% include "includes/products.html" %}
+    {% include "includes/suppliers.html" %}
 
 
       {% from "date-input/macro.njk" import dateInput %}

@@ -29,15 +29,19 @@
       
   <p class="nhsuk-body nhsuk-body-l"> Help other NHS trusts make informed decisions by sharing your product evaluation. </p>
 
-
-{% include "includes/suppliers.html" %}
+<form action="quick-share-upload" method="post">
+{% include "includes/products.html" %}
 
 {% from "button/macro.njk" import button %}
 
+
+
+
 {{ button({
-  text: "Continue",
-  href: "quick-share-upload"
+  text: "Continue"
 }) }}
+
+</form>
 
   </div>
 </div>
@@ -109,7 +113,7 @@
 <script type="text/javascript">
   accessibleAutocomplete.enhanceSelectElement({
     defaultValue: '',
-    selectElement: document.querySelector('#supplier-picker')
+    selectElement: document.querySelector('#product-picker')
   })
 </script>
 
