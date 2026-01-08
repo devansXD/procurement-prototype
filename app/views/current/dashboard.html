@@ -1,57 +1,117 @@
-<!-- Use this page as the index for your project -->
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-<!-- Extends the layout from /app/views/layout.html -->
+
+
 {% extends prototypeVersion + '/layouts/layout-signed-in.html' %}
+
+{% set pageName = "Medical product evaluations" %}
+{% set serviceHeader = "Medical product evaluations" %}
 <!--
   In /app/views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
-{% set pageName = "Compass - Value-Based Procurement for Medical Technologies" %}
-{% set serviceHeader = "Compass - Sign in" %}
+
 
 {% block beforeContent %}
 {% endblock %}
 
 {% block content %}
 
-<!-- Key Features Cards -->
+
+
+
+<!-- NHS 10 Year Plan Context -->
+<div class="nhsuk-grid-row nhsuk-u-margin-top-7">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <span class="nhsuk-hint">Welcome back</span>
+    
+  <h1 class='nhsuk-heading-l'>Share your evaluation</h1>
+      
+  <p class="nhsuk-body nhsuk-body-l"> Help other NHS trusts make informed decisions by sharing your product evaluation. </p>
+
+
+{% include "includes/suppliers.html" %}
+
+{% from "button/macro.njk" import button %}
+
+{{ button({
+  text: "Continue",
+  href: "quick-share-upload"
+}) }}
+
+  </div>
+</div>
+
+<!-- NHS 10 Year Plan Context -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
   <div class="nhsuk-grid-column-full">
-    <span class="nhsuk-hint">Kelvin Simpson</span>
-    <h1 class="nhsuk-heading-l">Welcome back</h1>
-  </div>
-</div>
+    <h2 class="nhsuk-heading-m">Recent evaluations at your trust</h2>
 
-
-
-
-<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-row">
   
   <div class="nhsuk-grid-column-one-half">
-    {{ card({
-      "clickable": true,
-      "heading": "Share evaluation",
-      "headingLevel": 3,
-      "href": "share-evaluation",
-      "descriptionHtml": "<p>Share yur trusts evaluation documents so other NHS trusts can make informed decisions</p>"
-    }) }}
+    
+
+
+
+
+<div class="nhsuk-card nhsuk-card--clickable">
+  <div class="nhsuk-card__content">
+    <h3 class="nhsuk-card__heading">
+      Acme Ultrasound System X200
+    </h3>
+    <p><span class="nhsuk-tag nhsuk-tag--green">Evaluated</span></p>
+  <p><a href="">View or update</a></p>
+  
+  </div>
+</div>
+
   </div>
 
   <div class="nhsuk-grid-column-one-half">
-    {{ card({
-      "clickable": true,
-      "heading": "Documentation",
-      "headingLevel": 3,
-      "href": "#clinicians",
-      "descriptionHtml": "<p>Review clinical evidence and real-world evaluations from other NHS trusts to inform technology adoption decisions in your service.</p>"
-    }) }}
+    
+
+
+
+
+<div class="nhsuk-card nhsuk-card--clickable">
+  <div class="nhsuk-card__content">
+    <h3 class="nhsuk-card__heading">
+        SmartPump Infusion Device Pro
+    </h3>
+    <p><span class="nhsuk-tag nhsuk-tag--green">Evaluated</span></p>
+  <p><a href="">View or update</a></p>
+  
+  </div>
+</div>
+
   </div>
 
 </div>
 
+    </div>
+    </div>
 
 
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+    selectElement: document.querySelector('#supplier-picker')
+  })
+</script>
 
 
 {% endblock %}

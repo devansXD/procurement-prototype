@@ -1,16 +1,7 @@
-<!-- Use this page as the index for your project -->
+{% extends prototypeVersion + '/layouts/layout-signed-out.html' %}
 
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
-<!--
-  In /views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
-
-<!-- Set the page title -->
+{% set pageName = "Search medical product evaluations" %}
+{% set serviceHeader = "Search medical product evaluations" %}
 {% block pageTitle %}
 Sign in - {{ serviceName }}
 {% endblock %}

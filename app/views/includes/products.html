@@ -1,0 +1,396 @@
+{# <!-- Where this file is included, set nunjucks variables for productID, productName and productLabelText to change the defaults 
+    {% set productID = "product-id" %}
+    {% set productName = "product-name" %}
+    {% set productLabelText = "Select a product" %}
+    
+    To remove the hint, set productHint to an empty string
+    {% set productHint = ""}
+    
+    To change the hint, set productHint to the hint text
+    {% set productHint = "Type to search for a product" %}
+    --> #}
+
+     
+    
+    <div class="nhsuk-form-group">
+      {{ select({
+        id: productID | default("product-picker", false),
+        name: productName | default("product-picker", false),
+        classes:"govuk-input--width-20",
+        label: {
+          text: productLabelText | default("Select a product", false),
+          classes:'nhsuk-!-font-weight-bold',
+          name: productName | default("product-picker", false)
+        },
+        hint: {
+          text: productHint | default("Search by product name or model number", false)
+        },
+        value: productValue or data[productName or productID or "product"] or "",
+        items: [
+      {
+          value: "",
+          text: ""
+      },
+      {
+        value: "AcuFlow IV Infusion Pump 3000",
+        text: "AcuFlow IV Infusion Pump 3000"
+      },
+      {
+        value: "AcuFlow IV Infusion Pump 3000 Pro",
+        text: "AcuFlow IV Infusion Pump 3000 Pro"
+      },
+      {
+        value: "AeroVent Pro Ventilator",
+        text: "AeroVent Pro Ventilator"
+      },
+      {
+        value: "AeroVent Lite Portable Ventilator",
+        text: "AeroVent Lite Portable Ventilator"
+      },
+      {
+        value: "AlphaGlide Wheelchair Model X2",
+        text: "AlphaGlide Wheelchair Model X2"
+      },
+      {
+        value: "AlphaGlide Bariatric Wheelchair X4",
+        text: "AlphaGlide Bariatric Wheelchair X4"
+      },
+      {
+        value: "AquaSeal Wound Dressing 10x10cm",
+        text: "AquaSeal Wound Dressing 10x10cm"
+      },
+      {
+        value: "AquaSeal Wound Dressing 15x15cm",
+        text: "AquaSeal Wound Dressing 15x15cm"
+      },
+      {
+        value: "AquaSeal Antimicrobial Dressing",
+        text: "AquaSeal Antimicrobial Dressing"
+      },
+      {
+        value: "BioScan Ultrasound System S500",
+        text: "BioScan Ultrasound System S500"
+      },
+      {
+        value: "BioScan Portable Ultrasound P200",
+        text: "BioScan Portable Ultrasound P200"
+      },
+      {
+        value: "CardioMonitor Elite 7000",
+        text: "CardioMonitor Elite 7000"
+      },
+      {
+        value: "CardioMonitor Bedside 5000",
+        text: "CardioMonitor Bedside 5000"
+      },
+      {
+        value: "CardioMonitor Transport T300",
+        text: "CardioMonitor Transport T300"
+      },
+      {
+        value: "ClearView Endoscope HD",
+        text: "ClearView Endoscope HD"
+      },
+      {
+        value: "ClearView Colonoscope Pro",
+        text: "ClearView Colonoscope Pro"
+      },
+      {
+        value: "ComfortCare Hospital Bed Electric",
+        text: "ComfortCare Hospital Bed Electric"
+      },
+      {
+        value: "ComfortCare ICU Bed Advanced",
+        text: "ComfortCare ICU Bed Advanced"
+      },
+      {
+        value: "ComfortCare Pressure Mattress",
+        text: "ComfortCare Pressure Mattress"
+      },
+      {
+        value: "DiagnoLab Point-of-Care Analyser",
+        text: "DiagnoLab Point-of-Care Analyser"
+      },
+      {
+        value: "DiagnoLab Blood Gas Analyser",
+        text: "DiagnoLab Blood Gas Analyser"
+      },
+      {
+        value: "DiagnoLab HbA1c Analyser",
+        text: "DiagnoLab HbA1c Analyser"
+      },
+      {
+        value: "EasiBreathe Nebuliser Compact",
+        text: "EasiBreathe Nebuliser Compact"
+      },
+      {
+        value: "EasiBreathe CPAP Machine",
+        text: "EasiBreathe CPAP Machine"
+      },
+      {
+        value: "EasiBreathe BiPAP Machine",
+        text: "EasiBreathe BiPAP Machine"
+      },
+      {
+        value: "FlexiCath Central Line Kit",
+        text: "FlexiCath Central Line Kit"
+      },
+      {
+        value: "FlexiCath PICC Line Kit",
+        text: "FlexiCath PICC Line Kit"
+      },
+      {
+        value: "FlexiCath Urinary Catheter 14Fr",
+        text: "FlexiCath Urinary Catheter 14Fr"
+      },
+      {
+        value: "FlexiCath Urinary Catheter 16Fr",
+        text: "FlexiCath Urinary Catheter 16Fr"
+      },
+      {
+        value: "GlucoSense Continuous Monitor",
+        text: "GlucoSense Continuous Monitor"
+      },
+      {
+        value: "GlucoSense Flash Monitor",
+        text: "GlucoSense Flash Monitor"
+      },
+      {
+        value: "GlucoSense Test Strips (50 pack)",
+        text: "GlucoSense Test Strips (50 pack)"
+      },
+      {
+        value: "HemoFlow Dialysis Machine HD-500",
+        text: "HemoFlow Dialysis Machine HD-500"
+      },
+      {
+        value: "HemoFlow Peritoneal Dialysis Kit",
+        text: "HemoFlow Peritoneal Dialysis Kit"
+      },
+      {
+        value: "InfuSafe Syringe Driver",
+        text: "InfuSafe Syringe Driver"
+      },
+      {
+        value: "InfuSafe PCA Pump",
+        text: "InfuSafe PCA Pump"
+      },
+      {
+        value: "InfuSafe Ambulatory Pump",
+        text: "InfuSafe Ambulatory Pump"
+      },
+      {
+        value: "LaserPrecision Surgical System",
+        text: "LaserPrecision Surgical System"
+      },
+      {
+        value: "LaserPrecision Ophthalmic System",
+        text: "LaserPrecision Ophthalmic System"
+      },
+      {
+        value: "MediScan CT Scanner 128-slice",
+        text: "MediScan CT Scanner 128-slice"
+      },
+      {
+        value: "MediScan MRI 3T System",
+        text: "MediScan MRI 3T System"
+      },
+      {
+        value: "MediScan X-Ray Digital System",
+        text: "MediScan X-Ray Digital System"
+      },
+      {
+        value: "MediScan Mobile X-Ray Unit",
+        text: "MediScan Mobile X-Ray Unit"
+      },
+      {
+        value: "NeuroPulse EEG System",
+        text: "NeuroPulse EEG System"
+      },
+      {
+        value: "NeuroPulse EMG System",
+        text: "NeuroPulse EMG System"
+      },
+      {
+        value: "OrthoFix External Fixator Kit",
+        text: "OrthoFix External Fixator Kit"
+      },
+      {
+        value: "OrthoFix Hip Replacement System",
+        text: "OrthoFix Hip Replacement System"
+      },
+      {
+        value: "OrthoFix Knee Replacement System",
+        text: "OrthoFix Knee Replacement System"
+      },
+      {
+        value: "OxyPure Oxygen Concentrator",
+        text: "OxyPure Oxygen Concentrator"
+      },
+      {
+        value: "OxyPure Portable Oxygen Unit",
+        text: "OxyPure Portable Oxygen Unit"
+      },
+      {
+        value: "PatientLift Mobile Hoist",
+        text: "PatientLift Mobile Hoist"
+      },
+      {
+        value: "PatientLift Ceiling Track System",
+        text: "PatientLift Ceiling Track System"
+      },
+      {
+        value: "PatientLift Standing Aid",
+        text: "PatientLift Standing Aid"
+      },
+      {
+        value: "PulseOx Fingertip Monitor",
+        text: "PulseOx Fingertip Monitor"
+      },
+      {
+        value: "PulseOx Bedside Monitor",
+        text: "PulseOx Bedside Monitor"
+      },
+      {
+        value: "PulseOx Neonatal Sensor",
+        text: "PulseOx Neonatal Sensor"
+      },
+      {
+        value: "RapidTest COVID-19 Antigen Kit",
+        text: "RapidTest COVID-19 Antigen Kit"
+      },
+      {
+        value: "RapidTest Strep A Kit",
+        text: "RapidTest Strep A Kit"
+      },
+      {
+        value: "RapidTest Flu A/B Kit",
+        text: "RapidTest Flu A/B Kit"
+      },
+      {
+        value: "RapidTest Troponin Kit",
+        text: "RapidTest Troponin Kit"
+      },
+      {
+        value: "SafeSharp Scalpel Retractable",
+        text: "SafeSharp Scalpel Retractable"
+      },
+      {
+        value: "SafeSharp Needle Safety Device",
+        text: "SafeSharp Needle Safety Device"
+      },
+      {
+        value: "ScanAssist Doppler Fetal Monitor",
+        text: "ScanAssist Doppler Fetal Monitor"
+      },
+      {
+        value: "ScanAssist CTG Monitor",
+        text: "ScanAssist CTG Monitor"
+      },
+      {
+        value: "SecureFeed Enteral Pump",
+        text: "SecureFeed Enteral Pump"
+      },
+      {
+        value: "SecureFeed NG Tube 12Fr",
+        text: "SecureFeed NG Tube 12Fr"
+      },
+      {
+        value: "SecureFeed PEG Kit",
+        text: "SecureFeed PEG Kit"
+      },
+      {
+        value: "SmartPump Infusion Device Pro",
+        text: "SmartPump Infusion Device Pro"
+      },
+      {
+        value: "SmartSuture Absorbable 2-0",
+        text: "SmartSuture Absorbable 2-0"
+      },
+      {
+        value: "SmartSuture Non-Absorbable 3-0",
+        text: "SmartSuture Non-Absorbable 3-0"
+      },
+      {
+        value: "SmartSuture Stapler Skin",
+        text: "SmartSuture Stapler Skin"
+      },
+      {
+        value: "SterilAir HEPA Filter Unit",
+        text: "SterilAir HEPA Filter Unit"
+      },
+      {
+        value: "SterilAir UV Disinfection System",
+        text: "SterilAir UV Disinfection System"
+      },
+      {
+        value: "SurgiVac Suction Unit Portable",
+        text: "SurgiVac Suction Unit Portable"
+      },
+      {
+        value: "SurgiVac Theatre Suction System",
+        text: "SurgiVac Theatre Suction System"
+      },
+      {
+        value: "TempCheck Digital Thermometer",
+        text: "TempCheck Digital Thermometer"
+      },
+      {
+        value: "TempCheck Tympanic Thermometer",
+        text: "TempCheck Tympanic Thermometer"
+      },
+      {
+        value: "TempCheck Non-Contact Thermometer",
+        text: "TempCheck Non-Contact Thermometer"
+      },
+      {
+        value: "ThromboGuard DVT Pump",
+        text: "ThromboGuard DVT Pump"
+      },
+      {
+        value: "ThromboGuard Compression Sleeves",
+        text: "ThromboGuard Compression Sleeves"
+      },
+      {
+        value: "UltraClean Washer Disinfector",
+        text: "UltraClean Washer Disinfector"
+      },
+      {
+        value: "UltraClean Autoclave Benchtop",
+        text: "UltraClean Autoclave Benchtop"
+      },
+      {
+        value: "VeinView Vascular Access System",
+        text: "VeinView Vascular Access System"
+      },
+      {
+        value: "VeinView Near-IR Vein Finder",
+        text: "VeinView Near-IR Vein Finder"
+      },
+      {
+        value: "VitalSign Monitor Multi-Parameter",
+        text: "VitalSign Monitor Multi-Parameter"
+      },
+      {
+        value: "VitalSign Monitor Spot-Check",
+        text: "VitalSign Monitor Spot-Check"
+      },
+      {
+        value: "VitalSign Blood Pressure Monitor",
+        text: "VitalSign Blood Pressure Monitor"
+      },
+      {
+        value: "WoundVac Negative Pressure System",
+        text: "WoundVac Negative Pressure System"
+      },
+      {
+        value: "WoundVac Portable NPWT",
+        text: "WoundVac Portable NPWT"
+      },
+      {
+        value: "WoundVac Dressing Kit Large",
+        text: "WoundVac Dressing Kit Large"
+      }
+        ]
+      }) }}
+    </div>

@@ -10,6 +10,7 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.css">
 {% endblock %}
 
 <!-- Edit the header -->
@@ -20,10 +21,10 @@
 {{ header({
   logo: {
     href: "/",
-    ariaLabel: "Compass"
+    ariaLabel: "Search medical product evaluations"
   },
   service: {
-    text: "",
+    text: "Search medical product evaluations",
     href: "/"
   },
   account: {
@@ -42,8 +43,8 @@
   navigation: {
     items: [
       {
-        text: "Home",
-        href: "#"
+        text: "Dashboard",
+        href: "dashboard"
       },
       {
         text: "",
@@ -51,7 +52,7 @@
       },
       {
         text: "Find a supplier",
-        href: "#"
+        href: "search"
       }
     ]
   }

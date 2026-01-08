@@ -15,47 +15,43 @@
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
+
+
 {{ header({
   logo: {
     href: "/",
-    ariaLabel: "Compass"
+    ariaLabel: "Search medical product evaluations"
   },
   service: {
-    text: "",
+    text: "Search medical product evaluations",
     href: "/"
   },
-
   account: {
     items: [
+      {
+        text: "Kelvin Simpson (Regional Manager)",
+        icon: true
+      },
 
       {
-        text: "Log in",
-        href: "sign-in-nhs"
+        text: "Log out",
+        href: "#"
       }
     ]
   },
   navigation: {
     items: [
       {
-        text: "Search",
+        text: "Dashboard",
+        href: "dashboard"
+      },
+      {
+        text: "",
+        href: "#"
+      },
+      {
+        text: "Find a supplier",
         href: "search"
-      },
-      {
-        text: "About this service",
-        href: "#"
-        
-      },
-      {
-        text: "Latest news",
-        href: "#"
-      },
-      {
-        text: "Data standards",
-        href: "#"
-      },
-      {
-        text: "Case studies",
-        href: "#"
       }
     ]
   }
