@@ -1,7 +1,9 @@
-{% extends 'layout-signed-out.html' %}
+{% extends prototypeVersion + '/layouts/layout-signed-in.html' %}
+
+
+{% set serviceHeader = "Search medical product evaluations" %}
 
 {% set pageName = "SmartPump 300 Infusion System - Compass" %}
-{% set serviceHeader = "Compass" %}
 
 {% block beforeContent %}
 {% from "breadcrumb/macro.njk" import breadcrumb %}
@@ -9,12 +11,12 @@
 {{ breadcrumb({
   items: [
     {
-      href: "/",
+      href: "dashboard",
       text: "Home"
     },
     {
-      href: "/search",
-      text: "Search results"
+      href: "search",
+      text: "Search"
     }
   ],
   href: "#",

@@ -7,12 +7,12 @@
   {{ breadcrumb({
     items: [
       {
-        text: "Dashboard",
+        text: "Home",
         href: "dashboard"
       },
       {
         text: "Share evaluation",
-        href: "share-evaluation"
+        href: "quick-share-upload"
       },
       {
         text: "Review",
@@ -35,94 +35,71 @@
 
     <div class="nhsuk-card nhsuk-u-margin-top-6">
       <div class="nhsuk-card__content">
-        
-        <!-- Product info -->
-      
 
-      
-
-        <!-- Evaluation details -->
+        <!-- Product and Supplier -->
         <dl class="nhsuk-summary-list">
 
-
-            <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-            Product
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              SmartPump Infusion Device Pro
-             
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> evaluation type</span>
-              </a>
-            </dd>
-          </div>
-
-
-            <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-            Supplier
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              MedTech Solutions Ltd
-             
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> evaluation type</span>
-              </a>
-            </dd>
-          </div>
-
-        
-          
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Evaluation type
+              Product
             </dt>
             <dd class="nhsuk-summary-list__value">
-              In-service evaluation
+              {{ data['product-picker'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> evaluation type</span>
+              <a href="dashboard">
+                Change<span class="nhsuk-u-visually-hidden"> product</span>
               </a>
             </dd>
           </div>
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Date conducted
+              Supplier
             </dt>
             <dd class="nhsuk-summary-list__value">
-              January 2024 - March 2024
+              {{ data['supplier-picker'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> dates</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> supplier</span>
               </a>
             </dd>
           </div>
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Scale
+              Date of evaluation
             </dt>
             <dd class="nhsuk-summary-list__value">
-              5 devices over 6 months, approximately 200 patients
+            
+                {{ data['date-of-evaluation-day'] }} {{ data['date-of-evaluation-month'] }} {{ data['date-of-evaluation-year'] }}
+            
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> scale</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> date</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Product procured
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['recommendation'] }}
+              
+            
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> procurement decision</span>
               </a>
             </dd>
           </div>
 
         </dl>
-
-      
 
         <!-- Clinical context -->
         <h3 class="nhsuk-heading-s">Clinical context</h3>
@@ -134,7 +111,7 @@
               Your trust
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Mid England NHS Foundation Trust
+              {{ data['trust-name'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -142,96 +119,97 @@
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Department(s)
+              Department
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Cardiology, Renal
+              {{ data['department-name'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> departments</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> department</span>
               </a>
             </dd>
           </div>
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Lead clinical champion
+              Lead clinician
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Dr. Sarah Johnson<br>
-              Consultant Cardiologist<br>
-              sarah.johnson@midengland.nhs.uk
+              {{ data['lead-clinician'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> lead champion</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> lead clinician</span>
               </a>
             </dd>
           </div>
 
         </dl>
 
-
-
-       
-
-        <!--  Evaluation summary -->
-        <h3 class="nhsuk-heading-s">Brief Summary</h3>
+        <!-- Evaluation summary -->
+        {% if data['summary'] %}
+        <h3 class="nhsuk-heading-s">Brief summary</h3>
         
         <dl class="nhsuk-summary-list">
           
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Overall summary
+              Your summary
             </dt>
             <dd class="nhsuk-summary-list__value">
-                          Evaluated 5 SmartPump devices over 6 months in cardiology and renal units. Reduced medication errors by 40% compared to previous system. Staff training took longer than expected but satisfaction scores improved significantly. Recommend for high-acuity wards.
-
+              {{ data['summary'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-details">
-                Change<span class="nhsuk-u-visually-hidden"> recommendation</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> summary</span>
               </a>
             </dd>
           </div>
 
-        
-
-
         </dl>
-
-      
+        {% endif %}
 
         <!-- Documents -->
-        <h3 class="nhsuk-heading-s">Documents attached</h3>
+        <h3 class="nhsuk-heading-s">Documents</h3>
         
         <dl class="nhsuk-summary-list">
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Files
+              Files uploaded
             </dt>
             <dd class="nhsuk-summary-list__value">
-              <ul class="nhsuk-list nhsuk-u-margin-bottom-0">
-                <li>
-                  
-                  Clinical_Evaluation_Report.pdf (2.3 MB)
-                </li>
-                <li>
-                
-                  User_Feedback_Summary.xlsx (156 KB)
-                </li>
-              </ul>
+              {% if data['file-upload'] %}
+                <ul class="nhsuk-list nhsuk-u-margin-bottom-0">
+                  <li>{{ data['file-upload'] }}</li>
+                </ul>
+              {% else %}
+                <span class="nhsuk-u-secondary-text-color">No files uploaded</span>
+              {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/evaluation-upload">
+              <a href="quick-share-upload">
                 Change<span class="nhsuk-u-visually-hidden"> files</span>
               </a>
             </dd>
           </div>
-        </dl>
 
-      
+          {% if data['document-link'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Document link
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <a href="{{ data['document-link'] }}" target="_blank">{{ data['document-link'] }}</a>
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> document link</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
 
         <!-- Visibility -->
         <dl class="nhsuk-summary-list">
@@ -244,12 +222,12 @@
               <span class="nhsuk-body-s nhsuk-u-secondary-text-color">This evaluation will be visible to all NHS procurement professionals using Compass</span>
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/sharing-settings">
+              <a href="quick-share-upload">
                 Change<span class="nhsuk-u-visually-hidden"> visibility</span>
               </a>
             </dd>
           </div>
-          </dl>
+        </dl>
           
         <!-- Contact details -->
         <h3 class="nhsuk-heading-s">Contact details</h3>
@@ -257,31 +235,97 @@
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Email
+              Contact name
             </dt>
             <dd class="nhsuk-summary-list__value">
-              sarah.johnson@midengland.nhs.uk
+              {{ data['contact-name'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/sharing-settings">
-                Change<span class="nhsuk-u-visually-hidden"> contact</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> contact name</span>
               </a>
             </dd>
           </div>
-           <div class="nhsuk-summary-list__row">
+
+          <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-             Phone number
+              Email
             </dt>
             <dd class="nhsuk-summary-list__value">
-              020 7946 0123
+              {{ data['contact-email'] or 'Not specified' }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="/sharing-settings">
-                Change<span class="nhsuk-u-visually-hidden"> contact</span>
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> email</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['contact-phone'] %}
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ data['contact-phone'] }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> phone number</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+        </dl>
+
+        <!-- Topics willing to discuss -->
+        {% if data['contact-topics'] %}
+        <h3 class="nhsuk-heading-s">Topics willing to discuss</h3>
+        <dl class="nhsuk-summary-list">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Discussion topics
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <ul class="nhsuk-list nhsuk-u-margin-bottom-0">
+                {% if data['contact-topics'] is iterable and data['contact-topics'] is not string %}
+                  {% for topic in data['contact-topics'] %}
+                    <li>
+                      {% if topic == 'clinical-outcomes' %}Clinical outcomes and effectiveness
+                      {% elif topic == 'evaluation-methodology' %}Evaluation methodology
+                      {% elif topic == 'implementation' %}Implementation and training
+                      {% elif topic == 'integration' %}System integration
+                      {% elif topic == 'procurement-process' %}Procurement process
+                      {% elif topic == 'costs' %}Costs and value
+                      {% elif topic == 'supplier-experience' %}Supplier experience
+                      {% else %}{{ topic }}
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                {% else %}
+                  <li>
+                    {% if data['contact-topics'] == 'clinical-outcomes' %}Clinical outcomes and effectiveness
+                    {% elif data['contact-topics'] == 'evaluation-methodology' %}Evaluation methodology
+                    {% elif data['contact-topics'] == 'implementation' %}Implementation and training
+                    {% elif data['contact-topics'] == 'integration' %}System integration
+                    {% elif data['contact-topics'] == 'procurement-process' %}Procurement process
+                    {% elif data['contact-topics'] == 'costs' %}Costs and value
+                    {% elif data['contact-topics'] == 'supplier-experience' %}Supplier experience
+                    {% else %}{{ data['contact-topics'] }}
+                    {% endif %}
+                  </li>
+                {% endif %}
+              </ul>
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="quick-share-upload">
+                Change<span class="nhsuk-u-visually-hidden"> discussion topics</span>
               </a>
             </dd>
           </div>
         </dl>
+        {% endif %}
 
       </div>
     </div>
@@ -295,20 +339,16 @@
       </h3>
       <p>I confirm that:</p>
       <ul class="nhsuk-list nhsuk-list--bullet">
-        
-  <li>I'm providing up-to-date and accurate information</li>
-  <li>I am authorised to upload these documents on behalf of my organisation</li>
-  <li>I am not providing anything which is confidential, commercially sensitive or will infringe on intellectual property rights</li>
-  </ul>
-    <p>I understand that:</p>
+        <li>I'm providing up-to-date and accurate information</li>
+        <li>I am authorised to upload these documents on behalf of my organisation</li>
+        <li>I am not providing anything which is confidential, commercially sensitive or will infringe on intellectual property rights</li>
+      </ul>
+      <p>I understand that:</p>
       <ul class="nhsuk-list nhsuk-list--bullet">
-
-      <li>I am not offering any warranty or commitments around what I'm providing</li>
-      <li>I am not responsible for the decisions made using my information</li>
-      <li>I can remove information later if I change my mind</li>
-    </ul>
-  </li>
-</ul>
+        <li>I am not offering any warranty or commitments around what I'm providing</li>
+        <li>I am not responsible for the decisions made using my information</li>
+        <li>I can remove information later if I change my mind</li>
+      </ul>
     </div>
 
     <form action="evaluation-shared" method="post">
@@ -317,15 +357,12 @@
           Submit evaluation
         </button>
         <p>
-          <a href="/evaluation-details" class="nhsuk-link">Back to edit</a>
+          <a href="quick-share-upload" class="nhsuk-link">Back to edit</a>
         </p>
       </div>
     </form>
 
   </div>
-
-  <!-- SIDEBAR  -->
-
 
 </div>
 {% endblock %}

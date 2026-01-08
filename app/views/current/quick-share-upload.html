@@ -8,11 +8,11 @@
     items: [
       {
         text: "Home",
-        href: "/"
+        href: "dashboard"
       },
       {
         text: "Share evaluation",
-        href: "/share-evaluation"
+        href: "#"
       }
     ],
     attributes: {
@@ -34,7 +34,7 @@
       <p>We'll just need a few key details to help other trusts find your evaluation.</p>
     
 
-    <form action="review-evaluation" method="post" enctype="multipart/form-data">
+    <form action="review-evaluation" method="post">
 
       <!-- Document Upload - REQUIRED -->
       <div class="nhsuk-form-group">
@@ -84,7 +84,7 @@
       <!-- Alternative: Link to resource -->
       <div class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color" style="text-align: center;">
-          <strong>— or —</strong>
+          <strong>or</strong>
         </p>
       </div>
 
@@ -97,7 +97,7 @@
         name: "document-link",
         type: "url",
         hint: {
-          text: "If you can't upload the document, provide a link to where it's hosted (e.g. SharePoint, trust intranet, or other shared location)"
+          text: "If you can't upload the document, provide a link to where it's hosted"
         },
         attributes: {
           placeholder: "https://"
@@ -172,7 +172,8 @@
       {% from "date-input/macro.njk" import dateInput %}
 
 {{ dateInput({
-  id: "date-of-birth",
+  id: "date-of-evaluation",
+  name: "date-of-evaluation",
   namePrefix: "date-of-evaluation",
   fieldset: {
     legend: {
@@ -185,15 +186,15 @@
   },
   items: [
     {
-      name: "day",
+      name: "Day",
       classes: "nhsuk-input--width-2"
     },
     {
-      name: "month",
+      name: "Month",
       classes: "nhsuk-input--width-2"
     },
     {
-      name: "year",
+      name: "Year",
       classes: "nhsuk-input--width-4"
     }
   ]
@@ -265,7 +266,8 @@
         },
         id: "contact-email",
         name: "contact-email",
-        type: "email"
+        type: "email",
+         classes: "nhsuk-input--width-20"
       }) }}
 
       {{ input({
@@ -359,7 +361,7 @@
           </span>
         </h3>
         <p>Your evaluation will be visible to <strong>all NHS trusts</strong> using Compass.</p>
-        <p class="nhsuk-body-s">You can change this after uploading if needed.</p>
+        <p class="nhsuk-body">You can change this after uploading if needed.</p>
       </div>
 
     
@@ -369,7 +371,7 @@
           Review and submit
         </button>
         <p>
-          <a href="/share-evaluation-choice" class="nhsuk-link nhsuk-link--no-visited-state">Cancel</a>
+          <a href="dashboard" class="nhsuk-link nhsuk-link--no-visited-state">Cancel</a>
         </p>
       </div>
 
@@ -380,33 +382,7 @@
 
 </div>
 
-<script>
-// Simple file upload preview
-document.getElementById('file-upload').addEventListener('change', function(e) {
-  const fileList = document.getElementById('file-list');
-  const uploadedFiles = document.getElementById('uploaded-files');
-  
-  fileList.innerHTML = '';
-  
-  if (e.target.files.length > 0) {
-    uploadedFiles.style.display = 'block';
-    
-    Array.from(e.target.files).forEach(file => {
-      const li = document.createElement('li');
-      const fileSize = (file.size / 1024 / 1024).toFixed(2);
-      li.innerHTML = `
-        <svg class="nhsuk-icon nhsuk-icon__link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
-          <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10A10 10 0 0 1 12 2zm0 18a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8zm0-13a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V8a1 1 0 0 1 1-1zm0 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
-        </svg>
-        ${file.name} (${fileSize} MB)
-      `;
-      fileList.appendChild(li);
-    });
-  } else {
-    uploadedFiles.style.display = 'none';
-  }
-});
-</script>
+
 {% endblock %}
 
 {% block pageScripts %}
@@ -414,7 +390,7 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
 <script type="text/javascript">
   accessibleAutocomplete.enhanceSelectElement({
     defaultValue: '',
-    selectElement: document.querySelector('#product-picker')
+    selectElement: document.querySelector('#supplier-picker')
   })
 </script>
 
