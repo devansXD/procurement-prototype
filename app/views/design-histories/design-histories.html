@@ -1,0 +1,85 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout-hero-histories.html' %}
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Home" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+        <div class="nhsuk-u-reading-width">
+            <ol class="nhsuk-grid-row nhsuk-card-group">
+                <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+
+
+                    <div class="nhsuk-card nhsuk-card--secondary">
+                        <div class="nhsuk-card__content nhsuk-card__content--secondary">
+                            <h2 class="nhsuk-card__heading nhsuk-u-font-size-22 nhsuk-u-margin-bottom-2"> <a
+                                    class="nhsuk-card__link"
+                                    href="v1">Initial designs
+                                    </a> </h2>
+                            <p class="nhsuk-body-s"><time class="nhsuk-u-secondary-text-colour"
+                                    datetime="2025-07-04T00:00:00.000Z">14 Jan 2026</time></p>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="nhsuk-grid-column-full nhsuk-card-group__item">
+
+
+                    <div class="nhsuk-card nhsuk-card--secondary">
+                        <div class="nhsuk-card__content nhsuk-card__content--secondary">
+                            <h2 class="nhsuk-card__heading nhsuk-u-font-size-22 nhsuk-u-margin-bottom-2"> <a
+                                    class="nhsuk-card__link"
+                                    href="v2">Version 2 designs
+                                </a> </h2>
+                            <p class="nhsuk-body-s"><time class="nhsuk-u-secondary-text-colour"
+                                    datetime="2025-06-23T00:00:00.000Z">14 Jan 2026</time></p>
+                        </div>
+                    </div>
+
+                </li>
+            </ol>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}
