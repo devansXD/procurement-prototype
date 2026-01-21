@@ -1,0 +1,104 @@
+// ==========================================================================
+// A-Z categories page styles
+// Add to /app/assets/sass/main.scss
+// ==========================================================================
+
+// A-Z navigation bar
+.app-az-nav {
+  border-bottom: 1px solid $color_nhsuk-grey-4;
+  padding-bottom: nhsuk-spacing(3);
+}
+
+.app-az-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: nhsuk-spacing(1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-az-nav__item {
+  margin: 0;
+}
+
+.app-az-nav__link {
+  display: block;
+  padding: nhsuk-spacing(2) nhsuk-spacing(3);
+  background-color: $color_nhsuk-grey-5;
+  color: $color_nhsuk-blue;
+  text-decoration: none;
+  font-weight: 600;
+  min-width: 44px;
+  text-align: center;
+  
+  &:hover {
+    background-color: $color_nhsuk-blue;
+    color: $color_nhsuk-white;
+  }
+  
+  &:focus {
+    @include nhsuk-focused-text;
+  }
+}
+
+// A-Z section headers
+.app-az-header {
+  margin-top: nhsuk-spacing(6);
+  padding-bottom: nhsuk-spacing(2);
+  border-bottom: 2px solid $color_nhsuk-blue;
+  
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+// Category list
+.app-category-list {
+  margin: 0;
+  padding: 0;
+}
+
+.app-category-item {
+  margin: 0;
+  border-bottom: 1px solid $color_nhsuk-grey-4;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.app-category-link {
+  display: block;
+  padding: nhsuk-spacing(3) 0;
+  text-decoration: none;
+  
+  &:hover {
+    .app-category-name {
+      text-decoration: underline;
+    }
+  }
+  
+  &:focus {
+    @include nhsuk-focused-text;
+    
+    .app-category-name,
+    .app-category-meta {
+      background-color: $nhsuk-focus-color;
+    }
+  }
+}
+
+.app-category-name {
+  display: block;
+  color: $color_nhsuk-blue;
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: nhsuk-spacing(1);
+}
+
+.app-category-meta {
+  display: block;
+  color: $color_nhsuk-grey-1;
+  font-size: 16px;
+}

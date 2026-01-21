@@ -1,0 +1,192 @@
+{# <!-- Where this file is included, set nunjucks variables for categoryID, categoryName and categoryLabelText to change the defaults 
+    {% set categoryID = "category-id" %}
+    {% set categoryName = "category-name" %}
+    {% set categoryLabelText = "Select a category" %}
+    
+    To remove the hint, set categoryHint to an empty string
+    {% set categoryHint = "" %}
+    
+    To change the hint, set categoryHint to the hint text
+    {% set categoryHint = "Choose the type of medical technology" %}
+    --> #}
+
+     
+    
+    <div class="nhsuk-form-group">
+      {{ select({
+        id: categoryID | default("category-picker", false),
+        name: categoryName | default("category-picker", false),
+        classes: "govuk-input--width-20",
+        label: {
+          text: categoryLabelText | default("Select a category", false),
+          classes: "nhsuk-!-font-weight-bold",
+          name: categoryName | default("category-picker", false)
+        },
+        hint: {
+          text: categoryHint | default("Search by medical technology type", false)
+        },
+        value: categoryValue or data[categoryName or categoryID or "category"] or "",
+        items: [
+      {
+          value: "",
+          text: ""
+      },
+      {
+        value: "Anaesthesia and respiratory",
+        text: "Anaesthesia and respiratory"
+      },
+      {
+        value: "Beds, mattresses and surfaces",
+        text: "Beds, mattresses and surfaces"
+      },
+      {
+        value: "Cardiovascular devices",
+        text: "Cardiovascular devices"
+      },
+      {
+        value: "Clinical consumables",
+        text: "Clinical consumables"
+      },
+      {
+        value: "Decontamination and sterilisation",
+        text: "Decontamination and sterilisation"
+      },
+      {
+        value: "Dental equipment",
+        text: "Dental equipment"
+      },
+      {
+        value: "Diabetes management",
+        text: "Diabetes management"
+      },
+      {
+        value: "Diagnostic imaging",
+        text: "Diagnostic imaging"
+      },
+      {
+        value: "Digital health and software",
+        text: "Digital health and software"
+      },
+      {
+        value: "Endoscopy",
+        text: "Endoscopy"
+      },
+      {
+        value: "ENT and audiology",
+        text: "ENT and audiology"
+      },
+      {
+        value: "Furniture and fixtures",
+        text: "Furniture and fixtures"
+      },
+      {
+        value: "Gastroenterology",
+        text: "Gastroenterology"
+      },
+      {
+        value: "General surgery",
+        text: "General surgery"
+      },
+      {
+        value: "Hoists and patient handling",
+        text: "Hoists and patient handling"
+      },
+      {
+        value: "Homecare and community",
+        text: "Homecare and community"
+      },
+      {
+        value: "Infection prevention and control",
+        text: "Infection prevention and control"
+      },
+      {
+        value: "Infusion and vascular access",
+        text: "Infusion and vascular access"
+      },
+      {
+        value: "In-vitro diagnostics",
+        text: "In-vitro diagnostics"
+      },
+      {
+        value: "Laboratory equipment",
+        text: "Laboratory equipment"
+      },
+      {
+        value: "Neonatal and paediatric",
+        text: "Neonatal and paediatric"
+      },
+      {
+        value: "Neurology",
+        text: "Neurology"
+      },
+      {
+        value: "Obstetrics and gynaecology",
+        text: "Obstetrics and gynaecology"
+      },
+      {
+        value: "Oncology and radiotherapy",
+        text: "Oncology and radiotherapy"
+      },
+      {
+        value: "Ophthalmic equipment",
+        text: "Ophthalmic equipment"
+      },
+      {
+        value: "Orthopaedic devices",
+        text: "Orthopaedic devices"
+      },
+      {
+        value: "Ostomy and continence",
+        text: "Ostomy and continence"
+      },
+      {
+        value: "Patient monitoring",
+        text: "Patient monitoring"
+      },
+      {
+        value: "Personal protective equipment",
+        text: "Personal protective equipment"
+      },
+      {
+        value: "Point of care testing",
+        text: "Point of care testing"
+      },
+      {
+        value: "Pressure area care",
+        text: "Pressure area care"
+      },
+      {
+        value: "Prosthetics and orthotics",
+        text: "Prosthetics and orthotics"
+      },
+      {
+        value: "Rehabilitation and therapy",
+        text: "Rehabilitation and therapy"
+      },
+      {
+        value: "Renal and dialysis",
+        text: "Renal and dialysis"
+      },
+      {
+        value: "Surgical instruments",
+        text: "Surgical instruments"
+      },
+      {
+        value: "Telehealth and remote monitoring",
+        text: "Telehealth and remote monitoring"
+      },
+      {
+        value: "Theatre equipment",
+        text: "Theatre equipment"
+      },
+      {
+        value: "Wheelchairs and mobility",
+        text: "Wheelchairs and mobility"
+      },
+      {
+        value: "Wound care",
+        text: "Wound care"
+      }
+        ]
+      }) }}
+    </div>

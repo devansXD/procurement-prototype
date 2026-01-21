@@ -60,22 +60,21 @@
       <div class="nhsuk-grid-column-two-thirds">
         
         {% block heroHeading %}
-        <h1 class="nhsuk-heading-xl compass-hero__heading">Value-based procurement for medical technologies</h1>
-        {% endblock %}
+        <h1 class="nhsuk-heading-l">Search, evaluate and choose a supplier based on good clinical outcomes.</h1>
+
+        <p class="nhsuk-lede-text">Used by trusts everywhere</p>
+
         
-        {% block heroLede %}
-        <p class="nhsuk-body-l compass-hero__lede">Search, evaluate and choose a supplier based on good clinical outcomes. Used by NHS trusts everywhere.</p>
         {% endblock %}
+
         
         {% block heroActions %}
         <div class="compass-hero__actions">
            <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
-            
-
-<a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/current/sign-up-trusts-1" draggable="false" role="button" data-nhsuk-button-init="">
- Sign up
-</a>
-  <p class="nhsuk-body nhsuk-u-margin-bottom-0">or <a href="/current/sign-in-nhs" class="nhsuk-link nhsuk-u-font-weight-bold">log in</a></p>
+            {{ actionLink({
+        "text": "Register with Compass today",
+        "href": "sign-up-trusts-1"
+        }) }}
           </div>
         </div>
         {% endblock %}

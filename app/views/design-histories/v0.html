@@ -1,0 +1,298 @@
+{% extends 'layout-hero-histories.html' %}
+
+{% set pageTitle = "Design History: Ground Zero" %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Design History: Ground Zero</h1>
+    
+    <p class="nhsuk-body-l">The starting context, assumptions, and materials that informed our initial Compass prototype pages – before any user testing.</p>
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Date: November 2025 | Phase: Alpha Week 1</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>The brief</h2>
+
+    <p>Compass was conceived as a central digital platform to enable the NHS to make faster, more consistent, and evidence-based procurement decisions for medical technologies.</p>
+
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p><strong>The working analogy:</strong> "A Which? Best Buyers Guide for medtech devices" – empowering procurement professionals and clinicians with information to buy products based on holistic value, not just price.</p>
+    </div>
+
+    <h2>Problem statement</h2>
+
+    <p>The NHS currently lacks a consistent, centralised way to compare medical technology products. While valuable evidence exists, it is often fragmented, inconsistent, or difficult to use – resulting in inefficiencies, repeated work, and missed opportunities to adopt high-value technologies.</p>
+
+    <h3>Four core problems identified</h3>
+
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Lack of passporting</dt>
+        <dd class="nhsuk-summary-list__value">Suppliers repeatedly submit the same information to different NHS organisations. No mechanism exists to submit once and have data visible everywhere.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Fragmented data</dt>
+        <dd class="nhsuk-summary-list__value">Evidence about products is scattered across NICE, ODEP, DTAC, individual trusts, and suppliers. No single view exists to compare products holistically.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Outdated practices</dt>
+        <dd class="nhsuk-summary-list__value">Procurement decisions often default to price rather than clinical value. No framework supports value-based comparison at scale.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Slow innovation adoption</dt>
+        <dd class="nhsuk-summary-list__value">High-value technologies face slow adoption because procurement teams lack confidence in evidence. Individual trusts don't benefit from collective intelligence.</dd>
+      </div>
+    </dl>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>MoSCoW scope (as given)</h2>
+
+    <p>The initial prototype was built against this prioritised scope:</p>
+
+    <h3>Must have</h3>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Approved body evaluations (e.g. NICE Medtech Guidance)</li>
+      <li>External evaluations/accreditations (e.g. ODEP)</li>
+      <li>Passporting functionality (e.g. DTAC)</li>
+      <li>Trust-level evaluations of medtech</li>
+      <li>Link to PIM (Product Information Management system)</li>
+      <li>All medtech registered with MHRA – community and secondary care</li>
+      <li>Side-by-side comparison across a range of metrics</li>
+    </ul>
+
+    <h3>Should have</h3>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Data presented in a user-friendly and intuitive UI</li>
+      <li>Data aligned with VBP (Value-Based Procurement) domains</li>
+    </ul>
+
+    <h3>Could have</h3>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Trust reviews, opinions, or ratings</li>
+      <li>Supplier-submitted information</li>
+      <li>Volume data showing usage across NHS</li>
+      <li>Markers for SMEs and UK-manufactured products</li>
+    </ul>
+
+    <h3>Won't have</h3>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Price data (explicitly excluded)</li>
+      <li>Non-evaluative data belonging in PIM</li>
+      <li>PAQ forms (centralised in PIM)</li>
+      <li>Public access – only key users</li>
+      <li>Evidence validation (Compass centralises, does not validate)</li>
+    </ul>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Landscape analysis</h2>
+
+    <p>We mapped existing NHS procurement platforms to understand where Compass would fit. The key finding was that existing platforms optimise <strong>procurement processes</strong> (tendering, contracts, ordering) but none provide <strong>product intelligence</strong> (what exists, comparative value, evidence).</p>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Existing platform analysis</caption>
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">Platform</th>
+          <th class="nhsuk-table__header" scope="col">Function</th>
+          <th class="nhsuk-table__header" scope="col">Gap for Compass</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Atamis</td>
+          <td class="nhsuk-table__cell">Tender management and contracts</td>
+          <td class="nhsuk-table__cell">No product comparison or evidence repository</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">NHS Supply Chain</td>
+          <td class="nhsuk-table__cell">Product catalogue and ordering</td>
+          <td class="nhsuk-table__cell">Limited clinical evidence; price-focused</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Find a Tender</td>
+          <td class="nhsuk-table__cell">Contract notices and awards</td>
+          <td class="nhsuk-table__cell">No product-level data</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">CCS Frameworks</td>
+          <td class="nhsuk-table__cell">Pre-approved supplier lists</td>
+          <td class="nhsuk-table__cell">Approval doesn't equal evidence of value</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p><strong>Strategic position:</strong> Compass would be the missing "product intelligence layer" – complementary to existing platforms, not competing with them.</p>
+    </div>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Initial assumptions (pre-research)</h2>
+
+    <p>These were the assumptions that shaped our first prototype, ranked by risk:</p>
+
+    <ol class="nhsuk-list nhsuk-list--number">
+      <li><strong>Suppliers will submit data in standardised formats.</strong> The passporting model depends on this. If suppliers won't engage, the entire concept fails.</li>
+      <li><strong>Users want to compare based on clinical value rather than price.</strong> The VBP approach assumes procurement teams will prioritise outcomes over cost.</li>
+      <li><strong>Quality evidence exists and is accessible.</strong> We assumed NICE, ODEP, and trust evaluations would provide meaningful comparison data.</li>
+      <li><strong>Platform will change procurement behaviour.</strong> Having the tool doesn't guarantee adoption or behaviour change.</li>
+    </ol>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Value-based procurement framework</h2>
+
+    <p>The initial prototype used four VBP domains for product comparison:</p>
+
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Clinical Outcomes</dt>
+        <dd class="nhsuk-summary-list__value">Impact on patient health outcomes, clinical effectiveness, evidence base</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Patient Safety</dt>
+        <dd class="nhsuk-summary-list__value">Safety profile, adverse event data, risk management</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">System Integration</dt>
+        <dd class="nhsuk-summary-list__value">Compatibility with existing NHS systems, interoperability, workflow impact</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Sustainability</dt>
+        <dd class="nhsuk-summary-list__value">Environmental impact, product lifecycle, long-term value</dd>
+      </div>
+    </dl>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Initial prototype features</h2>
+
+    <p>The first prototype (built Week 1) demonstrated Must Have scope with two core interfaces:</p>
+
+    <h3>1. Product comparison interface</h3>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Search and browse MHRA-registered products</li>
+      <li>Product cards showing regulatory status (NICE, ODEP, DTAC)</li>
+      <li>Select up to 3 products for side-by-side comparison</li>
+      <li>Comparison grid showing VBP domain scores</li>
+      <li>Links to PIM for technical specifications</li>
+      <li>Trust evaluation summaries</li>
+    </ul>
+
+    <h3>2. Supplier submission portal</h3>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Multi-step form for product registration</li>
+      <li>MHRA registration capture (required)</li>
+      <li>Regulatory evidence sections (NICE, ODEP, DTAC)</li>
+      <li>VBP domain evidence upload</li>
+      <li>Trust evaluation submission</li>
+      <li>Draft save functionality</li>
+    </ul>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Initial design decisions</h2>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption nhsuk-u-visually-hidden">Design decisions and rationale</caption>
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">Decision</th>
+          <th class="nhsuk-table__header" scope="col">Rationale</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">No price data displayed</td>
+          <td class="nhsuk-table__cell">Forces focus on clinical value; price negotiated separately in tenders</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">VBP scores 0-10 scale</td>
+          <td class="nhsuk-table__cell">Simple comparison metric; assumption that evidence can be meaningfully scored</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Maximum 3 products compared</td>
+          <td class="nhsuk-table__cell">Keeps interface manageable; reflects typical shortlisting behaviour</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">PIM integration via links</td>
+          <td class="nhsuk-table__cell">Avoids duplicating technical specs; positions Compass as evidence layer</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">NHS Design System styling</td>
+          <td class="nhsuk-table__cell">Establishes credibility; consistency with other NHS tools</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Proposed success metrics</h2>
+
+    <p>At ground zero, we defined these metrics to validate our assumptions:</p>
+
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>5+ suppliers submit standardised data for one device category</li>
+      <li>8/10 procurement professionals find comparison tool more useful than current methods</li>
+      <li>Users can find and understand evidence in under 5 minutes</li>
+      <li>Prototype reduces perceived time-to-decision by 20%+ in testing</li>
+    </ul>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>What we didn't know yet</h2>
+
+    <p>These questions remained open at ground zero, to be answered through user research:</p>
+
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>How do procurement teams actually build confidence in product decisions?</li>
+      <li>What role do peer networks play in current procurement?</li>
+      <li>Will trusts share their evaluations with other trusts?</li>
+      <li>Is standardised VBP scoring meaningful to users?</li>
+      <li>What information do users actually need vs. what we assumed?</li>
+      <li>How do clinicians' needs differ from procurement professionals?</li>
+    </ul>
+
+    <div class="nhsuk-warning-callout">
+      <h3 class="nhsuk-warning-callout__label">
+        <span role="text">
+          <span class="nhsuk-u-visually-hidden">Important: </span>
+          Key unknown
+        </span>
+      </h3>
+      <p>We had not yet validated whether users wanted to <strong>read documents</strong> or <strong>talk to peers</strong>. This would prove to be a critical finding that reshaped the entire service direction.</p>
+    </div>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <h2>Next steps from ground zero</h2>
+
+    <ol class="nhsuk-list nhsuk-list--number">
+      <li><strong>User research:</strong> Interview procurement teams and clinicians to validate assumptions</li>
+      <li><strong>Supplier engagement:</strong> Test submission portal with 3-5 medtech suppliers</li>
+      <li><strong>Prototype testing:</strong> Usability sessions with comparison interface</li>
+      <li><strong>Assumption validation:</strong> Prioritise testing riskiest assumptions first</li>
+      <li><strong>Iteration:</strong> Update prototype based on findings before Week 4</li>
+    </ol>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p><strong>Document purpose:</strong> This design history captures the starting context for Compass alpha. It serves as a baseline to compare against later iterations, demonstrating how user research and testing changed our understanding and approach.</p>
+    </div>
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+      <strong>Tags:</strong> Alpha, Ground zero, Assumptions, MoSCoW, Value-based procurement, Passporting, Landscape analysis
+    </p>
+
+  </div>
+</div>
+{% endblock %}

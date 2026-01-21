@@ -3,14 +3,9 @@
 {% set pageName = "Value-Based Procurement for Medical Technologies" %}
 
 {# Override hero content if needed #}
-{% block heroHeading %}
-<h1 class="nhsuk-heading-l compass-hero__heading">Value based procurement for medical technologies</h1>
-{% endblock %}
 
-{% block heroLede %}
-<p class="nhsuk-body-l compass-hero__lede">Access trusted evaluations, peer insights, and clinical evidence to support
-    value-based procurement across the NHS.</p>
-{% endblock %}
+
+
 
 {% block heroActions %}
 <div class="compass-hero__actions">
@@ -19,7 +14,7 @@
 
         <a class="nhsuk-button" data-module="nhsuk-button" href="/current/sign-up-trusts-1"
             draggable="false" role="button" data-nhsuk-button-init="">
-            Sign up
+            Register with Compass today
         </a>
     
     </div>
@@ -30,9 +25,13 @@
 
 {% block mainContent %}
 
+
+
 <!-- NHS 10 Year Plan Context -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
     <div class="nhsuk-grid-column-one-half">
+
+
 
         <img src="/images/hero-1.png" alt="" width="100%">
 
@@ -241,18 +240,6 @@
     </div>
 </div>
 
-<!-- Call to Action -->
-<div class="nhsuk-grid-row nhsuk-u-margin-top-7 nhsuk-u-margin-bottom-7">
-    <div class="nhsuk-grid-column-full">
-        <h2 class="nhsuk-heading-l">Ready to get started?</h2>
 
-        {{ actionLink({
-        "text": "Register with Compass today",
-        "href": "sign-up-trusts-1"
-        }) }}
-
-    
-    </div>
-</div>
 
 {% endblock %}
