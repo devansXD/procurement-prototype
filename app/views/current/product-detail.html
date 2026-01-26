@@ -46,7 +46,15 @@
       <strong class="nhsuk-tag nhsuk-tag--green">NHS Supply Chain approved</strong>
     </div>
 
-     <div class="nhsuk-card">
+  </div>
+
+  
+  
+
+  <div class="nhsuk-grid-column-one-third">
+    
+    {# Supplier Contact Card #}
+    <div class="nhsuk-card">
       <div class="nhsuk-card__content">
         <h2 class="nhsuk-card__heading nhsuk-heading-s">
           Supplier
@@ -91,18 +99,27 @@
           </div>
         </dl>
 
-      
+        <a href="#" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" style="width: 100%;">
+          Contact supplier
+        </a>
       </div>
     </div>
 
-  </div>
-
-  <div class="nhsuk-grid-column-one-third">
-    
-  
-   
-
-  
+    {# Quick Links #}
+    <div class="nhsuk-card nhsuk-u-margin-top-4">
+      <div class="nhsuk-card__content">
+        <h3 class="nhsuk-card__heading nhsuk-heading-s">
+          On this page
+        </h3>
+        <ul class="nhsuk-list nhsuk-body-s">
+          <li><a href="#trials">NHS trust trials</a></li>
+          <li><a href="#costs">Cost breakdown</a></li>
+          <li><a href="#contacts">Contact trusts</a></li>
+          <li><a href="#specs">Technical specifications</a></li>
+          <li><a href="#evidence">Evidence & documents</a></li>
+        </ul>
+      </div>
+    </div>
 
     {# Comparison Tool #}
     <div class="nhsuk-card nhsuk-u-margin-top-4">
@@ -131,7 +148,7 @@
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
     
     <h2 class="nhsuk-heading-l">NHS trust trials at a glance</h2>
-    <p class="nhsuk-body-l nhsuk-u-margin-bottom-5"><strong>18 trusts</strong> have trialled this product.</p>
+    <p class="nhsuk-body-l nhsuk-u-margin-bottom-5">18 NHS trusts have trialled this product. Click any section for details.</p>
 
     <div class="nhsuk-grid-row">
       
@@ -282,177 +299,370 @@
       <strong class="nhsuk-tag nhsuk-tag--white" style="cursor: pointer; margin-left: 8px;">Not procured (2)</strong>
     </div>
 
-    {# Trial cards - clickable trusts #}
+    {# Trial cards - new format #}
     <div class="nhsuk-grid-row">
       
-      {# Trust 1 - Procured #}
+      {# Trust 1 - Manchester #}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
-        <div class="nhsuk-card nhsuk-card--clickable" style="height: 100%;">
-          <a href="/trust/manchester-uni" style="text-decoration: none; color: inherit; display: block;">
-            <div class="nhsuk-card__content">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-0" style="color: #005eb8;">
-                  Manchester University NHS Foundation Trust
-                </h3>
-                <strong class="nhsuk-tag nhsuk-tag--green" style="flex-shrink: 0; margin-left: 12px;">Procured</strong>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                <strong>North West</strong> · Teaching hospital · Trialled Jan 2024
-              </p>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">
-                <strong>Trial summary:</strong> 12-week clinical trial across 3 wards with 156 patients. 23% reduction in dressing changes, £18k annual savings projected.
-              </p>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Clinical trial</span>
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Health economics</span>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0" style="color: #007f3b;">
-                <strong>✓ Happy to discuss lessons learned</strong>
-              </p>
+        <div class="nhsuk-card" style="height: 100%;">
+          <div class="nhsuk-card__content">
+            
+            {# Tags row #}
+            <div class="nhsuk-u-margin-bottom-3">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Clinical trial</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
-          </a>
+            
+            {# Trust name #}
+            <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">
+              Manchester University NHS Foundation Trust
+            </h3>
+            
+            {# Summary list #}
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dd class="nhsuk-summary-list__value">12-week clinical trial</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dd class="nhsuk-summary-list__value">January 2024 - March 2024</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Ward/Department</dt>
+                <dd class="nhsuk-summary-list__value">Tissue Viability Service</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Scale</dt>
+                <dd class="nhsuk-summary-list__value">156 patients across 3 wards</dd>
+              </div>
+            </dl>
+            
+            <p class="nhsuk-u-margin-bottom-4">
+              <a href="/trust/manchester-uni/report" class="nhsuk-link">View full trial report</a>
+            </p>
+            
+            <hr class="nhsuk-u-margin-bottom-4">
+            
+            {# Contact section #}
+            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact for peer discussion</h4>
+            
+            <p class="nhsuk-body nhsuk-u-margin-bottom-0"><strong>Sarah Chen</strong></p>
+            <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">Tissue Viability Lead Nurse</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              <a href="mailto:sarah.chen@mft.nhs.uk">sarah.chen@mft.nhs.uk</a>
+            </p>
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-3">0161 276 1234</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              Sarah is happy to discuss clinical outcomes, cost savings, and implementation challenges.
+            </p>
+            
+          </div>
         </div>
       </div>
 
-      {# Trust 2 - Procured #}
+      {# Trust 2 - Guy's and St Thomas' #}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
-        <div class="nhsuk-card nhsuk-card--clickable" style="height: 100%;">
-          <a href="/trust/guys-st-thomas" style="text-decoration: none; color: inherit; display: block;">
-            <div class="nhsuk-card__content">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-0" style="color: #005eb8;">
-                  Guy's and St Thomas' NHS Foundation Trust
-                </h3>
-                <strong class="nhsuk-tag nhsuk-tag--green" style="flex-shrink: 0; margin-left: 12px;">Procured</strong>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                <strong>London</strong> · Teaching hospital · Trialled Nov 2023
-              </p>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">
-                <strong>Trial summary:</strong> Comparative study against 2 alternative products. Preferred for moisture management and patient comfort scores.
-              </p>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Comparative trial</span>
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Patient feedback</span>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0" style="color: #007f3b;">
-                <strong>✓ Happy to discuss lessons learned</strong>
-              </p>
+        <div class="nhsuk-card" style="height: 100%;">
+          <div class="nhsuk-card__content">
+            
+            {# Tags row #}
+            <div class="nhsuk-u-margin-bottom-3">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Comparative study</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
-          </a>
+            
+            {# Trust name #}
+            <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">
+              Guy's and St Thomas' NHS Foundation Trust
+            </h3>
+            
+            {# Summary list #}
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dd class="nhsuk-summary-list__value">8-week comparative study</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dd class="nhsuk-summary-list__value">November 2023 - January 2024</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Ward/Department</dt>
+                <dd class="nhsuk-summary-list__value">Surgical Wards</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Scale</dt>
+                <dd class="nhsuk-summary-list__value">3 products compared, 89 patients</dd>
+              </div>
+            </dl>
+            
+            <p class="nhsuk-u-margin-bottom-4">
+              <a href="/trust/guys-st-thomas/report" class="nhsuk-link">View full trial report</a>
+            </p>
+            
+            <hr class="nhsuk-u-margin-bottom-4">
+            
+            {# Contact section #}
+            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact for peer discussion</h4>
+            
+            <p class="nhsuk-body nhsuk-u-margin-bottom-0"><strong>James Okonkwo</strong></p>
+            <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">Procurement Category Manager</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              <a href="mailto:james.okonkwo@gstt.nhs.uk">james.okonkwo@gstt.nhs.uk</a>
+            </p>
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-3">020 7188 7188</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              James is happy to discuss supplier experience, product comparison methodology, and procurement process.
+            </p>
+            
+          </div>
         </div>
       </div>
 
-      {# Trust 3 - Procured #}
+      {# Trust 3 - Birmingham #}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
-        <div class="nhsuk-card nhsuk-card--clickable" style="height: 100%;">
-          <a href="/trust/birmingham" style="text-decoration: none; color: inherit; display: block;">
-            <div class="nhsuk-card__content">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-0" style="color: #005eb8;">
-                  University Hospitals Birmingham NHS Foundation Trust
-                </h3>
-                <strong class="nhsuk-tag nhsuk-tag--green" style="flex-shrink: 0; margin-left: 12px;">Procured</strong>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                <strong>Midlands</strong> · Teaching hospital · Trialled Sep 2023
-              </p>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">
-                <strong>Trial summary:</strong> Tissue viability team assessment. Excellent adhesion on challenging wound sites. Now standard for surgical wounds.
-              </p>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Clinical assessment</span>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0" style="color: #007f3b;">
-                <strong>✓ Happy to discuss lessons learned</strong>
-              </p>
+        <div class="nhsuk-card" style="height: 100%;">
+          <div class="nhsuk-card__content">
+            
+            {# Tags row #}
+            <div class="nhsuk-u-margin-bottom-3">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Pilot study</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
-          </a>
+            
+            {# Trust name #}
+            <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">
+              University Hospitals Birmingham NHS Foundation Trust
+            </h3>
+            
+            {# Summary list #}
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dd class="nhsuk-summary-list__value">6-month pilot study</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dd class="nhsuk-summary-list__value">March 2023 - August 2023</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Ward/Department</dt>
+                <dd class="nhsuk-summary-list__value">Critical Care Unit</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Scale</dt>
+                <dd class="nhsuk-summary-list__value">18 pumps deployed</dd>
+              </div>
+            </dl>
+            
+            <p class="nhsuk-u-margin-bottom-4">
+              <a href="/trust/birmingham/report" class="nhsuk-link">View full trial report</a>
+            </p>
+            
+            <hr class="nhsuk-u-margin-bottom-4">
+            
+            {# Contact section #}
+            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact for peer discussion</h4>
+            
+            <p class="nhsuk-body nhsuk-u-margin-bottom-0"><strong>Dr James Okonkwo</strong></p>
+            <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">Clinical Lead, Oncology</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              <a href="mailto:james.okonkwo@nhs.net">james.okonkwo@nhs.net</a>
+            </p>
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-3">0121 371 2000</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              James is happy to discuss chemotherapy safety, pharmacy integration, and business case development.
+            </p>
+            
+          </div>
         </div>
       </div>
 
-      {# Trust 4 - Under review #}
+      {# Trust 4 - Leeds (Under review) #}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
-        <div class="nhsuk-card nhsuk-card--clickable" style="height: 100%;">
-          <a href="/trust/leeds" style="text-decoration: none; color: inherit; display: block;">
-            <div class="nhsuk-card__content">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-0" style="color: #005eb8;">
-                  Leeds Teaching Hospitals NHS Trust
-                </h3>
-                <strong class="nhsuk-tag nhsuk-tag--blue" style="flex-shrink: 0; margin-left: 12px;">Under review</strong>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                <strong>Yorkshire</strong> · Teaching hospital · Trial started Dec 2024
-              </p>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">
-                <strong>Trial summary:</strong> Currently in 8-week pilot phase on burns unit. Preliminary feedback positive. Decision expected March 2025.
-              </p>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Pilot in progress</span>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0" style="color: #4c6272;">
-                Contact available after trial completion
-              </p>
+        <div class="nhsuk-card" style="height: 100%;">
+          <div class="nhsuk-card__content">
+            
+            {# Tags row #}
+            <div class="nhsuk-u-margin-bottom-3">
+              <strong class="nhsuk-tag nhsuk-tag--blue">Under review</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Pilot in progress</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
-          </a>
+            
+            {# Trust name #}
+            <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">
+              Leeds Teaching Hospitals NHS Trust
+            </h3>
+            
+            {# Summary list #}
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dd class="nhsuk-summary-list__value">8-week pilot</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dd class="nhsuk-summary-list__value">December 2024 - February 2025</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Ward/Department</dt>
+                <dd class="nhsuk-summary-list__value">Burns Unit</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Scale</dt>
+                <dd class="nhsuk-summary-list__value">Trial in progress</dd>
+              </div>
+            </dl>
+            
+            <p class="nhsuk-u-margin-bottom-4">
+              <span class="nhsuk-u-secondary-text-color">Report available after trial completion</span>
+            </p>
+            
+            <hr class="nhsuk-u-margin-bottom-4">
+            
+            {# Contact section #}
+            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact for peer discussion</h4>
+            
+            <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-0">
+              Contact details will be available after trial completion (expected March 2025).
+            </p>
+            
+          </div>
         </div>
       </div>
 
-      {# Trust 5 - Not procured #}
+      {# Trust 5 - Oxford (Not procured) #}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
-        <div class="nhsuk-card nhsuk-card--clickable" style="height: 100%;">
-          <a href="/trust/oxford" style="text-decoration: none; color: inherit; display: block;">
-            <div class="nhsuk-card__content">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-0" style="color: #005eb8;">
-                  Oxford University Hospitals NHS Foundation Trust
-                </h3>
-                <strong class="nhsuk-tag nhsuk-tag--grey" style="flex-shrink: 0; margin-left: 12px;">Not procured</strong>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                <strong>South East</strong> · Teaching hospital · Trialled Jun 2023
-              </p>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">
-                <strong>Trial summary:</strong> Good clinical performance but existing contract with alternative supplier offered better pricing. May reconsider at contract renewal.
-              </p>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Commercial decision</span>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0" style="color: #007f3b;">
-                <strong>✓ Happy to discuss lessons learned</strong>
-              </p>
+        <div class="nhsuk-card" style="height: 100%;">
+          <div class="nhsuk-card__content">
+            
+            {# Tags row #}
+            <div class="nhsuk-u-margin-bottom-3">
+              <strong class="nhsuk-tag nhsuk-tag--grey">Not procured</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Clinical assessment</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
-          </a>
+            
+            {# Trust name #}
+            <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">
+              Oxford University Hospitals NHS Foundation Trust
+            </h3>
+            
+            {# Summary list #}
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dd class="nhsuk-summary-list__value">4-week clinical assessment</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dd class="nhsuk-summary-list__value">June 2023 - July 2023</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Ward/Department</dt>
+                <dd class="nhsuk-summary-list__value">General Surgery</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Scale</dt>
+                <dd class="nhsuk-summary-list__value">42 patients</dd>
+              </div>
+            </dl>
+            
+            <p class="nhsuk-u-margin-bottom-4">
+              <a href="/trust/oxford/report" class="nhsuk-link">View full trial report</a>
+            </p>
+            
+            <hr class="nhsuk-u-margin-bottom-4">
+            
+            {# Contact section #}
+            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact for peer discussion</h4>
+            
+            <p class="nhsuk-body nhsuk-u-margin-bottom-0"><strong>Helen Martinez</strong></p>
+            <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">Senior Procurement Manager</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              <a href="mailto:helen.martinez@ouh.nhs.uk">helen.martinez@ouh.nhs.uk</a>
+            </p>
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-3">01865 741 166</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              Helen is happy to discuss why product wasn't selected and alternative options considered.
+            </p>
+            
+          </div>
         </div>
       </div>
 
-      {# Trust 6 - Procured #}
+      {# Trust 6 - Northern Care Alliance #}
       <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
-        <div class="nhsuk-card nhsuk-card--clickable" style="height: 100%;">
-          <a href="/trust/pennine" style="text-decoration: none; color: inherit; display: block;">
-            <div class="nhsuk-card__content">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-0" style="color: #005eb8;">
-                  Northern Care Alliance NHS Foundation Trust
-                </h3>
-                <strong class="nhsuk-tag nhsuk-tag--green" style="flex-shrink: 0; margin-left: 12px;">Procured</strong>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                <strong>North West</strong> · District general · Trialled Mar 2024
-              </p>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">
-                <strong>Trial summary:</strong> Community nursing team trial. Reduced home visits by 15% due to longer wear time. Staff training straightforward.
-              </p>
-              <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Community setting</span>
-                <span class="nhsuk-tag nhsuk-tag--white" style="font-size: 12px;">Efficiency gains</span>
-              </div>
-              <p class="nhsuk-body-s nhsuk-u-margin-bottom-0" style="color: #007f3b;">
-                <strong>✓ Happy to discuss lessons learned</strong>
-              </p>
+        <div class="nhsuk-card" style="height: 100%;">
+          <div class="nhsuk-card__content">
+            
+            {# Tags row #}
+            <div class="nhsuk-u-margin-bottom-3">
+              <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
+              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Community trial</strong>
+              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">District general</strong>
             </div>
-          </a>
+            
+            {# Trust name #}
+            <h3 class="nhsuk-heading-m nhsuk-u-margin-bottom-3">
+              Northern Care Alliance NHS Foundation Trust
+            </h3>
+            
+            {# Summary list #}
+            <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dd class="nhsuk-summary-list__value">10-week community trial</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dd class="nhsuk-summary-list__value">March 2024 - May 2024</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Ward/Department</dt>
+                <dd class="nhsuk-summary-list__value">Community Nursing Team</dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Scale</dt>
+                <dd class="nhsuk-summary-list__value">67 home visits</dd>
+              </div>
+            </dl>
+            
+            <p class="nhsuk-u-margin-bottom-4">
+              <a href="/trust/pennine/report" class="nhsuk-link">View full trial report</a>
+            </p>
+            
+            <hr class="nhsuk-u-margin-bottom-4">
+            
+            {# Contact section #}
+            <h4 class="nhsuk-heading-s nhsuk-u-margin-bottom-2">Contact for peer discussion</h4>
+            
+            <p class="nhsuk-body nhsuk-u-margin-bottom-0"><strong>Rebecca Singh</strong></p>
+            <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">Community Nursing Manager</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              <a href="mailto:rebecca.singh@nca.nhs.uk">rebecca.singh@nca.nhs.uk</a>
+            </p>
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-3">0161 624 0420</p>
+            
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-0">
+              Rebecca is happy to discuss community setting implementation, staff training, and efficiency gains.
+            </p>
+            
+          </div>
         </div>
       </div>
 
@@ -821,33 +1031,8 @@
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
     
     <h2 class="nhsuk-heading-l">Product details</h2>
-
-
-       {# Specifications - Collapsed by default #}
-
-
-    <details class="nhsuk-details nhsuk-expander">
-  <summary class="nhsuk-details__summary">
-    <span class="nhsuk-details__summary-text">
-     View specifications
-    </span>
-  </summary>
-  <div class="nhsuk-details__text">
-  
-  <ul>
-        <li><strong>Sizes available:</strong> 10x10cm, 15x15cm, 20x20cm, heel, sacral</li>
-        <li><strong>Absorbency:</strong> Up to 20x weight</li>
-        <li><strong>Wear time:</strong> Up to 7 days</li>
-        <li><strong>Sterilisation:</strong> Gamma irradiated</li>
-        <li><strong>Shelf life:</strong> 5 years</li>
-        <li><strong>Storage:</strong> Ambient temperature</li>
-      </ul>
     
-
-  </div>
-</details>
-    
-  
+    {% from "details/macro.njk" import details %}
     
     {{ details({
       "text": "Product overview",
