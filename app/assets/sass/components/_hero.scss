@@ -25,10 +25,7 @@ $nice-hero-bg: #003087; // NHS dark blue
   padding: 40px 0;
 
   @media (min-width: 769px) {
-    width: 55%;
     padding: 56px 0;
-    display: flex;
-    align-items: center;
   }
 }
 
@@ -38,6 +35,10 @@ $nice-hero-bg: #003087; // NHS dark blue
 
 .nice-hero__text {
   color: #ffffff;
+
+  @media (min-width: 769px) {
+    max-width: 55%;
+  }
 
   h1, .nhsuk-heading-xl {
     color: #ffffff;
