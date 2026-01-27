@@ -44,7 +44,7 @@ $nice-hero-bg: #003087; // NHS dark blue
     margin-bottom: 24px;
   }
 
-  p, .nhsuk-body-l {
+  p, .nhsuk-body-l, .nhsuk-body {
     color: rgba(255, 255, 255, 0.9);
   }
 
@@ -63,6 +63,24 @@ $nice-hero-bg: #003087; // NHS dark blue
       box-shadow: 0 4px 0 #212b32;
     }
   }
+
+  .nhsuk-link--reverse {
+    color: #ffffff;
+    text-decoration: underline;
+
+    &:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    &:focus {
+      color: #212b32;
+    }
+  }
+}
+
+.nice-hero__subtext {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .nice-hero__image {

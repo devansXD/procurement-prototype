@@ -51,36 +51,36 @@
 {% endblock %}
 
 {% block main %}
-<!-- HERO: Full-width, sits outside any container -->
-<div class="compass-hero">
-  <div class="compass-hero__image" aria-hidden="true"></div>
-  <div class="compass-hero__overlay"></div>
-  <div class="nhsuk-width-container compass-hero__content">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-two-thirds">
-        
-        {% block heroHeading %}
-        <h1 class="nhsuk-heading-l">Search, evaluate and choose a supplier based on good clinical outcomes.</h1>
+<!-- HERO: Full-width NICE-style with diagonal image -->
+<div class="nice-hero">
+  <div class="nice-hero__content">
+    <div class="nhsuk-width-container">
+      <div class="nice-hero__inner">
+        <div class="nice-hero__text">
 
-        <p class="nhsuk-lede-text">Used by trusts everywhere</p>
+          {% block heroHeading %}
+          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Value based procurement for medical technologies</h1>
+          <p class="nhsuk-body-l">Search, evaluate and choose a supplier based on good clinical outcomes.</p>
+          <p class="nhsuk-body-l">Used by NHS trusts everywhere.</p>
+          {% endblock %}
 
-        
-        {% endblock %}
-
-        
-        {% block heroActions %}
-        <div class="compass-hero__actions">
-           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
-            {{ actionLink({
-        "text": "Register with Compass today",
-        "href": "sign-up-trusts-1"
-        }) }}
+          {% block heroActions %}
+          <div class="nhsuk-u-margin-top-5">
+            <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/current/sign-in-nhs" draggable="false" role="button">
+              Log in
+            </a>
+            <p class="nhsuk-body nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-0 nice-hero__subtext">
+              or <a href="/current/sign-up-trusts-1" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">sign up your trust</a>
+            </p>
           </div>
+          {% endblock %}
+
         </div>
-        {% endblock %}
-        
       </div>
     </div>
+  </div>
+  <div class="nice-hero__image">
+    <img src="/images/compass-hero.png" alt="" role="presentation">
   </div>
 </div>
 
