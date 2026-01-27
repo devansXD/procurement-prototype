@@ -1,4 +1,123 @@
 // ==========================================================================
+// NICE-STYLE HERO
+// Hero section with diagonal edge image (like NICE website)
+// ==========================================================================
+
+$nice-hero-bg: #003087; // NHS dark blue
+
+.nice-hero {
+  position: relative;
+  background-color: $nice-hero-bg;
+  overflow: hidden;
+  min-height: 400px;
+
+  @media (min-width: 769px) {
+    min-height: 450px;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.nice-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 40px 0;
+
+  @media (min-width: 769px) {
+    width: 55%;
+    padding: 56px 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nice-hero__inner {
+  width: 100%;
+}
+
+.nice-hero__text {
+  color: #ffffff;
+
+  h1, .nhsuk-heading-xl {
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+
+  p, .nhsuk-body-l {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .nhsuk-button--reverse {
+    background-color: #ffffff;
+    color: $nice-hero-bg;
+
+    &:hover {
+      background-color: #f0f4f5;
+      color: #002266;
+    }
+
+    &:focus {
+      background-color: #ffeb3b;
+      color: #212b32;
+      box-shadow: 0 4px 0 #212b32;
+    }
+  }
+}
+
+.nice-hero__image {
+  display: none;
+
+  @media (min-width: 769px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 1;
+
+    // Diagonal edge using clip-path
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 52%;
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+// Mobile: show image below content
+@media (max-width: 768px) {
+  .nice-hero {
+    flex-direction: column;
+  }
+
+  .nice-hero__image {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 250px;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+    margin-top: -20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  }
+}
+
+// ==========================================================================
 // COMPASS HERO
 // Hero section with full-width background image
 // ==========================================================================
