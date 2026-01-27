@@ -37,7 +37,8 @@ $nice-hero-bg: #003087; // NHS dark blue
   color: #ffffff;
 
   @media (min-width: 769px) {
-    max-width: 55%;
+    max-width: 50%;
+    padding-right: 24px; // Ensure text stays clear of diagonal edge
   }
 
   h1, .nhsuk-heading-xl {
@@ -93,11 +94,11 @@ $nice-hero-bg: #003087; // NHS dark blue
     top: 0;
     right: 0;
     bottom: 0;
-    width: 50%;
+    width: 35%;
     z-index: 1;
 
     // Diagonal edge using clip-path
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
 
     img {
       width: 100%;
@@ -108,8 +109,8 @@ $nice-hero-bg: #003087; // NHS dark blue
   }
 
   @media (min-width: 1024px) {
-    width: 52%;
-    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+    width: 38%;
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
 
