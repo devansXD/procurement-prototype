@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends prototypeVersion + '/layouts/layout-signed-in.html' %}
 
 {% set pageName = "AquaSeal Foam Dressing System - Compass" %}
 {% set serviceHeader = "Compass" %}
@@ -46,12 +46,37 @@
       <strong class="nhsuk-tag nhsuk-tag--green">NHS Supply Chain approved</strong>
     </div>
 
-  </div>
+    {% from "contents-list/macro.njk" import contentsList %}
 
-  
-  
 
-  <div class="nhsuk-grid-column-one-third">
+    
+{{ contentsList({
+  items: [
+    {
+      href: "#trials",
+      text: "Trust trials",
+      current: true
+    },
+    {
+      href: "#costs",
+      text: "Cost breakdown"
+    },
+    {
+      href: "#contacts",
+      text: "Trust contacts"
+    }
+    ,
+    {
+      href: "#specs",
+      text: "Technical specifications"
+    }
+    ,
+    {
+      href: "#evidence",
+      text: "Evidence and documents"
+    }
+  ]
+}) }}
     
     {# Supplier Contact Card #}
     <div class="nhsuk-card">
@@ -98,43 +123,75 @@
             </dd>
           </div>
         </dl>
-
-        <a href="#" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" style="width: 100%;">
-          Contact supplier
-        </a>
       </div>
     </div>
+
+    {# Cost Analysis Accordion #}
+    
+    
+    <div class="nhsuk-u-margin-top-4">
+
+      {% call details({
+  summaryText: "Cost breakdown",
+  classes: "nhsuk-expander"
+}) %}
+  <table class='nhsuk-table'>
+          <thead class='nhsuk-table__head'>
+            <tr>
+              <th scope='col'>Cost component</th>
+              <th scope='col'>Typical range</th>
+            </tr>
+          </thead>
+          <tbody class='nhsuk-table__body'>
+            <tr>
+              <td>Unit cost (10x10cm)</td>
+              <td>£3.20 - £3.85</td>
+            </tr>
+            <tr>
+              <td>Unit cost (15x15cm)</td>
+              <td>£5.40 - £6.20</td>
+            </tr>
+            <tr>
+              <td>Staff training</td>
+              <td>£0 - £500 (one-time)</td>
+            </tr>
+            <tr>
+              <td>Projected savings</td>
+              <td>15-25% reduction in dressing changes</td>
+            </tr>
+          </tbody>
+        </table>
+      
+{% endcall %}
+
+    
+      
+    </div>
+
+    {# Technical Specifications Accordion #}
+    <div class="nhsuk-u-margin-top-2">
+         {% call details({
+  summaryText: "Technical specifications",
+  classes: "nhsuk-expander"
+}) %}
+        <ul class='nhsuk-list'>
+          <li><strong>Sizes:</strong> 10x10cm, 15x15cm, 20x20cm, heel, sacral</li>
+          <li><strong>Absorbency:</strong> Up to 20x weight</li>
+          <li><strong>Wear time:</strong> Up to 7 days</li>
+          <li><strong>Sterilisation:</strong> Gamma irradiated</li>
+          <li><strong>Shelf life:</strong> 5 years</li>
+          <li><strong>UKCA/CE marked:</strong> Yes</li>
+          <li><strong>Classification:</strong> Class IIa medical device</li>
+        </ul>
+        
+{% endcall %}
+    </div>
+
+    </div>
+  <div class="nhsuk-grid-column-one-third nhsuk-u-padding-left-6">
 
     {# Quick Links #}
-    <div class="nhsuk-card nhsuk-u-margin-top-4">
-      <div class="nhsuk-card__content">
-        <h3 class="nhsuk-card__heading nhsuk-heading-s">
-          On this page
-        </h3>
-        <ul class="nhsuk-list nhsuk-body-s">
-          <li><a href="#trials">NHS trust trials</a></li>
-          <li><a href="#costs">Cost breakdown</a></li>
-          <li><a href="#contacts">Contact trusts</a></li>
-          <li><a href="#specs">Technical specifications</a></li>
-          <li><a href="#evidence">Evidence & documents</a></li>
-        </ul>
-      </div>
-    </div>
-
-    {# Comparison Tool #}
-    <div class="nhsuk-card nhsuk-u-margin-top-4">
-      <div class="nhsuk-card__content">
-        <h3 class="nhsuk-card__heading nhsuk-heading-s">
-          Compare products
-        </h3>
-        <p class="nhsuk-body-s">
-          Add this product to your comparison list to evaluate it against alternatives.
-        </p>
-        <a href="#" class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" style="width: 100%;">
-          Add to comparison
-        </a>
-      </div>
-    </div>
+    
 
   </div>
 </div>
@@ -751,7 +808,7 @@
 
 
 {# ============================================ #}
-{# TOTAL COST OF OWNERSHIP (Accordion)          #}
+{# TOTAL COST OF OWNERSHIP (Full section)       #}
 {# ============================================ #}
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="costs">
   <div class="nhsuk-grid-column-full">
@@ -761,8 +818,6 @@
     <h2 class="nhsuk-heading-l">Cost information</h2>
     <p class="nhsuk-body">Costs reported by trusts using this product, beyond unit price.</p>
 
-    {% from "details/macro.njk" import details %}
-    
     {{ details({
       "text": "Total cost of ownership breakdown",
       "open": false,
@@ -1023,7 +1078,7 @@
 
 
 {# ============================================ #}
-{# TECHNICAL SPECIFICATIONS (Accordion)         #}
+{# TECHNICAL SPECIFICATIONS (Full section)      #}
 {# ============================================ #}
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="specs">
   <div class="nhsuk-grid-column-two-thirds">
@@ -1031,8 +1086,6 @@
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
     
     <h2 class="nhsuk-heading-l">Product details</h2>
-    
-    {% from "details/macro.njk" import details %}
     
     {{ details({
       "text": "Product overview",

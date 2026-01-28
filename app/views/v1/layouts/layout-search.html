@@ -15,6 +15,8 @@
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
+
+
 {{ header({
   logo: {
     href: "/",
@@ -26,41 +28,74 @@
   },
   account: {
     items: [
-     
+      {
+        text: "Kelvin Simpson (Regional Manager)",
+        icon: true
+      },
 
       {
-        text: "Log in",
-        href: "sign-in-nhs"
+        text: "Log out",
+        href: "#"
+      }
+    ]
+  },
+  navigation: {
+    items: [
+      {
+        text: "Dashboard",
+        href: "dashboard"
+      },
+      {
+        text: "",
+        href: "#"
+      },
+      {
+        text: "Find a supplier",
+        href: "search"
       }
     ]
   }
 }) }}
 
-<div class="nice-hero">
-  <div class="nice-hero__content">
-    <div class="nhsuk-width-container">
-      <div class="nice-hero__inner">
-        <div class="nice-hero__text">
-          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Value based procurement for medical technologies</h1>
+<div class="nhsuk-hero">
+  <div class="nhsuk-width-container nhsuk-hero--border">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+        <div class="nhsuk-hero__wrapper">
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-3">Supplier catalogue</h1>   
+    <div class="nhsuk-form-group">
+    <form action="search-results" method="get" novalidate="">
+          <div class="nhsuk-form-group nhsuk-u-margin-bottom-0">
+            <label class="nhsuk-label" for="q">
+              Search by supplier name, product name or product category
+            </label>
+            <input class="nhsuk-input nhsuk-input--width-20" id="q" name="q" type="search" value="">
 
-          <p class="nhsuk-body-l">Search, evaluate and choose a supplier based on good clinical outcomes.</p>
+            
 
-          <p class="nhsuk-body-l">Used by NHS trusts everywhere.</p>
 
-          <div class="nhsuk-u-margin-top-5">
-            <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/current/sign-up" draggable="false" role="button">
-              Sign up
-            </a>
-            <p class="nhsuk-body nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-0" style="color: #ffffff;">
-              or <a href="/current/sign-in" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">log in</a>
-            </p>
+
+
+  
+    
+  
+
+
+
+
+<button class="nhsuk-button nhsuk-button--reverse nhsuk-u-margin-left-2 app-button--small nhsuk-u-margin-bottom-0" data-module="nhsuk-button" type="submit" data-nhsuk-button-init="">
+  Search
+</button>
+
+
+
           </div>
+        </form>
+    </div>
         </div>
       </div>
+      
     </div>
-  </div>
-  <div class="nice-hero__image">
-    <img src="/images/compass-hero.png" alt="" role="presentation">
   </div>
 </div>
 
