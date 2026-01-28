@@ -15,55 +15,29 @@
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
-{{ header({
-  logo: {
-    href: "/",
-    ariaLabel: "Search medical product evaluations"
-  },
-  service: {
-    text: "Search medical product evaluations",
-    href: "/"
-  },
-  account: {
-    items: [
-     
-
-      {
-        text: "Log in",
-        href: "sign-in-nhs"
-      }
-    ]
-  }
-}) }}
+ {{ header({
+    service: {
+      text: serviceName,
+      href: "/"
+    }
+  }) }}
 
 <div class="nhsuk-hero">
   <div class="nhsuk-width-container nhsuk-hero--border">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-one-half nhsuk-u-one-half-tablet">
         <div class="nhsuk-hero__wrapper">
-          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Value based procurement for medical technologies</h1>
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Supplier catalogue</h1>
 
           <p>Search, evaluate and choose a supplier based on good clinical outcomes.</p>
 
-          <p class="nhsuk-body">Used by NHS trusts everywhere.</p>
+        
 
           <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
-            
-
-<a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/v2/sigin-up" draggable="false" role="button" data-nhsuk-button-init="">
- Sign up
-</a>
-
-
-
-
-            <p class="nhsuk-body nhsuk-u-margin-bottom-0">or <a href="/v2/sign-in" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">log in</a></p>
           </div>
         </div>
       </div>
-      <div class="nhsuk-grid-column-one-half nhsuk-u-one-half-tablet nhsuk-u-padding-top-6">
-        <img class="app-homepage-illustration" src="/images/compass-hero.png" alt="" role="presentation" width="100%">
-      </div>
+      
     </div>
   </div>
 </div>

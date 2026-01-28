@@ -8,18 +8,13 @@
 
 
 {% block heroActions %}
-<div class="compass-hero__actions">
-    <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
-
-
-        <a class="nhsuk-button" data-module="nhsuk-button" href="/current/sign-up-trusts-1"
-            draggable="false" role="button" data-nhsuk-button-init="">
-            Register with Compass today
-        </a>
-    
-    </div>
-
-    </p>
+<div class="nhsuk-u-margin-top-5">
+  <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/current/sign-in-nhs" draggable="false" role="button">
+    Log in
+  </a>
+  <p class="nhsuk-body nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-0 nice-hero__subtext">
+    or <a href="/current/sign-up-trusts-1" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">sign up your trust</a>
+  </p>
 </div>
 {% endblock %}
 
@@ -28,62 +23,55 @@
 
 
 <!-- NHS 10 Year Plan Context -->
-<div class="nhsuk-grid-row nhsuk-u-margin-top-7">
-    <div class="nhsuk-grid-column-one-half">
 
-
-
-        <img src="/images/hero-1.png" alt="" width="100%">
-
-        </div>
-
-         <div class="nhsuk-grid-column-one-half">
-
-
-        <h2 class="nhsuk-heading-l">Supporting the NHS 10 Year Plan</h2>
-        <p>The NHS 10 Year Plan commits to making better use of data and digital technology to improve outcomes and
-            experiences. Compass supports this vision</p>
-
-            <a class="nhsuk-button nhsuk-button--secondary" role="button" href="sign-up-trusts-1">Start using today</a>
-    
-    </div>
-</div>
 
 <!-- Key Features Cards -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7" id="how-it-works">
     <div class="nhsuk-grid-column-full">
-        <h2 class="nhsuk-heading-l">What Compass offers</h2>
+        <h2 class="nhsuk-heading-l">What this service offers</h2>
     </div>
 </div>
 
-<div class="nhsuk-grid-row nhsuk-card-group">
-    <div class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-        {{ card({
-        "heading": "Centralised evidence",
-        "headingLevel": 3,
-        "descriptionHtml": "<p>Access multiple trusted sources in one place: NICE Medtech Guidance, ODEP Accreditation,
-            DTAC Passporting, NHS Trust Evaluations, and MHRA Registration data.</p>"
-        }) }}
+<ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h5 class="nhsuk-card__heading nhsuk-heading-s">
+          <a class="nhsuk-card__link" href="#">Centralised evidence</a>
+          
+        </h5>
+        <p>Access multiple trusted sources in one place with NICE Medtech Guidance, ODEP Accreditation,
+            DTAC Passporting, NHS Trust Evaluations, and MHRA Registration data.</p>
+      </div>
+      <img src="/images/icon-1.png" alt="">
+
     </div>
 
-    <div class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-        {{ card({
-        "heading": "Real-world evaluations",
-        "headingLevel": 3,
-        "descriptionHtml": "<p>Read and share evaluations from NHS trusts using the technologies in practice, providing
-            insights beyond formal guidance.</p>"
-        }) }}
-    </div>
+  </li>
+    <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+        <div class="nhsuk-card nhsuk-card--clickable">
+        <div class="nhsuk-card__content">
+            <h5 class="nhsuk-card__heading nhsuk-heading-s">
+            <a class="nhsuk-card__link" href="#">Real-world evaluations</a>
+            
+            </h5>
+            <p>Read and share evaluations from NHS trusts that are using the products/suppliers/technologies, and get insights beyond formal guidance.</p>
+        </div>
+        </div>
+    </li>
+    <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+        <div class="nhsuk-card nhsuk-card--clickable">
+        <div class="nhsuk-card__content">
+            <h5 class="nhsuk-card__heading nhsuk-heading-s">
+            <a class="nhsuk-card__link" href="#">Peer contact facilitation</a>
+            </h5>
+            <p>Connect directly with trusts who have evaluated technologies you're considering. Learn
+            from their experience before making decisions.</p>
+        </div>
+        </div>
+    </li>
+</ul>
 
-    <div class="nhsuk-grid-column-one-third nhsuk-card-group__item">
-        {{ card({
-        "heading": "Peer contact facilitation",
-        "headingLevel": 3,
-        "descriptionHtml": "<p>Connect directly with trusts who have evaluated technologies you're considering. Learn
-            from their experience before making decisions.</p>"
-        }) }}
-    </div>
-</div>
 
 <!-- Who it's for -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
@@ -95,10 +83,9 @@
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-one-half">
         {{ card({
-        "clickable": true,
+        
         "heading": "Procurement professionals",
         "headingLevel": 3,
-        "href": "#procurement",
         "descriptionHtml": "<p>Access evidence quickly to support tendering processes, supplier evaluation, and business
             case development for medical technology purchases.</p>"
         }) }}
@@ -106,10 +93,10 @@
 
     <div class="nhsuk-grid-column-one-half">
         {{ card({
-        "clickable": true,
+        
         "heading": "Clinicians and clinical leads",
         "headingLevel": 3,
-        "href": "#clinicians",
+        
         "descriptionHtml": "<p>Review clinical evidence and real-world evaluations from other NHS trusts to inform
             technology adoption decisions in your service.</p>"
         }) }}
@@ -119,10 +106,10 @@
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-one-half">
         {{ card({
-        "clickable": true,
+        
         "heading": "Medical device evaluation teams",
         "headingLevel": 3,
-        "href": "#evaluation",
+    
         "descriptionHtml": "<p>Support your evaluation processes with centralised regulatory and clinical evidence, and
             share your findings with other NHS organisations.</p>"
         }) }}
@@ -130,10 +117,10 @@
 
     <div class="nhsuk-grid-column-one-half">
         {{ card({
-        "clickable": true,
+        
         "heading": "Innovation and transformation teams",
         "headingLevel": 3,
-        "href": "#innovation",
+        
         "descriptionHtml": "<p>Identify evidence-based innovations and assess their readiness for adoption across your
             organisation or integrated care system.</p>"
         }) }}
@@ -144,7 +131,7 @@
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7" id="data-sources">
     <div class="nhsuk-grid-column-full">
         <h2 class="nhsuk-heading-l">Trusted data sources</h2>
-        <p class="nhsuk-body-l">Compass integrates evidence from the most authoritative sources in healthcare:</p>
+        <p class="nhsuk-body-l">This service integrates evidence from the most authoritative sources in healthcare:</p>
     </div>
 </div>
 
@@ -158,7 +145,7 @@
             </svg>
             NICE Medtech Guidance
         </h3>
-        <p>Evidence-based guidance on medical technologies from the National Institute for Health and Care Excellence.
+        <p>Evidence-based guidance on medical technologies from the National Institute for Health and Care Excellence
         </p>
 
         <h3 class="nhsuk-heading-m nhsuk-u-margin-top-4">
@@ -169,7 +156,7 @@
             </svg>
             ODEP Accreditation
         </h3>
-        <p>Orthopaedic Data Evaluation Panel ratings for implants and related devices.</p>
+        <p>Orthopaedic Data Evaluation Panel ratings for implants and related devices</p>
 
         <h3 class="nhsuk-heading-m nhsuk-u-margin-top-4">
             <svg class="nhsuk-icon nhsuk-icon--tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
@@ -177,9 +164,9 @@
                 <path
                     d="M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z" />
             </svg>
-            DTAC Passporting
+            Passporting
         </h3>
-        <p>Devices Technical Advisory Committee approval status for medical devices.</p>
+        <p>Devices Technical Advisory Committee approval status for medical devices</p>
     </div>
 
     <div class="nhsuk-grid-column-one-half">
@@ -191,7 +178,7 @@
             </svg>
             NHS Trust Evaluations
         </h3>
-        <p>Real-world assessments and feedback from NHS organisations using these technologies in practice.</p>
+        <p>Real-world assessments and feedback from NHS organisations using these technologies in practice</p>
 
         <h3 class="nhsuk-heading-m nhsuk-u-margin-top-4">
             <svg class="nhsuk-icon nhsuk-icon--tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
@@ -201,25 +188,24 @@
             </svg>
             MHRA Registration Data
         </h3>
-        <p>Medicines and Healthcare products Regulatory Agency registration and compliance information.</p>
+        <p>Medicines and Healthcare products Regulatory Agency registration and compliance information</p>
     </div>
 </div>
 
 <!-- Benefits -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
     <div class="nhsuk-grid-column-full">
-        <h2 class="nhsuk-heading-l">Benefits of using Compass</h2>
+        <h2 class="nhsuk-heading-l">Benefits of using this service</h2>
 
         <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Save time</dt>
-                <dd class="nhsuk-summary-list__value">Reduce hours spent gathering evidence from multiple sources.
+                <dd class="nhsuk-summary-list__value">Reduce hours spent gathering evidence and contact information from multiple sources.
                     Access everything you need in one place.</dd>
             </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Improve consistency</dt>
-                <dd class="nhsuk-summary-list__value">Use standardised evidence presentation to ensure fair comparison
-                    and reduce variation in decision-making.</dd>
+                <dd class="nhsuk-summary-list__value">Compare standardised evidence to encourage fair, consistent decision-making.</dd>
             </div>
             <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Support collaboration</dt>

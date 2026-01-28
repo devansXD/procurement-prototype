@@ -18,49 +18,71 @@
 {{ header({
   logo: {
     href: "/",
-    ariaLabel: "Search medical product evaluations"
+    ariaLabel: "Compass"
   },
   service: {
-    text: "Search medical product evaluations",
+    text: "",
     href: "/"
   },
+
   account: {
     items: [
-     
 
       {
         text: "Log in",
         href: "sign-in-nhs"
       }
     ]
+  },
+  navigation: {
+    items: [
+      
+      {
+        text: "About this service",
+        href: "#"
+        
+      },
+      {
+        text: "Latest news",
+        href: "#"
+      },
+      {
+        text: "Data standards",
+        href: "#"
+      },
+      {
+        text: "Case studies",
+        href: "#"
+      }
+    ]
   }
 }) }}
 
-<div class="nice-hero">
-  <div class="nice-hero__content">
-    <div class="nhsuk-width-container">
-      <div class="nice-hero__inner">
-        <div class="nice-hero__text">
-          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Value based procurement for medical technologies</h1>
+<div class="nhsuk-hero">
+  <div class="nhsuk-width-container nhsuk-hero--border">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-half nhsuk-u-one-half-tablet">
+        <div class="nhsuk-hero__wrapper">
+          <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-5">Value based procurement for medical technologies</h1>
 
           <p class="nhsuk-body-l">Search, evaluate and choose a supplier based on good clinical outcomes.</p>
 
           <p class="nhsuk-body-l">Used by NHS trusts everywhere.</p>
 
-          <div class="nhsuk-u-margin-top-5">
-            <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/current/sign-up" draggable="false" role="button">
-              Sign up
-            </a>
-            <p class="nhsuk-body nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-0" style="color: #ffffff;">
-              or <a href="/current/sign-in" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">log in</a>
-            </p>
+          <div class="nhsuk-button-group nhsuk-u-margin-bottom-0">
+            
+
+<a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/v1/sign-up-trusts-1" draggable="false" role="button" data-nhsuk-button-init="">
+ Sign up
+</a>
+  <p class="nhsuk-body nhsuk-u-margin-bottom-0">or <a href="/v1/sign-in-nhs" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">log in</a></p>
           </div>
         </div>
       </div>
+      <div class="nhsuk-grid-column-one-half nhsuk-u-one-half-tablet nhsuk-u-padding-top-6">
+        <img class="app-homepage-illustration" src="/images/compass-hero.png" alt="" role="presentation" width="100%">
+      </div>
     </div>
-  </div>
-  <div class="nice-hero__image">
-    <img src="/images/compass-hero.png" alt="" role="presentation">
   </div>
 </div>
 
@@ -69,7 +91,7 @@
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
-  {% include "includes/footer.html" %}
+ {% include "includes/footer.html" %}
 {% endblock %}
 
 {% block bodyEnd %}

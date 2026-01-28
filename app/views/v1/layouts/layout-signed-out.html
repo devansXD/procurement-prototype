@@ -10,7 +10,11 @@
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.css">
 {% endblock %}
+
+
+
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
@@ -24,46 +28,39 @@
     text: "Search medical product evaluations",
     href: "/"
   },
+
   account: {
     items: [
-     
 
       {
         text: "Log in",
         href: "sign-in-nhs"
       }
     ]
+  },
+  navigation: {
+    items: [
+  
+      {
+        text: "About this service",
+        href: "#"
+        
+      },
+      {
+        text: "Latest news",
+        href: "#"
+      },
+      {
+        text: "Data standards",
+        href: "#"
+      },
+      {
+        text: "Case studies",
+        href: "#"
+      }
+    ]
   }
 }) }}
-
-<div class="nice-hero">
-  <div class="nice-hero__content">
-    <div class="nhsuk-width-container">
-      <div class="nice-hero__inner">
-        <div class="nice-hero__text">
-          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">Value based procurement for medical technologies</h1>
-
-          <p class="nhsuk-body-l">Search, evaluate and choose a supplier based on good clinical outcomes.</p>
-
-          <p class="nhsuk-body-l">Used by NHS trusts everywhere.</p>
-
-          <div class="nhsuk-u-margin-top-5">
-            <a class="nhsuk-button nhsuk-button--reverse" data-module="nhsuk-button" href="/current/sign-up" draggable="false" role="button">
-              Sign up
-            </a>
-            <p class="nhsuk-body nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-0" style="color: #ffffff;">
-              or <a href="/current/sign-in" class="nhsuk-link nhsuk-link--reverse nhsuk-u-font-weight-bold">log in</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="nice-hero__image">
-    <img src="/images/compass-hero.png" alt="" role="presentation">
-  </div>
-</div>
-
 {% endblock %}
 
 <!-- Edit the footer -->

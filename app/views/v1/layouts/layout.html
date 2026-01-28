@@ -8,58 +8,20 @@
 {% extends "prototype-kit-template.njk" %}
 
 {% block head %}
-  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scssss -->
+  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/accessible-autocomplete@2.0.4/dist/accessible-autocomplete.min.css">
+  <link rel="stylesheet" href="/stylesheets/nhsuk-frontend.min.css">
 {% endblock %}
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
- {% from 'header/macro.njk' import header %}
-
-{{ header({
-  logo: {
-    href: "/",
-    ariaLabel: "Search medical product evaluations"
-  },
-  service: {
-    text: "Search medical product evaluations",
-    href: "/"
-  },
-  account: {
-    items: [
-      {
-        text: "Kelvin Simpson (Regional Manager)",
-        icon: true
-      },
-
-      {
-        text: "Log out",
-        href: "sign-in-nhs"
-      }
-    ]
-  },
-  navigation: {
-    items: [
-      {
-        text: "Dashboard",
-        href: "dashboard"
-      },
-      {
-        text: "",
-        href: "#"
-      },
-      {
-        text: "Search",
-        href: "search"
-      }
-    ]
-  }
-}) }}
-
-
-
+  {{ header({
+    service: {
+      text: serviceName,
+      href: "/"
+    }
+  }) }}
 {% endblock %}
 
 <!-- Edit the footer -->
@@ -78,7 +40,6 @@
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
     <!-- For adding page specific JavaScript -->
-    {% block pageScripts %}
-    {% endblock %}
+    {% block pageScripts %}{% endblock %}
   {% endblock %}
 {% endblock %}
