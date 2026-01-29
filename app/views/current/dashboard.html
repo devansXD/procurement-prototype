@@ -23,25 +23,13 @@
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
   <div class="nhsuk-grid-column-two-thirds">
 
-    <span class="nhsuk-hint">Welcome back</span>
+    <span class="nhsuk-hint">Kelvin Simpson</span>
     
-  <h1 class='nhsuk-heading-l'>Share your evaluation</h1>
+  <h1 class='nhsuk-heading-l'>Welcome back</h1>
       
-  <p class="nhsuk-body nhsuk-body-l"> Help other NHS trusts make informed decisions by sharing your product evaluation. </p>
-
-<form action="quick-share-upload" method="post">
-{% include "includes/products.html" %}
-
-{% from "button/macro.njk" import button %}
+  <p class="nhsuk-body nhsuk-body-l"> How will you shape procurement in your trust today? </p>
 
 
-
-
-{{ button({
-  text: "Continue"
-}) }}
-
-</form>
 
   </div>
 </div>
@@ -49,23 +37,20 @@
 <!-- NHS 10 Year Plan Context -->
 <div class="nhsuk-grid-row nhsuk-u-margin-top-7">
   <div class="nhsuk-grid-column-full">
-    <h2 class="nhsuk-heading-m">Recent evaluations at your trust</h2>
+    
 
     <div class="nhsuk-grid-row">
   
   <div class="nhsuk-grid-column-one-half">
-    
-
-
-
 
 <div class="nhsuk-card nhsuk-card--clickable">
   <div class="nhsuk-card__content">
     <h3 class="nhsuk-card__heading">
-      Acme Ultrasound System X200
+      Search
     </h3>
-    <p><span class="nhsuk-tag nhsuk-tag--green">Evaluated</span></p>
-  <p><a href="">View or update</a></p>
+    <p>Search and compare medical products</p>
+   
+  <p><a href="search">Search now</a></p>
   
   </div>
 </div>
@@ -81,10 +66,11 @@
 <div class="nhsuk-card nhsuk-card--clickable">
   <div class="nhsuk-card__content">
     <h3 class="nhsuk-card__heading">
-        SmartPump Infusion Device Pro
+       Collaborate
     </h3>
-    <p><span class="nhsuk-tag nhsuk-tag--green">Evaluated</span></p>
-  <p><a href="">View or update</a></p>
+    <p>Share evaluations with other NHS trusts</p>
+  
+  <p><a href="quick-share-upload-multiple">Share now</a></p>
   
   </div>
 </div>

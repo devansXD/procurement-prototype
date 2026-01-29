@@ -25,23 +25,26 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
-    <h1 class="nhsuk-heading-l">Share your evaluation</h1>
+  
     
-    <p class="nhsuk-body">Upload your existing evaluation report and we'll help you share it with other trusts.</p>
+  
 
     <form action="review-evaluation" method="post" enctype="multipart/form-data">
 
       <!-- Document Upload Section -->
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            <h2 class="nhsuk-fieldset__heading">
-              Upload your evaluation document
-            </h2>
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Upload your evaluation
+            </h1>
+             
           </legend>
+
+           <p>Then, give us a few details to help other trusts find your evaluation.</p>
           
           <div class="nhsuk-hint">
-            Upload PDF, Word, or Excel files. Your document can contain evaluations for one or multiple products.
+            Formats accepted: PDF, Word, Excel.
           </div>
 
           <div class="nhsuk-form-group">
@@ -62,8 +65,8 @@
                   <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/>
                 </svg>
                 <div>
-                  <p class="nhsuk-u-margin-bottom-0"><strong>Q3-2024-Infusion-Pump-Evaluation-Report.pdf</strong></p>
-                  <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-0">2.4 MB • Uploaded just now</p>
+                  <p class="nhsuk-u-margin-bottom-0"><strong>Q3 Evaluation-Report.pdf</strong></p>
+                  <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-0">2.4 MB, uploaded just now</p>
                 </div>
                 <a href="#" class="nhsuk-link nhsuk-u-margin-left-auto">Remove</a>
               </div>
@@ -76,7 +79,7 @@
       <!-- Alternative: Link to resource -->
       <div class="nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
         <p class="nhsuk-body-s nhsuk-u-secondary-text-color" style="text-align: center;">
-          <strong>— or —</strong>
+          <strong>OR</strong>
         </p>
       </div>
 
@@ -89,7 +92,7 @@
         name: "document-link",
         type: "url",
         hint: {
-          text: "If you can't upload the document, provide a link to where it's hosted (e.g. SharePoint, trust intranet)"
+          text: "If you can't upload the document, provide a link to where it is"
         },
         attributes: {
           placeholder: "https://"

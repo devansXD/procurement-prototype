@@ -31,6 +31,8 @@
   font-weight: 600;
   min-width: 44px;
   text-align: center;
+  background-color: $color_nhsuk-white;
+  border: 1px solid $color_nhsuk-grey-4;
   
   &:hover {
     background-color: $color_nhsuk-blue;
