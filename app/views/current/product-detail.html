@@ -33,11 +33,13 @@
     
     {# Product Header #}
     <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-2">
-      AquaSeal Foam Dressing System
+      
+      HealVac NPWT System
+      
     </h1>
     
     <p class="nhsuk-body-l nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-3">
-      WoundCare Solutions Ltd
+      Advanced Woundcare Therapeutics Ltd
     </p>
 
     <div class="nhsuk-u-margin-bottom-5">
@@ -54,8 +56,8 @@
   items: [
     {
       href: "#trials",
-      text: "Trust trials",
-      current: true
+      text: "Trust trials"
+      
     },
     {
       href: "#costs",
@@ -67,7 +69,7 @@
     }
     ,
     {
-      href: "#specs",
+      href: "#tech-spec",
       text: "Technical specifications"
     }
     ,
@@ -91,7 +93,7 @@
               Company
             </dt>
             <dd class="nhsuk-summary-list__value">
-              WoundCare Solutions Ltd
+              Advanced Woundcare Therapeutics Ltd
             </dd>
           </div>
 
@@ -129,7 +131,7 @@
     {# Cost Analysis Accordion #}
     
     
-    <div class="nhsuk-u-margin-top-4">
+    <div class="nhsuk-u-margin-top-4" id="costs">
 
       {% call details({
   summaryText: "Cost breakdown",
@@ -169,7 +171,7 @@
     </div>
 
     {# Technical Specifications Accordion #}
-    <div class="nhsuk-u-margin-top-2">
+    <div class="nhsuk-u-margin-top-2" id="tech-spec">
          {% call details({
   summaryText: "Technical specifications",
   classes: "nhsuk-expander"
