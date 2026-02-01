@@ -1,172 +1,359 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /app/views/layout.html -->
+<!-- Design History Index Page -->
 {% extends 'layout-hero-histories.html' %}
-<!--
-  In /app/views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
 
-<!--
-  Use this to set the page name which will appear at the
-  start of the <title> tag, followed by the service name.
-  This is often not needed on the homepage, where only the
-  service name is needed. You can also reuse this variable
-  within the <h1>, where they are the same.
--->
-{% set pageName = "Home" %}
+{% set pageName = "Design history" %}
 
-<!-- For adding a breadcrumb or back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
 {% endblock %}
 
-
 {% block content %}
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
-    <h1>Designing the dual pathway approach for trust evaluation submission</h1>
-    
-    <p class="nhsuk-body-l">We explored how to accommodate different trust maturity levels through two distinct routes for submitting evaluations to the platform.</p>
-
-    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Last updated: 14 Jan 2026</p>
+    <p class="nhsuk-body-l">A record of design decisions and iterations on the Compass alpha prototype.</p>
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Last updated: January 2026</p>
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
-    <h2>The problem</h2>
+    <!-- ============ INFORMATION ARCHITECTURE ============ -->
+    <h2 class="nhsuk-heading-l">Information architecture</h2>
 
-    <p>During early discovery, we identified a tension in how NHS trusts approach procurement evaluations:</p>
-
-    <p>Some trusts have well-established evaluation processes and produce comprehensive assessment documents as part of their normal workflow. These trusts wanted a quick way to share existing work without duplicating effort.</p>
-
-    <p>Other trusts wanted guidance and structure—either because they were less mature in their procurement processes or because they wanted to ensure their evaluations were comprehensive and comparable.</p>
-
-    <p>A one-size-fits-all approach would either be too burdensome for trusts with existing evaluations (requiring them to re-enter data they've already documented) or too unstructured for trusts wanting guidance (leaving them without a framework).</p>
-
-    <div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p>"So there will not be any consistency (initially) across the documents that users make available to us. This might be a large clinical trial over some months, or just a one-pager showing the result of one clinician sitting down to try something out."</p>
-    </div>
-
-    <p>We needed a model that embraced this variety rather than forcing artificial standardisation that would discourage participation.</p>
-
-    <h2>Design solution</h2>
-
-    <p>We designed a dual pathway approach with two distinct routes:</p>
-
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading">Route A: Quick document upload</h3>
-            <p><strong>Purpose:</strong> Share existing evaluations quickly with minimal data entry</p>
-            <p><strong>User journey:</strong></p>
-            <ol class="nhsuk-list nhsuk-list--number">
-              <li>Upload existing evaluation document</li>
-              <li>Add basic metadata (product name, supplier, evaluation date)</li>
-              <li>Answer 4 quick questions about the evaluation</li>
-              <li>Optionally provide contact details for peer discussions</li>
-            </ol>
-            <p><strong>Time to complete:</strong> 5-10 minutes</p>
-            <p><strong>Best for:</strong> Trusts with existing evaluation processes who want to share findings and access others' work without restructuring their current approach</p>
-          </div>
-        </div>
-      </div>
-      <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading">Route B: Structured assessment</h3>
-            <p><strong>Purpose:</strong> Comprehensive product evaluation using a standardised framework</p>
-            <p><strong>User journey:</strong></p>
-            <ol class="nhsuk-list nhsuk-list--number">
-              <li>Select product and begin structured evaluation</li>
-              <li>Complete assessment sections (clinical value, safety, integration, sustainability)</li>
-              <li>Add supporting evidence and documentation</li>
-              <li>Review and submit</li>
-            </ol>
-            <p><strong>Time to complete:</strong> 30-45 minutes</p>
-            <p><strong>Best for:</strong> Trusts wanting to conduct thorough evaluations using a standardised framework, or those seeking detailed product comparisons</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3>Key design decisions</h3>
-
-    <h4>Both routes feed the same repository</h4>
-    <p>Regardless of which pathway trusts choose, all product intelligence feeds into a single shared repository. Route A users benefit from Route B's structured data, and Route B users can access Route A's shared documents.</p>
-
-    <h4>Route A captures essential metadata without burden</h4>
-    <p>Rather than asking trusts to re-enter information already in their documents, we ask four focused questions:</p>
+    <h3 class="nhsuk-heading-m">Designing search for four modes of information seeking</h3>
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Based on Donna Spencer's framework</p>
+    
+    <h4 class="nhsuk-heading-s">The problem</h4>
+    <p>Our original search page only had a data sources card and failed to support the different ways NHS procurement users seek information. Some users know exactly what they want, others are exploring options, some don't know what questions to ask, and others are trying to find something they've seen before.</p>
+    
+    <h4 class="nhsuk-heading-s">Design solution</h4>
+    <p>We restructured the search page to support all four information-seeking modes:</p>
     <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>What type of evaluation was this? (clinical trial, pilot, usage report, quick review)</li>
-      <li>Did you procure this product? (yes, no, under review)</li>
-      <li>Brief description of your evaluation process (optional, 300 characters)</li>
-      <li>Are you willing to be contacted by other trusts?</li>
+      <li><strong>Known-item seeking:</strong> Prominent search box with manufacturer/product/GMDN support, plus 'Recently searched across NHS' quick links</li>
+      <li><strong>Exploratory seeking:</strong> Six category cards showing product counts AND trust evaluation counts as social proof</li>
+      <li><strong>Don't know what you need to know:</strong> Educational cards ('What makes good evidence?', 'Questions to ask other trusts', 'Value-based procurement explained')</li>
+      <li><strong>Re-finding:</strong> 'Your recent activity' section showing recently viewed products and saved comparisons when signed in</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">Key insight</h4>
+    <p>Procurement users often think they're doing known-item search ('I need product X') but actually need exploratory support ('what are trusts finding works?') or guidance ('what evidence should I even care about?'). The page now supports all paths without forcing users to self-identify.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+    <h3 class="nhsuk-heading-m">Category results page for exploratory users</h3>
+    
+    <h4 class="nhsuk-heading-s">The problem</h4>
+    <p>When users selected a category to explore (e.g. 'Wound care'), we needed a results page that supported discovery rather than just listing products.</p>
+    
+    <h4 class="nhsuk-heading-s">Design solution</h4>
+    <p>We designed the category results page with:</p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><strong>Category-level stats:</strong> '183 products from 47 suppliers · 56 NHS trust evaluations · 23 trusts available to contact'</li>
+      <li><strong>Filters that teach:</strong> Product types, evidence types, and peer availability help users learn the domain as they narrow down</li>
+      <li><strong>Default sort by 'Most trusts using':</strong> Social proof first for discovery-oriented users</li>
+      <li><strong>Peer contact indicator:</strong> '5 trusts willing to discuss lessons learned' on each product card</li>
+      <li><strong>Comparison checkboxes:</strong> Sticky selection bar appears when products selected</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">Rationale</h4>
+    <p>Exploratory users' needs change as they discover. The page supports the journey from 'what's out there?' through filtering, scanning trust adoption, to selecting products for comparison.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ PRODUCT PAGES ============ -->
+    <h2 class="nhsuk-heading-l">Product pages</h2>
+
+    <h3 class="nhsuk-heading-m">Leading with trust adoption visibility</h3>
+    
+    <h4 class="nhsuk-heading-s">The problem</h4>
+    <p>User research revealed NHS procurement professionals rely heavily on informal personal networks to discover what other trusts are procuring. Our initial product page design followed a conventional pattern: supplier branding and marketing content at the top, trust evaluations buried lower as supporting content. This didn't reflect how users actually make decisions.</p>
+    
+    <h4 class="nhsuk-heading-s">Design solution</h4>
+    <p>We restructured product pages to prioritise peer intelligence:</p>
+    <ol class="nhsuk-list nhsuk-list--number">
+      <li><strong>Trust adoption section moved to hero position:</strong> '12 NHS trusts have evaluated this product' with outcomes (9 procured, 2 under review, 1 excluded)</li>
+      <li><strong>Featured contact cards:</strong> 'Sarah is happy to discuss: implementation, clinical outcomes, supplier experience'</li>
+      <li><strong>'How they evaluated' sections:</strong> Shows process, business case approach, and decision factors</li>
+      <li><strong>Evaluation type badges:</strong> Clinical trial, pilot study, usage report, quick review</li>
+      <li><strong>Technical details collapsed:</strong> Specifications and cost analysis in expandable accordions</li>
+    </ol>
+    
+    <h4 class="nhsuk-heading-s">What we removed</h4>
+    <p><strong>Star rating reviews section:</strong> User research showed users prefer talking to people over reading reviews. The evaluation cards with contacts serve this need better.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+    <h3 class="nhsuk-heading-m">Iterating based on user feedback</h3>
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Wound care product page iteration</p>
+    
+    <h4 class="nhsuk-heading-s">User feedback</h4>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>'The first thing I would see is a chart across all these responses and then click on it if I want more information'</li>
+      <li>'Charts summarising the information based on the areas and people I know'</li>
+      <li>'It would be useful to click on these Trusts'</li>
+      <li>'Maybe a breakdown of the total cost of ownership would be helpful'</li>
+      <li>'Trial is better than evaluation'</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">Design changes</h4>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><strong>Charts first:</strong> Three clickable summary charts immediately after product header (trial outcomes donut, regional bar chart, contacts ring)</li>
+      <li><strong>Charts by region:</strong> Regional breakdown with clickable cards for North West, London, Midlands, South East</li>
+      <li><strong>Clickable trusts:</strong> Every trust card is now a full clickable link to a trust detail page</li>
+      <li><strong>Total cost of ownership breakdown:</strong> New section with cost table and projected annual savings by trust size</li>
+      <li><strong>'Trial' terminology:</strong> Changed 'evaluation' to 'trial' throughout (e.g. '18 NHS trusts have trialled this product')</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">Retained from previous design</h4>
+    <p>Supplier contact card in sidebar, technical specs in accordion, cost details in accordion, contact details in cards with discussion topics.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ USER RESEARCH FINDINGS ============ -->
+    <h2 class="nhsuk-heading-l">User research findings</h2>
+
+    <h3 class="nhsuk-heading-m">Key insights from procurement research</h3>
+    
+    <h4 class="nhsuk-heading-s">What users told us</h4>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Nearly all users want to know what other Trusts are procuring and using, but their current mechanism is ad-hoc and based on informal personal networks</li>
+      <li>Users want to know not just about the product itself, but how another Trust did the evaluation, made a business case, and what factors they considered important</li>
+      <li>The value is not primarily about saving time/avoiding trials, but about building confidence that a product is a viable option</li>
+      <li>Most of what we heard was about the 'shortlisting' stage of procurement</li>
+      <li>Users would always prefer to talk to someone in another Trust than to rely on written information alone</li>
+      <li>Nearly no users thought there would be any issue with sharing their evaluations</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">Implications for design</h4>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><strong>Trust adoption as hero:</strong> Make 'which trusts are using this' the first thing users see</li>
+      <li><strong>Peer contact facilitation:</strong> Enable and encourage trust-to-trust contact</li>
+      <li><strong>'Lessons learned' framing:</strong> Frame contact around lessons learned rather than technical information</li>
+      <li><strong>Show discussion topics:</strong> Increase likelihood of peer contact by showing what each person will discuss</li>
     </ul>
 
-    <h4>Discussion topics help peer matching</h4>
-    <p>If users consent to contact, we ask what topics they're comfortable discussing (implementation, clinical outcomes, supplier experience). This helps other trusts identify the right person to contact for their specific questions.</p>
+    <hr class="nhsuk-section-break nhsuk-section-break--m">
 
-    <h4>Multi-product evaluations supported</h4>
-    <p>Recognising that trusts often evaluate multiple products in comparative assessments, we designed Route A to handle one document linked to multiple product evaluations—avoiding the need to upload the same PDF repeatedly.</p>
-
-    <h3>Visual design</h3>
-
-    <p>The pathway selection screen uses clear iconography and time estimates to help users self-select:</p>
-
+    <h3 class="nhsuk-heading-m">Final iteration gaps identified</h3>
+    
+    <h4 class="nhsuk-heading-s">Gaps to address</h4>
     <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Route A shown with a document upload icon and "5-10 minutes"</li>
-      <li>Route B shown with a structured form icon and "30-45 minutes"</li>
-      <li>Guidance text explains who each route is best suited for</li>
-      <li>Users can switch between routes if they change their mind</li>
+      <li><strong>Value for money dimensions:</strong> Procurement measures value against social value, total product life, clinical results, patient outcomes — not just price</li>
+      <li><strong>Safety prominence for clinicians:</strong> Clinical staff prioritise safety and co-production more than procurement staff</li>
+      <li><strong>Support for interpreting information:</strong> Teams are often unable to understand what data means without explanation</li>
+      <li><strong>Trust capacity context:</strong> Show 500 vs 200 beds to help users assess relevance to their situation</li>
     </ul>
 
-    <h2>How it tested</h2>
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
-    <p>We tested the dual pathway concept with procurement professionals across different trust sizes and maturity levels:</p>
+    <!-- ============ TESTING STRATEGY ============ -->
+    <h2 class="nhsuk-heading-l">Testing strategy</h2>
 
+    <h3 class="nhsuk-heading-m">Critical assumptions to validate</h3>
+
+    <h4 class="nhsuk-heading-s">Assumption 1: Users will actually contact peers</h4>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Why critical</dt>
+        <dd class="nhsuk-summary-list__value">Core value proposition depends on peer contact happening. If users won't contact, the service fails.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Success criteria</dt>
+        <dd class="nhsuk-summary-list__value">75% must say they would use peer contact feature</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">If wrong</dt>
+        <dd class="nhsuk-summary-list__value">Major pivot needed — service may not be viable</dd>
+      </div>
+    </dl>
+
+    <h4 class="nhsuk-heading-s">Assumption 2: Trust adoption visibility builds confidence</h4>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Why critical</dt>
+        <dd class="nhsuk-summary-list__value">Showing '8 trusts using this' should create confidence for shortlisting decisions.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Success criteria</dt>
+        <dd class="nhsuk-summary-list__value">Users cite trust adoption as confidence factor in testing</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">If wrong</dt>
+        <dd class="nhsuk-summary-list__value">Rethink value proposition — may need different confidence signals</dd>
+      </div>
+    </dl>
+
+    <h4 class="nhsuk-heading-s">Assumption 3: Users accept evaluation variety</h4>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Why critical</dt>
+        <dd class="nhsuk-summary-list__value">Evidence ranges from clinical trials to quick desk reviews. If users demand standardisation, the passporting model won't work.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Success criteria</dt>
+        <dd class="nhsuk-summary-list__value">Users find variety acceptable if context is clear</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">If wrong</dt>
+        <dd class="nhsuk-summary-list__value">Route B (structured assessment) becomes mandatory</dd>
+      </div>
+    </dl>
+
+    <h4 class="nhsuk-heading-s">Assumption 4: 'How they evaluated' metadata helps</h4>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Why critical</dt>
+        <dd class="nhsuk-summary-list__value">Users wanted to understand how trusts conducted evaluations.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Success criteria</dt>
+        <dd class="nhsuk-summary-list__value">Users reference process information when explaining relevance</dd>
+      </div>
+    </dl>
+
+    <h4 class="nhsuk-heading-s">Assumption 5: Discussion topics increase contact likelihood</h4>
+    <dl class="nhsuk-summary-list">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Why critical</dt>
+        <dd class="nhsuk-summary-list__value">We ask trusts to specify what they'll discuss in Route A.</dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Success criteria</dt>
+        <dd class="nhsuk-summary-list__value">75% say topics make them more likely to contact</dd>
+      </div>
+    </dl>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ SERVICE DESIGN ============ -->
+    <h2 class="nhsuk-heading-l">Service design</h2>
+
+    <h3 class="nhsuk-heading-m">Dual pathway approach for evaluation submission</h3>
+    
+    <h4 class="nhsuk-heading-s">The problem</h4>
+    <p>We identified a tension in how NHS trusts approach evaluations. Some have well-established processes and produce comprehensive documents; they want to share existing work without duplicating effort. Others want guidance and structure. A one-size-fits-all approach would be too burdensome for mature trusts or too unstructured for others.</p>
+    
+    <h4 class="nhsuk-heading-s">Design solution</h4>
+    <p>We designed a dual pathway approach:</p>
+
+    <div class="nhsuk-card nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-card__content">
+        <h5 class="nhsuk-card__heading">Route A: Quick document upload</h5>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>Upload existing evaluation document</li>
+          <li>Add basic metadata (product name, supplier, evaluation date)</li>
+          <li>Answer 4 quick questions about the evaluation</li>
+          <li>Optionally provide contact details for peer discussions</li>
+        </ul>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Time to complete: 5–10 minutes</p>
+      </div>
+    </div>
+
+    <div class="nhsuk-card nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-card__content">
+        <h5 class="nhsuk-card__heading">Route B: Structured assessment</h5>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>Select product and begin structured evaluation</li>
+          <li>Complete assessment sections (clinical value, safety, integration, sustainability)</li>
+          <li>Add supporting evidence and documentation</li>
+        </ul>
+        <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Time to complete: 30–45 minutes</p>
+      </div>
+    </div>
+    
+    <h4 class="nhsuk-heading-s">Key design decisions</h4>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><strong>Both routes feed the same repository:</strong> Route A users benefit from Route B's structured data, and vice versa</li>
+      <li><strong>Route A captures essential metadata without burden:</strong> Evaluation type, procurement outcome, brief process description, contact willingness</li>
+      <li><strong>Discussion topics help peer matching:</strong> If users consent to contact, we ask what topics they're comfortable discussing</li>
+      <li><strong>Multi-product evaluations supported:</strong> One document can link to multiple product evaluations</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">How it tested</h4>
     <ul class="nhsuk-list nhsuk-list--bullet">
       <li>Users intuitively understood the difference between routes and could self-select appropriately</li>
-      <li>Trusts with existing evaluation documents appreciated Route A's minimal burden: "I've already done the work—I just want to share it"</li>
-      <li>Users liked that Route A still captured key metadata: "This asks the right questions without being onerous"</li>
-      <li>The discussion topics feature was well-received: "This means people won't just contact me about anything—they'll know what I can help with"</li>
+      <li>Trusts with existing documents appreciated Route A's minimal burden</li>
+      <li>The discussion topics feature was well-received: 'People won't just contact me about anything — they'll know what I can help with'</li>
       <li>Some users said they might start with Route A for speed, then return to complete Route B for important products</li>
-      <li>The convergence into a single repository was important: "I don't want to have to check two different places"</li>
     </ul>
-
-    <div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p><strong>Questions and concerns raised:</strong></p>
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>How do we ensure Route A evaluations are high enough quality to be useful? (We decided trust-level curation was preferable to platform-level gatekeeping)</li>
-        <li>Will Route B completion rates suffer if Route A is available? (To be monitored in beta)</li>
-        <li>Should we prompt Route A users to consider Route B for products they care most about? (Potentially, but not initially)</li>
-      </ul>
-    </div>
-
-    <h2>Next steps</h2>
-
-    <p>Based on testing, we will:</p>
-
-    <ol class="nhsuk-list nhsuk-list--number">
-      <li>Proceed with the dual pathway model for alpha</li>
-      <li>Monitor usage patterns to understand the split between routes</li>
-      <li>Iterate on Route A's metadata questions based on what proves most useful for peer matching</li>
-      <li>Develop guidance materials for Route B to support trusts new to structured evaluation</li>
-      <li>Test whether users successfully navigate between routes and whether the "meeting users where they are" principle translates to actual adoption</li>
-    </ol>
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
-    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
-      <strong>Tags:</strong> User research, Service design, NHS trusts, Evaluation submission, Dual pathway, Alpha testing
-    </p>
+    <!-- ============ VISUAL DESIGN ============ -->
+    <h2 class="nhsuk-heading-l">Visual design</h2>
+
+    <h3 class="nhsuk-heading-m">Badge system for evaluation metadata</h3>
+    
+    <h4 class="nhsuk-heading-s">Purpose</h4>
+    <p>Badges provide at-a-glance context for evaluations without requiring users to open documents. They help users quickly assess relevance and quality.</p>
+    
+    <h4 class="nhsuk-heading-s">Badge categories</h4>
+    
+    <p><strong>Procurement outcomes:</strong></p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><span class="nhsuk-tag nhsuk-tag--green">Procured</span> — Positive outcome</li>
+      <li><span class="nhsuk-tag nhsuk-tag--grey">Under review</span> — Pending decision</li>
+      <li><span class="nhsuk-tag nhsuk-tag--yellow">Excluded</span> — Not proceeding (with reason)</li>
+    </ul>
+
+    <p><strong>Evaluation types:</strong></p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><span class="nhsuk-tag nhsuk-tag--blue">Clinical trial</span> — Rigorous formal trial</li>
+      <li><span class="nhsuk-tag nhsuk-tag--blue">Pilot study</span> — Focused testing</li>
+      <li><span class="nhsuk-tag nhsuk-tag--blue">Usage report</span> — Real-world tracking</li>
+      <li><span class="nhsuk-tag nhsuk-tag--blue">Quick review</span> — Desk review/supplier meeting</li>
+    </ul>
+
+    <p><strong>Trust types:</strong></p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><span class="nhsuk-tag nhsuk-tag--grey">Teaching hospital</span></li>
+      <li><span class="nhsuk-tag nhsuk-tag--grey">Specialist trust</span></li>
+      <li><span class="nhsuk-tag nhsuk-tag--grey">District hospital</span></li>
+    </ul>
+
+    <p><strong>Trusted sources:</strong></p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><span class="nhsuk-tag nhsuk-tag--purple">NHS Supply Chain</span></li>
+      <li><span class="nhsuk-tag nhsuk-tag--purple">GIRFT</span></li>
+      <li><span class="nhsuk-tag nhsuk-tag--purple">ODEP</span></li>
+    </ul>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--m">
+
+    <h3 class="nhsuk-heading-m">Icon design for landing page</h3>
+    
+    <h4 class="nhsuk-heading-s">Icons created</h4>
+    <p>Custom SVG icons designed for three key value proposition cards:</p>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li><strong>Centralised evidence:</strong> Document with connecting nodes</li>
+      <li><strong>Real world evaluations:</strong> Clipboard with checkmark and hospital cross</li>
+      <li><strong>Peer contact facilitation:</strong> Two people with connecting speech elements</li>
+    </ul>
+    
+    <h4 class="nhsuk-heading-s">Design specifications</h4>
+    <ul class="nhsuk-list nhsuk-list--bullet">
+      <li>Colour: NHS Blue (#005eb8)</li>
+      <li>Stroke weight: 2px</li>
+      <li>Size: 48×48 pixels</li>
+      <li>Style: Consistent with NHS Design System aesthetics</li>
+    </ul>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ SUMMARY ============ -->
+    <h2 class="nhsuk-heading-l">Summary of design principles</h2>
+
+    <ol class="nhsuk-list nhsuk-list--number">
+      <li><strong>Lead with peer intelligence, not supplier marketing:</strong> Trust adoption and peer contacts should be the first things users see</li>
+      <li><strong>Enable conversations, not just documents:</strong> Users prefer talking to people over reading; facilitate that</li>
+      <li><strong>Embrace evaluation variety:</strong> Don't force standardisation; show context so users can judge relevance</li>
+      <li><strong>Support multiple information-seeking modes:</strong> Known-item, exploratory, learning, and re-finding</li>
+      <li><strong>Meet users where they are:</strong> Dual pathways accommodate different trust maturity levels</li>
+      <li><strong>Show honest information:</strong> Including excluded products builds platform credibility</li>
+    </ol>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l">
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Document prepared: January 2026</p>
+
   </div>
 </div>
 {% endblock %}
