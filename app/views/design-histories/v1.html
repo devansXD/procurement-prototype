@@ -17,7 +17,7 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "Home" %}
+{% set pageName = "Design history 2" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
@@ -31,11 +31,11 @@
   <div class="nhsuk-grid-column-two-thirds">
 
   
-    <h1>Leading with trust adoption visibility on product pages</h1>
+    <h1 class="nhsuk-heading-xl">Peer to peer engagement</h1>
     
-    <p class="nhsuk-body-l">We structured product pages to prioritise peer to peer information over supplier marketing content, making trust adoption the most critical aspect.</p>
+    <p class="nhsuk-body-l">We structured product pages to prioritise peer to peer information, making trust adoption the most critical aspect.</p>
 
-    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Last updated: January 2026</p>
+      <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Date: December 2025 | Phase: Alpha Sprint 2</p>
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
@@ -45,66 +45,115 @@
 
     <p>Our initial product page design followed a conventional pattern: supplier branding and marketing content at the top, technical specifications prominent, and trust evaluations buried lower in the page as supporting content. This didn't reflect how users actually make procurement decisions.</p>
 
-    <p>Key research findings that drove this change:</p>
+    
 
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Nearly all users expressed that knowing what other trusts are procuring is crucial information for their shortlisting decisions</li>
-      <li>Users want to build confidence in their procurement by learning what has worked for other trusts—not just product performance, but how the trust evaluated it, made a business case, and what factors they considered important</li>
-      <li>Some users said they would always prefer to talk to someone at another trust than rely on written information alone</li>
-      <li>The value isn't necessarily about saving time or avoiding trials, but about building confidence that a product is a viable option for their trust</li>
-    </ul>
+  
+        
 
-    <h2>Design solution</h2>
+            <h2 class="nhsuk-heading-m">Key Insights</h2>
+
+            <h3 class="nhsuk-heading-m">Peer intelligence is valued but currently ad-hoc</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Nearly all users want to know what other Trusts are procuring and using</li>
+                <li>Current mechanisms are ad-hoc and based on informal personal networks</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Users want context beyond product performance</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Users want to understand not just how well a product was evaluated, but how the evaluation was conducted</li>
+                <li>Interest in how other Trusts built business cases and what factors they considered important</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Value is about confidence, not time-saving</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>The primary value isn't avoiding trials or saving time</li>
+                <li>It's about building confidence that a product is a viable option for their Trust</li>
+                <li>Most feedback relates to the shortlisting stage where users consider which products and suppliers to explore further</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Willingness to share</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Nearly no users saw any issue with sharing their procurement evaluations with other Trusts</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Preference for conversation</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Some users said they would always prefer talking to someone at another Trust over relying on written information alone</li>
+            </ul>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+            <h2 class="nhsuk-heading-l">User Needs</h2>
+
+            <h3 class="nhsuk-heading-m">1. Building procurement confidence through peer learning</h3>
+            <p class="nhsuk-body">Users need to learn what has worked for other Trusts. The information required varies by Trust, product category and individual, but broadly includes:</p>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>How has the product worked for the Trust, and what issues did they find</li>
+                <li>How has the supplier worked for the Trust, and what issues did they find</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">2. Knowing who to contact</h3>
+            <p class="nhsuk-body">Users need to identify which Trusts to talk to and find contact details for people in those Trusts:</p>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Whether another Trust has procured or is using a product is key information for choosing who to contact</li>
+                <li>Users will also judge how helpful a Trust might be based on their own knowledge</li>
+            </ul>
+
+            <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+            <h2 class="nhsuk-heading-l">Service Vision</h2>
+
+            <h3 class="nhsuk-heading-m">Core functionality</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Show which Trusts are using and procuring which medtech</li>
+                <li>Enable users to contact people in those Trusts</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Evaluation visibility</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Show a broad range of evaluation types from Trusts, associated with products</li>
+                <li>This might include large clinical trials over several months, or a simple one-pager from a clinician trying something out</li>
+                <li>There will not be consistency (initially) across documents users make available</li>
+                <li>We could explore showing key information alongside evaluations (e.g. did the Trust end up procuring or excluding this product)</li>
+                <li>This contextual information could be gathered by asking users a few questions when they share a document</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Trusted sources beyond Trusts</h3>
+            <p class="nhsuk-body">Some evaluations may come from other trusted bodies our users rely on:</p>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>NHS Supply Chain</li>
+                <li>NHS-led initiatives like GIRFT</li>
+                <li>External NHS-adjacent partners like ODEP</li>
+                <li>Any body using clinicians to evaluate devices that our users trust</li>
+            </ul>
+
+            <h3 class="nhsuk-heading-m">Informal feedback (potential)</h3>
+            <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>Potentially show user feedback not captured in formal documents (e.g. "I had supply chain issues with this supplier")</li>
+                <li>Star ratings may not be the right design choice – this needs further exploration</li>
+            </ul>
+
+
+   
+
+    <h2 class="nhsuk-heading-l">Design solution</h2>
 
     <p>We fundamentally structured the product page hierarchy to lead with peer information.</p>
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading">Previous structure</h3>
-            <ol class="nhsuk-list nhsuk-list--number">
-              <li>Product name and supplier branding</li>
-              <li>Product overview and marketing content</li>
-              <li>Technical specifications (expanded)</li>
-              <li>Clinical outcomes</li>
-              <li>Trust evaluations (buried at position 5+)</li>
-            </ol>
-          </div>
-        </div>
+           <img class="nhsuk-u-margin-bottom-5" src="https://placehold.co/500x400" alt="">
       </div>
       <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading">Revised structure</h3>
-            <ol class="nhsuk-list nhsuk-list--number">
-              <li>Product name and essential identifiers</li>
-              
-              <li><strong>NHS trusts using this product (new hero section)</strong></li>
-              <li>Evaluation cards with peer contact options</li>
-              <li>Technical specifications (collapsed)</li>
-              <li>Clinical outcomes (collapsed)</li>
-            </ol>
-          </div>
-        </div>
+           <img class="nhsuk-u-margin-bottom-5 nhsuk-u-margin-left-2" src="https://placehold.co/500x400" alt="">
       </div>
     </div>
 
-    <h3>The trust adoption section</h3>
-
-    <p>The new hero section prominently displays:</p>
-
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Total trust count: "XX NHS trusts have evaluated this product"</li>
-      <li>Procurement outcomes breakdown: "9 procured | 2 under review | 1 excluded"</li>
-      <li>Expandable list of all trusts organised by outcome</li>
-      <li>Most recent evaluation date to indicate currency</li>
-    </ul>
+    
 
     <h3>Featured contact cards</h3>
 
-    <p>Each trust evaluation now includes a contact card showing:</p>
-
+  
     <ul class="nhsuk-list nhsuk-list--bullet">
       <li>Named contact willing to discuss the evaluation</li>
       <li>Their role and trust</li>
@@ -114,7 +163,7 @@
 
     <h3>Embracing evaluation variety</h3>
 
-    <p>Rather than forcing standardisation, we embraced the reality that evaluations range from formal clinical trials to quick desk reviews. Each evaluation card now displays:</p>
+    <p>Each evaluation card now displays:</p>
 
     <ul class="nhsuk-list nhsuk-list--bullet">
       <li>Evaluation type badge: <strong class="nhsuk-tag nhsuk-tag--blue">Clinical trial</strong> <strong class="nhsuk-tag nhsuk-tag--blue">Pilot study</strong> <strong class="nhsuk-tag nhsuk-tag--blue">Usage report</strong> <strong class="nhsuk-tag nhsuk-tag--blue">Quick review</strong></li>
@@ -129,42 +178,11 @@
 
     <h2>How it tested</h2>
 
-    <p>We tested the restructured product pages with NHS procurement professionals and clinical leads:</p>
+    <p>User research here</p>
 
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>All participants immediately noticed and engaged with the trust adoption section—it was the first thing they looked at after the product name</li>
-      <li>Users described feeling more confident about shortlisting when they could see "8 trusts are using this"</li>
-      <li>The evaluation type badges helped users quickly identify which evaluations were most relevant to their situation ("I'd want to talk to another teaching hospital")</li>
-      <li>Featured contact cards generated strong positive reactions; users said they would "definitely" use the contact option</li>
-      <li>The "how they evaluated" section addressed a previously unmet need—users wanted to understand not just outcomes but methodology</li>
-      <li>Including excluded evaluations with context was praised for transparency: "This is honest—I trust it more because you're showing me the ones that didn't work too"</li>
-    </ul>
+    
 
-    <div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p><strong>Concerns raised during testing:</strong></p>
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>Some users questioned whether contacts would actually respond (to be tested in live service)</li>
-        <li>A few users wanted more filtering options to find similar trusts more quickly</li>
-      </ul>
-    </div>
-
-    <h2>Next steps</h2>
-
-    <p>Based on testing, we will:</p>
-
-    <ol class="nhsuk-list nhsuk-list--number">
-      <li>Proceed with trust adoption visibility as the primary value proposition for product pages</li>
-      <li>Add filtering by trust type and evaluation type to help users find relevant peers faster</li>
-      <li>Test the contact facilitation flow in the next round to validate that users will actually initiate peer conversations when given the option</li>
-      <li>Explore whether trusts would prefer direct contact or a facilitated introduction through Compass</li>
-    </ol>
-
-    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
-      <strong>Tags:</strong> User research, Product design, Peer intelligence, NHS trusts, Alpha testing
-    </p>
+    
 
   </div>
 </div>

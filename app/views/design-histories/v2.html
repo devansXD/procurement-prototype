@@ -17,7 +17,7 @@
   service name is needed. You can also reuse this variable
   within the <h1>, where they are the same.
 -->
-{% set pageName = "Home" %}
+{% set pageName = "Design history 3" %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
@@ -30,40 +30,28 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
-    <h1>Designing the dual pathway approach for trust evaluation submission</h1>
+    <h1>Onboarding flow and homepage iterations</h1>
     
-    <p class="nhsuk-body-l">We explored how to accommodate different trust maturity levels through two distinct routes for submitting evaluations to the platform.</p>
+    <p class="nhsuk-body-l">We explored how we could accommodate submitting evaluations to the platform.</p>
 
-    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Last updated: 14 Jan 2026</p>
+     <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Date: January 2026 | Phase: Alpha Sprint 3</p>
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
     <h2>The problem</h2>
 
-    <p>During early discovery, we identified a tension in how NHS trusts approach procurement evaluations:</p>
 
-    <p>Some trusts have well-established evaluation processes and produce comprehensive assessment documents as part of their normal workflow. These trusts wanted a quick way to share existing work without duplicating effort.</p>
+    <p>We explored a simple flow which would enable procurement professionals to submit their own evaluations. This would potentially save time
+    for trusts looking to share their experiences with products, and help populate the platform with more peer-to-peer intelligence.</p>
+    </p>
 
-    <p>Other trusts wanted guidance and structure—either because they were less mature in their procurement processes or because they wanted to ensure their evaluations were comprehensive and comparable.</p>
-
-    <p>A one-size-fits-all approach would either be too burdensome for trusts with existing evaluations (requiring them to re-enter data they've already documented) or too unstructured for trusts wanting guidance (leaving them without a framework).</p>
-
-    <div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p>"So there will not be any consistency (initially) across the documents that users make available to us. This might be a large clinical trial over some months, or just a one-pager showing the result of one clinician sitting down to try something out."</p>
-    </div>
-
-    <p>We needed a model that embraced this variety rather than forcing artificial standardisation that would discourage participation.</p>
-
-    <h2>Design solution</h2>
-
-    <p>We designed a dual pathway approach with two distinct routes:</p>
+    
 
     <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading">Route A: Quick document upload</h3>
+      <div class="nhsuk-grid-column-two-thirds">
+
+        
+            <h3 class="nhsuk-heading-s">Quick document upload</h3>
             <p><strong>Purpose:</strong> Share existing evaluations quickly with minimal data entry</p>
             <p><strong>User journey:</strong></p>
             <ol class="nhsuk-list nhsuk-list--number">
@@ -72,33 +60,18 @@
               <li>Answer 4 quick questions about the evaluation</li>
               <li>Optionally provide contact details for peer discussions</li>
             </ol>
-            <p><strong>Time to complete:</strong> 5-10 minutes</p>
-            <p><strong>Best for:</strong> Trusts with existing evaluation processes who want to share findings and access others' work without restructuring their current approach</p>
+          
+            <p><strong>Potential needs met:</strong> Trusts with existing evaluation processes who want to share findings and access others' work without restructuring their current approach</p>
+
+              <img class="nhsuk-u-margin-bottom-5" src="https://placehold.co/600x400" alt="">
           </div>
-        </div>
-      </div>
-      <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading">Route B: Structured assessment</h3>
-            <p><strong>Purpose:</strong> Comprehensive product evaluation using a standardised framework</p>
-            <p><strong>User journey:</strong></p>
-            <ol class="nhsuk-list nhsuk-list--number">
-              <li>Select product and begin structured evaluation</li>
-              <li>Complete assessment sections (clinical value, safety, integration, sustainability)</li>
-              <li>Add supporting evidence and documentation</li>
-              <li>Review and submit</li>
-            </ol>
-            <p><strong>Time to complete:</strong> 30-45 minutes</p>
-            <p><strong>Best for:</strong> Trusts wanting to conduct thorough evaluations using a standardised framework, or those seeking detailed product comparisons</p>
-          </div>
-        </div>
-      </div>
+        
+      
     </div>
 
     <h3>Key design decisions</h3>
 
-    <h4>Both routes feed the same repository</h4>
+  
     <p>Regardless of which pathway trusts choose, all product intelligence feeds into a single shared repository. Route A users benefit from Route B's structured data, and Route B users can access Route A's shared documents.</p>
 
     <h4>Route A captures essential metadata without burden</h4>
@@ -118,55 +91,26 @@
 
     <h3>Visual design</h3>
 
-    <p>The pathway selection screen uses clear iconography and time estimates to help users self-select:</p>
-
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Route A shown with a document upload icon and "5-10 minutes"</li>
-      <li>Route B shown with a structured form icon and "30-45 minutes"</li>
-      <li>Guidance text explains who each route is best suited for</li>
-      <li>Users can switch between routes if they change their mind</li>
-    </ul>
+    
 
     <h2>How it tested</h2>
 
-    <p>We tested the dual pathway concept with procurement professionals across different trust sizes and maturity levels:</p>
+    <p>Summary:</p>
 
     <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Users intuitively understood the difference between routes and could self-select appropriately</li>
-      <li>Trusts with existing evaluation documents appreciated Route A's minimal burden: "I've already done the work—I just want to share it"</li>
-      <li>Users liked that Route A still captured key metadata: "This asks the right questions without being onerous"</li>
-      <li>The discussion topics feature was well-received: "This means people won't just contact me about anything—they'll know what I can help with"</li>
-      <li>Some users said they might start with Route A for speed, then return to complete Route B for important products</li>
-      <li>The convergence into a single repository was important: "I don't want to have to check two different places"</li>
+      <li>Key finding </li>
+       <li>Key finding </li>
+        <li>Key finding </li>
+        <li>Key finding</li>
     </ul>
 
-    <div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p><strong>Questions and concerns raised:</strong></p>
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>How do we ensure Route A evaluations are high enough quality to be useful? (We decided trust-level curation was preferable to platform-level gatekeeping)</li>
-        <li>Will Route B completion rates suffer if Route A is available? (To be monitored in beta)</li>
-        <li>Should we prompt Route A users to consider Route B for products they care most about? (Potentially, but not initially)</li>
-      </ul>
-    </div>
+  
 
-    <h2>Next steps</h2>
+  
 
-    <p>Based on testing, we will:</p>
+  
 
-    <ol class="nhsuk-list nhsuk-list--number">
-      <li>Proceed with the dual pathway model for alpha</li>
-      <li>Monitor usage patterns to understand the split between routes</li>
-      <li>Iterate on Route A's metadata questions based on what proves most useful for peer matching</li>
-      <li>Develop guidance materials for Route B to support trusts new to structured evaluation</li>
-      <li>Test whether users successfully navigate between routes and whether the "meeting users where they are" principle translates to actual adoption</li>
-    </ol>
-
-    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
-      <strong>Tags:</strong> User research, Service design, NHS trusts, Evaluation submission, Dual pathway, Alpha testing
-    </p>
+  
   </div>
 </div>
 {% endblock %}
