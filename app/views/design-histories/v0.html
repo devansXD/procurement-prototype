@@ -14,9 +14,20 @@
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
-    <h2>Situation</h2>
 
-    <p>The platform was conceived as a central digital repository to enable NHS trusts to make faster, more consistent, and evidence-based procurement decisions for medical technologies.</p>
+    <p>DHSC conducted a comprehensive discovery phase in March 2025, researching directly with NHS users and producing personas, journey maps and system maps.</p>
+    
+    <p>The recommendations from the discovery were:</p>
+    <ol>
+        <li>Develop a product value information service to address unmet information needs</li>
+        <li>Improve sharing of data between Trusts, currently via informal information sharing networks</li>
+        <li>Improve standards of procurement commercial literacy and ensure teams have correct skills</li>
+        <li>Create standards for evidence provided by suppliers, and improve data collection from Trusts</li>
+    </ol>
+    
+    <p>This Alpha phase was kicked off to address recommendation 1. We pivoted to include 2 as well. 3 and 4 have been spun up into separate teams.</p>
+
+    
 
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden">Information: </span>
@@ -48,39 +59,12 @@
       </div>
     </dl>
 
-    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+  
 
-    <h2>Scope for the intial alpha:</h2>
+  
 
-    <h3>Less risky assumptions</h3>
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Approved body evaluations (e.g. NICE Medtech Guidance)</li>
-      <li>External evaluations/accreditations (e.g. ODEP)</li>
-      <li>Passporting functionality (e.g. DTAC)</li>
-      <li>Trust-level evaluations of medtech</li>
-      <li>Link to PIM (Product Information Management system)</li>
-      <li>All medtech registered with MHRA – community and secondary care</li>
-      <li>Side-by-side comparison across a range of metrics</li>
-      <li>Data presented in a user-friendly and intuitive UI</li>
-      <li>Data aligned with VBP (Value-Based Procurement) domains</li>
-    </ul>
+    
 
-    <h3>Riskier assumptions</h3>
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Trust reviews, opinions, or ratings</li>
-      <li>Supplier-submitted information</li>
-      <li>Volume data showing usage across NHS</li>
-      <li>Markers for SMEs and UK-manufactured products</li>
-    </ul>
-
-    <h3>Possibly out of scope for now</h3>
-    <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Price data (explicitly excluded)</li>
-      <li>Non-evaluative data belonging in PIM</li>
-      <li>PAQ forms (centralised in PIM)</li>
-      <li>Public access - only key users</li>
-      <li>Evidence validation (Compass centralises, does not validate)</li>
-    </ul>
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
@@ -121,10 +105,7 @@
       </tbody>
     </table>
 
-    <div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden">Information: </span>
-      <p><strong>Strategic position:</strong> Compass would be the missing "product intelligence layer" – complementary to existing platforms, not competing with them.</p>
-    </div>
+    
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
@@ -166,13 +147,13 @@
 
     <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
 
-    <h2>Initial prototype features</h2>
+    <h2>Initial prototype</h2>
 
     <p>The first prototype (built sprint 1) demonstrated how we would test some our initial assumptions:</p>
 
     <h3>1. Product comparison interface</h3>
     <ul class="nhsuk-list nhsuk-list--bullet">
-      <li>Search and browse MHRA-registered products</li>
+      <li>Search and browse registered products</li>
       <li>Product cards showing regulatory status (NICE, ODEP, DTAC)</li>
       <li>Select up to 3 products for side-by-side comparison</li>
       <li>Links to PIM for technical specifications</li>
@@ -210,10 +191,7 @@
           <td class="nhsuk-table__cell">No price data displayed</td>
           <td class="nhsuk-table__cell">Forces focus on clinical value; price negotiated separately in tenders</td>
         </tr>
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">VBP scores 0-10 scale</td>
-          <td class="nhsuk-table__cell">Simple comparison metric; assumption that evidence can be meaningfully scored</td>
-        </tr>
+        
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell">Maximum 3 products compared</td>
           <td class="nhsuk-table__cell">Keeps interface manageable; reflects typical shortlisting behaviour</td>
@@ -223,8 +201,8 @@
           <td class="nhsuk-table__cell">Avoids duplicating technical specs; positions Compass as evidence layer</td>
         </tr>
         <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">NHS Design System styling</td>
-          <td class="nhsuk-table__cell">Establishes credibility; consistency with other NHS tools</td>
+          <td class="nhsuk-table__cell">NHS Design System usage</td>
+          <td class="nhsuk-table__cell">Establishes credibility with NHS professionals</td>
         </tr>
       </tbody>
     </table>
@@ -235,7 +213,7 @@
 
     <h2>What we didn't know yet</h2>
 
-    <p>These questions remained open, to be answered through user research:</p>
+  
 
     <ul class="nhsuk-list nhsuk-list--bullet">
       <li>How do procurement teams actually build confidence in product decisions?</li>
@@ -246,15 +224,7 @@
       <li>How do clinicians' needs differ from procurement professionals?</li>
     </ul>
 
-    <div class="nhsuk-warning-callout">
-      <h3 class="nhsuk-warning-callout__label">
-        <span role="text">
-          <span class="nhsuk-u-visually-hidden">Important: </span>
-          Key unknown
-        </span>
-      </h3>
-      <p>We had not yet validated whether users wanted to <strong>read documents</strong> or <strong>talk to peers</strong>. This would prove to be a critical finding that reshaped the entire service direction.</p>
-    </div>
+  
 
   
 
