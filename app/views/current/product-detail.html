@@ -76,7 +76,12 @@
     {
       href: "#evidence",
       text: "Evidence and documents"
+    },
+      {
+      href: "#contact",
+      text: "Evaluation contact"
     }
+
   ]
 }) }}
     
@@ -190,10 +195,37 @@
     </div>
 
     </div>
-  <div class="nhsuk-grid-column-one-third nhsuk-u-padding-left-6">
-
-    {# Quick Links #}
+  <div class="nhsuk-grid-column-one-third">
     
+ 
+
+    
+    <div class="nhsuk-u-margin-top-4" id="evidence">
+
+        <h3 class="nhsuk-card__heading nhsuk-heading-s">
+          Related resources
+        </h3>
+        
+        <ul class="nhsuk-list">
+          <li>
+            <a href="#">Product brochure (PDF)</a>
+          </li>
+          
+         
+          <li>
+            <a href="#">Clinical trial publication</a>
+          </li>
+          <li>
+            <a href="#">Safety data sheet</a>
+          </li>
+          <li>
+            <a href="#">Training materials</a>
+          </li>
+        </ul>
+      
+    </div>
+
+  
 
   </div>
 </div>
@@ -202,17 +234,15 @@
 {# NHS TRUST TRIALS - CHARTS FIRST             #}
 {# ============================================ #}
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="trials">
-  <div class="nhsuk-grid-column-full">
-    
+  <div class="nhsuk-grid-column-two-thirds">
+
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
-    
+
     <h2 class="nhsuk-heading-l">NHS trust trials at a glance</h2>
     <p class="nhsuk-body-l nhsuk-u-margin-bottom-5">18 NHS trusts have trialled this product. Click any section for details.</p>
 
-    <div class="nhsuk-grid-row">
-      
       {# Outcome chart #}
-      <div class="nhsuk-grid-column-one-third">
+      <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card nhsuk-card--clickable" style="text-align: center; cursor: pointer;" onclick="document.getElementById('trial-list').scrollIntoView({behavior: 'smooth'});">
           <div class="nhsuk-card__content">
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">Trial outcomes</h3>
@@ -248,8 +278,8 @@
       </div>
 
       {# Regional chart #}
-      <div class="nhsuk-grid-column-one-third">
-        <div class="nhsuk-card nhsuk-card--clickable" style="text-align: center; cursor: pointer;" onclick="document.getElementById('regional-breakdown').scrollIntoView({behavior: 'smooth'});">
+      <div class="nhsuk-u-margin-bottom-4">
+        <div class="nhsuk-card nhsuk-card--clickable" style="text-align: center; cursor: pointer;" onclick="document.getElementById('trial-list').scrollIntoView({behavior: 'smooth'});">
           <div class="nhsuk-card__content">
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">By NHS region</h3>
             
@@ -303,7 +333,7 @@
       </div>
 
       {# Trust type chart #}
-      <div class="nhsuk-grid-column-one-third">
+      <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card nhsuk-card--clickable" style="text-align: center; cursor: pointer;" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'});">
           <div class="nhsuk-card__content">
             <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">Willing to discuss</h3>
@@ -336,7 +366,6 @@
         </div>
       </div>
 
-    </div>
   </div>
 </div>
 
@@ -345,8 +374,8 @@
 {# DETAILED TRIAL LIST                          #}
 {# ============================================ #}
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="trial-list">
-  <div class="nhsuk-grid-column-full">
-    
+  <div class="nhsuk-grid-column-two-thirds">
+
     <h2 class="nhsuk-heading-l">Individual trust trials</h2>
     <p class="nhsuk-body">Click on any trust to see their full trial report and contact details.</p>
 
@@ -359,10 +388,9 @@
     </div>
 
     {# Trial cards - new format #}
-    <div class="nhsuk-grid-row">
-      
+
       {# Trust 1 - Manchester #}
-      <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-u-margin-bottom-4" id="contacts">
         <div class="nhsuk-card">
           <div class="nhsuk-card__content">
             
@@ -424,7 +452,7 @@
       </div>
 
       {# Trust 2 - Guy's and St Thomas' #}
-      <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card">
           <div class="nhsuk-card__content">
             
@@ -486,7 +514,7 @@
       </div>
 
       {# Trust 3 - Birmingham #}
-      <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card">
           <div class="nhsuk-card__content">
             
@@ -548,7 +576,7 @@
       </div>
 
       {# Trust 4 - Leeds (Under review) #}
-      <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card">
           <div class="nhsuk-card__content">
             
@@ -601,12 +629,6 @@
         </div>
       </div>
 
-   
-
-    
-
-    </div>
-
     <p class="nhsuk-body">
       <a href="#" class="nhsuk-link">Show all 18 trust trials →</a>
     </p>
@@ -656,6 +678,32 @@
       </li>
     </ul>
 
+  </div>
+</div>
+
+
+ {# Contact Information Card #}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    {% from "card/macro.njk" import card %}
+
+{% set cardDescriptionHtml %}
+  <ul>
+    <li>you disagree with with something on this page</li>
+    <li>you have a query about something on this page</li>
+    <li>you would like to amend something on this page</li>
+    
+  </ul>
+  <p>In all instances, contact the team on 0330 2234 776 or email: <a href="">enquiries@dhsc.gov.uk</a></p>
+{% endset %}
+
+<div id="contact">
+{{ card({
+  type: "non-urgent",
+  heading: "You can contact us if:",
+  descriptionHtml: cardDescriptionHtml
+}) }}
+</div>
   </div>
 </div>
 
