@@ -43,7 +43,7 @@
     </p>
 
     <div class="nhsuk-u-margin-bottom-5">
-      <strong class="nhsuk-tag nhsuk-tag--white">UK Made</strong>
+      <strong class="nhsuk-tag nhsuk-tag--white">UK manufactured</strong>
       <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
       <strong class="nhsuk-tag nhsuk-tag--green">NHS Supply Chain approved</strong>
     </div>
@@ -55,31 +55,31 @@
 {{ contentsList({
   items: [
     {
-      href: "#trials",
-      text: "Trust trials"
+      href: "#costs",
+      text: "Cost breakdown"
       
     },
     {
-      href: "#costs",
-      text: "Cost breakdown"
-    },
-    {
-      href: "#contacts",
-      text: "Trust contacts"
-    }
-    ,
-    {
       href: "#tech-spec",
       text: "Technical specifications"
+    },
+    {
+      href: "#experience",
+      text: "Trust experience overview"
     }
     ,
     {
-      href: "#evidence",
-      text: "Evidence and documents"
+      href: "#information",
+      text: "Information shared by NHS organisations"
+    }
+    ,
+    {
+      href: "#documentation",
+      text: "Documentation"
     },
       {
       href: "#contact",
-      text: "Evaluation contact"
+      text: "Contact us"
     }
 
   ]
@@ -107,7 +107,7 @@
               Type
             </dt>
             <dd class="nhsuk-summary-list__value">
-              SME, UK Manufacturer
+              SME, UK manufacturer
             </dd>
           </div>
 
@@ -200,7 +200,7 @@
  
 
     
-    <div class="nhsuk-u-margin-top-4" id="evidence">
+    <div class="nhsuk-u-margin-top-4" id="documentation">
 
         <h3 class="nhsuk-card__heading nhsuk-heading-s">
           Related resources
@@ -212,9 +212,7 @@
           </li>
           
          
-          <li>
-            <a href="#">Clinical trial publication</a>
-          </li>
+          
           <li>
             <a href="#">Safety data sheet</a>
           </li>
@@ -231,21 +229,21 @@
 </div>
 
 {# ============================================ #}
-{# NHS TRUST TRIALS - CHARTS FIRST             #}
+{# NHS TRUST EXPERIENCE - CHARTS FIRST             #}
 {# ============================================ #}
-<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="trials">
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="experience">
   <div class="nhsuk-grid-column-two-thirds">
 
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
 
-    <h2 class="nhsuk-heading-l">NHS trust trials at a glance</h2>
-    <p class="nhsuk-body-l nhsuk-u-margin-bottom-5">18 NHS trusts have trialled this product. Click any section for details.</p>
+    <h2 class="nhsuk-heading-l">NHS trust experience at a glance</h2>
+    <p class="nhsuk-body-l nhsuk-u-margin-bottom-5">18 NHS trusts have experience with this product. Click any section for details.</p>
 
       {# Outcome chart #}
       <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card nhsuk-card--clickable" style="text-align: center; cursor: pointer;" onclick="document.getElementById('trial-list').scrollIntoView({behavior: 'smooth'});">
           <div class="nhsuk-card__content">
-            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">Trial outcomes</h3>
+            <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-3">Procurement decisions</h3>
             
             {# Simple donut chart using CSS #}
             <div style="position: relative; width: 140px; height: 140px; margin: 0 auto 16px auto;">
@@ -262,7 +260,7 @@
               </svg>
               <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
                 <span style="font-size: 24px; font-weight: 700; color: #212b32;">18</span><br>
-                <span style="font-size: 12px; color: #4c6272;">trials</span>
+                <span style="font-size: 12px; color: #4c6272;">trusts</span>
               </div>
             </div>
             
@@ -371,34 +369,34 @@
 
 
 {# ============================================ #}
-{# DETAILED TRIAL LIST                          #}
+{# DETAILED INFO LIST                          #}
 {# ============================================ #}
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="trial-list">
   <div class="nhsuk-grid-column-two-thirds">
 
-    <h2 class="nhsuk-heading-l">Individual trust trials</h2>
-    <p class="nhsuk-body">Click on any trust to see their full trial report and contact details.</p>
+    <h2 class="nhsuk-heading-l">Information shared by NHS organisations</h2>
+    <p class="nhsuk-body">12 NHS organisations have shared information. The documents shared may include full clinical trials, pilot studies, business cases or quick desk reviews. Contact details are included for those willing to discuss their experience.</p>
 
     {# Filter tabs #}
     <div class="nhsuk-u-margin-bottom-4">
-      <strong class="nhsuk-tag nhsuk-tag--green" style="cursor: pointer;">All (18)</strong>
-      <strong class="nhsuk-tag nhsuk-tag--white" style="cursor: pointer; margin-left: 8px;">Procured (13)</strong>
-      <strong class="nhsuk-tag nhsuk-tag--white" style="cursor: pointer; margin-left: 8px;">Under review (3)</strong>
-      <strong class="nhsuk-tag nhsuk-tag--white" style="cursor: pointer; margin-left: 8px;">Not procured (2)</strong>
+      <strong class="nhsuk-tag nhsuk-tag--white" style="cursor: pointer;">All (12)</strong>
+      <strong class="nhsuk-tag nhsuk-tag--green" style="cursor: pointer; margin-left: 8px;">Procured (7)</strong>
+      <strong class="nhsuk-tag nhsuk-tag--blue" style="cursor: pointer; margin-left: 8px;">Under review (3)</strong>
+      <strong class="nhsuk-tag nhsuk-tag--yellow" style="cursor: pointer; margin-left: 8px;">Not procured (2)</strong>
     </div>
 
     {# Trial cards - new format #}
 
       {# Trust 1 - Manchester #}
-      <div class="nhsuk-u-margin-bottom-4" id="contacts">
+      <div class="nhsuk-u-margin-bottom-4">
         <div class="nhsuk-card">
           <div class="nhsuk-card__content">
             
             {# Tags row #}
             <div class="nhsuk-u-margin-bottom-3">
               <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Clinical trial</strong>
-              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Clinical trial</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
             
             {# Trust name #}
@@ -409,11 +407,11 @@
             {# Summary list #}
             <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Document type</dt>
                 <dd class="nhsuk-summary-list__value">12-week clinical trial</dd>
               </div>
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dt class="nhsuk-summary-list__key">Document period</dt>
                 <dd class="nhsuk-summary-list__value">January 2024 - March 2024</dd>
               </div>
               <div class="nhsuk-summary-list__row">
@@ -459,8 +457,8 @@
             {# Tags row #}
             <div class="nhsuk-u-margin-bottom-3">
               <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Comparative study</strong>
-              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Comparative study</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
             
             {# Trust name #}
@@ -471,11 +469,11 @@
             {# Summary list #}
             <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Document type</dt>
                 <dd class="nhsuk-summary-list__value">8-week comparative study</dd>
               </div>
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dt class="nhsuk-summary-list__key">Document period</dt>
                 <dd class="nhsuk-summary-list__value">November 2023 - January 2024</dd>
               </div>
               <div class="nhsuk-summary-list__row">
@@ -521,8 +519,8 @@
             {# Tags row #}
             <div class="nhsuk-u-margin-bottom-3">
               <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Pilot study</strong>
-              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Pilot study</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
             
             {# Trust name #}
@@ -533,11 +531,11 @@
             {# Summary list #}
             <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Document type</dt>
                 <dd class="nhsuk-summary-list__value">6-month pilot study</dd>
               </div>
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dt class="nhsuk-summary-list__key">Document period</dt>
                 <dd class="nhsuk-summary-list__value">March 2023 - August 2023</dd>
               </div>
               <div class="nhsuk-summary-list__row">
@@ -583,8 +581,8 @@
             {# Tags row #}
             <div class="nhsuk-u-margin-bottom-3">
               <strong class="nhsuk-tag nhsuk-tag--blue">Under review</strong>
-              <strong class="nhsuk-tag nhsuk-tag--blue" style="margin-left: 4px;">Pilot in progress</strong>
-              <strong class="nhsuk-tag nhsuk-tag--grey" style="margin-left: 4px;">Teaching hospital</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Pilot in progress</strong>
+              <strong class="nhsuk-tag nhsuk-tag--white" style="margin-left: 4px;">Teaching hospital</strong>
             </div>
             
             {# Trust name #}
@@ -595,11 +593,11 @@
             {# Summary list #}
             <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-3">
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key" style="width: 40%;">Trial type</dt>
+                <dt class="nhsuk-summary-list__key" style="width: 40%;">Document type</dt>
                 <dd class="nhsuk-summary-list__value">8-week pilot</dd>
               </div>
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Trial period</dt>
+                <dt class="nhsuk-summary-list__key">Document period</dt>
                 <dd class="nhsuk-summary-list__value">December 2024 - February 2025</dd>
               </div>
               <div class="nhsuk-summary-list__row">
@@ -630,7 +628,7 @@
       </div>
 
     <p class="nhsuk-body">
-      <a href="#" class="nhsuk-link">Show all 18 trust trials →</a>
+      <a href="#" class="nhsuk-link">Show all NHS organisations →</a>
     </p>
 
   </div>
@@ -642,14 +640,14 @@
 
 
 {# ============================================ #}
-{# EVIDENCE AND DOCUMENTATION                   #}
+{# OTHER DOCUMENTATION                   #}
 {# ============================================ #}
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="evidence">
   <div class="nhsuk-grid-column-two-thirds">
     
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
     
-    <h2 class="nhsuk-heading-l">Evidence and documentation</h2>
+    <h2 class="nhsuk-heading-l">Other documentation</h2>
     
     <ul class="nhsuk-list">
       <li class="nhsuk-u-margin-bottom-3">
@@ -670,11 +668,7 @@
         </a>
         <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">External link · Peer-reviewed publication</span>
       </li>
-      <li class="nhsuk-u-margin-bottom-3">
-        <a href="#" class="nhsuk-link">
-          <strong>NHS Supply Chain product assessment</strong>
-        </a>
-        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 1.1MB · NHS Supply Chain</span>
+     
       </li>
     </ul>
 
@@ -689,9 +683,9 @@
 
 {% set cardDescriptionHtml %}
   <ul>
-    <li>you disagree with with something on this page</li>
-    <li>you have a query about something on this page</li>
-    <li>you would like to amend something on this page</li>
+    <li>disagree with with something on this page</li>
+    <li>have a query about something on this page</li>
+    <li>would like to amend something on this page</li>
     
   </ul>
   <p>In all instances, contact the team on 0330 2234 776 or email: <a href="">enquiries@dhsc.gov.uk</a></p>
@@ -700,7 +694,7 @@
 <div id="contact">
 {{ card({
   type: "non-urgent",
-  heading: "You can contact us if:",
+  heading: "You can contact us if you:",
   descriptionHtml: cardDescriptionHtml
 }) }}
 </div>
