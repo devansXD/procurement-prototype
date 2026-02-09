@@ -44,7 +44,41 @@
       <strong class="nhsuk-tag nhsuk-tag--green">Clinical trial available</strong>
     </div>
 
-      {# Supplier Information #}
+
+    {{ contentsList({
+  items: [
+    {
+      href: "#trials",
+      text: "Trust trials"
+      
+    },
+    {
+      href: "#costs",
+      text: "Cost breakdown"
+    },
+    {
+      href: "#contacts",
+      text: "Trust contacts"
+    }
+    ,
+    {
+      href: "#tech-spec",
+      text: "Technical specifications"
+    }
+    ,
+    {
+      href: "#evidence",
+      text: "Evidence and documents"
+    },
+        {
+      href: "#contact",
+      text: "Evaluation contact"
+    }
+
+  ]
+}) }}
+
+      {# Supplier Information Card #}
     <div class="nhsuk-card">
       <div class="nhsuk-card__content">
         <h3 class="nhsuk-card__heading nhsuk-heading-s">
@@ -204,7 +238,7 @@
 
     {# Technical Specifications - Collapsed by default #}
 
-    <details class="nhsuk-details nhsuk-expander">
+    <details class="nhsuk-details nhsuk-expander" id="tech-spec">
   <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text">
      View technical specifications
@@ -373,7 +407,7 @@
 
     {# Cost Analysis - Collapsed by default #}
 
-    <details class="nhsuk-details nhsuk-expander">
+    <details class="nhsuk-details nhsuk-expander" id="costs">
   <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text">
       View cost analysis
@@ -453,7 +487,7 @@
 
     {# Quick Links #}
     <div class="nhsuk-u-margin-top-4">
-    
+
         <h3 class="nhsuk-card__heading nhsuk-heading-s">
           Related resources
         </h3>
@@ -485,7 +519,7 @@
 {# Trust Evaluations Section - ENHANCED #}
 <div class="nhsuk-grid-row nhsuk-u-margin-top-8">
   <div class="nhsuk-grid-column-two-thirds">
-    <h2 class="nhsuk-heading-l">Evaluations from NHS trusts</h2>
+    <h2 class="nhsuk-heading-l" id="trials">Evaluations from NHS trusts</h2>
     <p class="nhsuk-body">
       This product has been evaluated by 12 NHS trusts. These evaluations range from full clinical trials to pilot studies to quick desk reviews. Contact details are provided below for trusts who have agreed to share their experience.
     </p>
@@ -496,7 +530,7 @@
   <div class="nhsuk-grid-column-two-thirds">
     
     {# Trust Evaluation 1 - Barts Health NHS Trust (Business case) #}
-    <div class="nhsuk-card">
+    <div class="nhsuk-card" id="contacts">
       <div class="nhsuk-card__content">
         <div class="nhsuk-u-margin-bottom-3">
           <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
@@ -760,9 +794,74 @@
             Kerris is happy to discuss staff training and supplier experience
           </p>
         </div>
+
       </div>
     </div>
 
+  </div>
+</div>
+{# ============================================ #}
+{# EVIDENCE AND DOCUMENTATION                   #}
+{# ============================================ #}
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="evidence">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
+
+    <h2 class="nhsuk-heading-l">Evidence and documentation</h2>
+
+    <ul class="nhsuk-list">
+      <li class="nhsuk-u-margin-bottom-3">
+        <a href="#" class="nhsuk-link">
+          <strong>Instructions for use (IFU)</strong>
+        </a>
+        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 2.3MB · Supplier provided</span>
+      </li>
+      <li class="nhsuk-u-margin-bottom-3">
+        <a href="#" class="nhsuk-link">
+          <strong>Clinical evidence summary</strong>
+        </a>
+        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 890KB · Supplier provided</span>
+      </li>
+      <li class="nhsuk-u-margin-bottom-3">
+        <a href="#" class="nhsuk-link">
+          <strong>British Medical Journal - Clinical trial 2024</strong>
+        </a>
+        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">External link · Peer-reviewed publication</span>
+      </li>
+      <li class="nhsuk-u-margin-bottom-3">
+        <a href="#" class="nhsuk-link">
+          <strong>Safety data sheet</strong>
+        </a>
+        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 1.1MB · Supplier provided</span>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+{# Contact Information Card #}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    {% from "card/macro.njk" import card %}
+
+{% set cardDescriptionHtml %}
+  <ul>
+    <li>you disagree with with something on this page</li>
+    <li>you have a query about something on this page</li>
+    <li>you would like to amend something on this page</li>
+    
+  </ul>
+  <p>In all instances, contact the team on 0330 2234 776 or email: <a href="">enquiries@dhsc.gov.uk</a></p>
+{% endset %}
+
+<div id="contact">
+{{ card({
+  type: "non-urgent",
+  heading: "You can contact us if:",
+  descriptionHtml: cardDescriptionHtml
+}) }}
+</div>
   </div>
 </div>
 
