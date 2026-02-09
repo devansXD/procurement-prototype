@@ -39,7 +39,7 @@
     </p>
 
     <div class="nhsuk-u-margin-bottom-5">
-      <strong class="nhsuk-tag nhsuk-tag--white">UK made</strong>
+      <strong class="nhsuk-tag nhsuk-tag--white">UK manufactured</strong>
       <strong class="nhsuk-tag nhsuk-tag--white">SME</strong>
       <strong class="nhsuk-tag nhsuk-tag--white">Clinical trial available</strong>
     </div>
@@ -48,32 +48,30 @@
     {{ contentsList({
   items: [
     {
-      href: "#trials",
-      text: "Trust trials"
+      href: "#tech-spec",
+      text: "Technical specifications"
       
     },
     {
       href: "#costs",
-      text: "Cost breakdown"
+      text: "Cost analysis"
     },
     {
-      href: "#contacts",
-      text: "Trust contacts"
+      href: "#information",
+      text: "Information shared by NHS organisations"
     }
     ,
     {
-      href: "#tech-spec",
-      text: "Technical specifications"
+      href: "#documentation",
+      text: "Other documentation"
     }
     ,
     {
-      href: "#evidence",
-      text: "Evidence and documents"
-    },
-        {
       href: "#contact",
-      text: "Evaluation contact"
+      text: "Contact us"
     }
+       
+    
 
   ]
 }) }}
@@ -125,18 +123,18 @@
     <div class="nhsuk-card nhsuk-card--feature nhsuk-u-margin-bottom-6">
       <div class="nhsuk-card__content">
         <h2 class="nhsuk-card__heading nhsuk-heading-m">
-         <strong>12 NHS trusts</strong> have evaluated this product
+         <strong>12 NHS trusts</strong> have experience with this product
         </h2>
         <p class="nhsuk-body">
           <strong class="nhsuk-tag nhsuk-tag--green">Procured: 9 trusts</strong>
-          <strong class="nhsuk-tag nhsuk-tag--grey">Under review: 2 trusts</strong>
+          <strong class="nhsuk-tag nhsuk-tag--blue">Under review: 2 trusts</strong>
           <strong class="nhsuk-tag nhsuk-tag--yellow">Excluded: 1 trust</strong>
         </p>
         
         <details class="nhsuk-details nhsuk-u-margin-top-3">
           <summary class="nhsuk-details__summary">
             <span class="nhsuk-details__summary-text">
-              View all trusts that evaluated this product
+              View all trusts that have experience with this product
             </span>
           </summary>
           <div class="nhsuk-details__text">
@@ -494,10 +492,6 @@
             <a href="#">Product brochure (PDF)</a>
           </li>
           
-         
-          <li>
-            <a href="#">Clinical trial publication</a>
-          </li>
           <li>
             <a href="#">Safety data sheet</a>
           </li>
@@ -515,10 +509,10 @@
 
 {# Trust Evaluations Section - ENHANCED #}
 <div class="nhsuk-grid-row nhsuk-u-margin-top-8">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-two-thirds" id="information">
     <h2 class="nhsuk-heading-l">Information shared by NHS organisations</h2>
     <p class="nhsuk-body">
-      This product has been evaluated by 12 NHS organisations. The documents shared may include full clinical trials, pilot studies, business cases or quick desk reviews. Contact details are included for those willing to discuss their experience.
+      12 NHS organisations have shared information about this product.  Documents shared may include full clinical trials, pilot studies, business cases or quick desk reviews. Contact details are included for those willing to discuss their experience.
     </p>
   </div>
 </div>
@@ -527,7 +521,7 @@
   <div class="nhsuk-grid-column-two-thirds">
     
     {# Trust Evaluation 1 - Barts Health NHS Trust (Business case) #}
-    <div class="nhsuk-card" id="contacts">
+    <div class="nhsuk-card">
       <div class="nhsuk-card__content">
         <div class="nhsuk-u-margin-bottom-3">
           <strong class="nhsuk-tag nhsuk-tag--green">Procured</strong>
@@ -586,7 +580,7 @@
           </p>
           
           <p class="nhsuk-body nhsuk-u-secondary-text-color">
-            Tess is happy to discuss implementation, staff training, and clinical outcomes.
+            Tess is happy to discuss implementation, staff training and clinical outcomes.
           </p>
         </div>
       </div>
@@ -798,14 +792,14 @@
   </div>
 </div>
 {# ============================================ #}
-{# EVIDENCE AND DOCUMENTATION                   #}
+{# OTHER DOCUMENTATION                   #}
 {# ============================================ #}
-<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="evidence">
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="documentation">
   <div class="nhsuk-grid-column-two-thirds">
 
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
 
-    <h2 class="nhsuk-heading-l">Evidence and documentation</h2>
+    <h2 class="nhsuk-heading-l">Other documentation</h2>
 
     <ul class="nhsuk-list">
       <li class="nhsuk-u-margin-bottom-3">
@@ -826,12 +820,7 @@
         </a>
         <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">External link · Peer-reviewed publication</span>
       </li>
-      <li class="nhsuk-u-margin-bottom-3">
-        <a href="#" class="nhsuk-link">
-          <strong>Safety data sheet</strong>
-        </a>
-        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 1.1MB · Supplier provided</span>
-      </li>
+      
     </ul>
 
   </div>
@@ -844,18 +833,18 @@
 
 {% set cardDescriptionHtml %}
   <ul>
-    <li>you disagree with with something on this page</li>
-    <li>you have a query about something on this page</li>
-    <li>you would like to amend something on this page</li>
+    <li>disagree with with something on this page</li>
+    <li>have a query about something on this page</li>
+    <li>would like to amend something on this page</li>
     
   </ul>
-  <p>In all instances, contact the team on 0330 2234 776 or email: <a href="">enquiries@dhsc.gov.uk</a></p>
+  <p>Contact the team on 0330 2234 776 or email: <a href="">enquiries@dhsc.gov.uk</a></p>
 {% endset %}
 
 <div id="contact">
 {{ card({
   type: "non-urgent",
-  heading: "You can contact us if:",
+  heading: "You can contact us if you:",
   descriptionHtml: cardDescriptionHtml
 }) }}
 </div>
