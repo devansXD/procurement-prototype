@@ -45,6 +45,7 @@
     </div>
 
 
+    {% from "contents-list/macro.njk" import contentsList %}
     {{ contentsList({
   items: [
     {
@@ -184,14 +185,7 @@
       </p>
       
       <dl class="nhsuk-summary-list">
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Customer service rating
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <strong>4.5/5</strong> (9 trusts responded)
-          </dd>
-        </div>
+        
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -220,14 +214,7 @@
           </dd>
         </div>
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Common feedback
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            "Very responsive to configuration issues", "Good post-sale support", "Helpful with Wi-Fi setup"
-          </dd>
-        </div>
+      
       </dl>
     </div>
 
@@ -789,42 +776,84 @@
       </div>
     </div>
 
+    {# Trust Evaluation 5 - Northumbria Healthcare (Excluded - Clinical trial with supplier response) #}
+    <div class="nhsuk-card">
+      <div class="nhsuk-card__content">
+        <div class="nhsuk-u-margin-bottom-3">
+          <strong class="nhsuk-tag nhsuk-tag--yellow">Excluded</strong>
+          <strong class="nhsuk-tag nhsuk-tag--white">Clinical trial</strong>
+        </div>
+        
+        <h3 class="nhsuk-card__heading nhsuk-heading-m">
+          Northumbria Healthcare NHS Foundation Trust
+        </h3>
+        
+        <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Document type
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Clinical trial
+            </dd>
+          </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Document period
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              January 2024 - June 2024
+            </dd>
+          </div>
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Ward/department
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Ward 3, Northumbria Specialist Emergency Care
+            </dd>
+          </div>
+        </dl>
+
+        <p class="nhsuk-body nhsuk-u-margin-top-3">
+          <a href="#">View full clinical trial</a>
+        </p>
+
+        {# Contact information integrated at bottom #}
+        <div class="nhsuk-u-margin-top-6 nhsuk-u-padding-top-4" style="border-top: 1px solid #d8dde0;">
+          <h4 class="nhsuk-heading-s">Contact for peer discussion</h4>
+          
+          <p class="nhsuk-body">
+            <strong>Dr Sam Cordel</strong><br>
+            Clinical Lead
+          </p>
+          
+          <p class="nhsuk-body">
+            <a href="mailto:sam.cordel@nhs.net">sam.cordel@nhs.net</a>
+          </p>
+          
+          <p class="nhsuk-body nhsuk-u-secondary-text-color">
+            Sam is happy to discuss evaluation methodology and the procurement process.
+          </p>
+        </div>
+
+        {# Supplier response section #}
+        <div class="nhsuk-u-margin-top-6 nhsuk-u-padding-top-4" style="border-top: 1px solid #d8dde0;">
+          <h4 class="nhsuk-heading-s">Supplier response</h4>
+          
+          <p class="nhsuk-body">
+            We do not agree with the methodology used in this evaluation. Key aspects including baseline selection, data capture timing, and outcome definitions differ from how the device is validated in clinical and operational practice, which can materially affect results. Interested parties seeking an accurate, reproducible assessment should contact us for our independent validation protocol, raw performance data, and guidance on conducting a proper evaluation in an NHS setting. Email: <a href="mailto:john.boyd@medtechinnovations.co.uk">john.boyd@medtechinnovations.co.uk</a> or phone: 01214452399.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
-{# ============================================ #}
-{# OTHER DOCUMENTATION                   #}
-{# ============================================ #}
-<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="documentation">
-  <div class="nhsuk-grid-column-two-thirds">
 
-    <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
-
-    <h2 class="nhsuk-heading-l">Other documentation</h2>
-
-    <ul class="nhsuk-list">
-      <li class="nhsuk-u-margin-bottom-3">
-        <a href="#" class="nhsuk-link">
-          <strong>Instructions for use (IFU)</strong>
-        </a>
-        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 2.3MB · Supplier provided</span>
-      </li>
-      <li class="nhsuk-u-margin-bottom-3">
-        <a href="#" class="nhsuk-link">
-          <strong>Clinical evidence summary</strong>
-        </a>
-        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">PDF, 890KB · Supplier provided</span>
-      </li>
-      <li class="nhsuk-u-margin-bottom-3">
-        <a href="#" class="nhsuk-link">
-          <strong>British Medical Journal - Clinical trial 2024</strong>
-        </a>
-        <br><span class="nhsuk-u-secondary-text-color nhsuk-body-s">External link · Peer-reviewed publication</span>
-      </li>
-      
-    </ul>
-
-  </div>
-</div>
 
 {# Contact Information Card #}
 <div class="nhsuk-grid-row">
