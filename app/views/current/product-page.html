@@ -49,6 +49,11 @@
     {{ contentsList({
   items: [
     {
+      href: "#supplier",
+      text: "Supplier information"
+      
+    },
+    {
       href: "#tech-spec",
       text: "Technical specifications"
       
@@ -63,11 +68,6 @@
     }
     ,
     {
-      href: "#documentation",
-      text: "Other documentation"
-    }
-    ,
-    {
       href: "#contact",
       text: "Contact us"
     }
@@ -78,7 +78,7 @@
 }) }}
 
       {# Supplier Information Card #}
-    <div class="nhsuk-card">
+    <div class="nhsuk-card" id="supplier">
       <div class="nhsuk-card__content">
         <h3 class="nhsuk-card__heading nhsuk-heading-s">
           Supplier information
