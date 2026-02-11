@@ -55,6 +55,11 @@
 {{ contentsList({
   items: [
     {
+      href: "#supplier",
+      text: "Supplier information"
+      
+    },
+    {
       href: "#costs",
       text: "Cost breakdown"
       
@@ -65,7 +70,7 @@
     },
     {
       href: "#experience",
-      text: "Trust experience overview"
+      text: "Trust experience at a glance"
     }
     ,
     {
@@ -86,10 +91,10 @@
 }) }}
     
     {# Supplier Contact Card #}
-    <div class="nhsuk-card">
+    <div class="nhsuk-card" id="supplier">
       <div class="nhsuk-card__content">
         <h2 class="nhsuk-card__heading nhsuk-heading-s">
-          Supplier
+          Supplier information
         </h2>
         
         <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
@@ -200,7 +205,7 @@
  
 
     
-    <div class="nhsuk-u-margin-top-4" id="documentation">
+    <div class="nhsuk-u-margin-top-4">
 
         <h3 class="nhsuk-card__heading nhsuk-heading-s">
           Related resources
@@ -371,7 +376,7 @@
 {# ============================================ #}
 {# DETAILED INFO LIST                          #}
 {# ============================================ #}
-<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="trial-list">
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="information">
   <div class="nhsuk-grid-column-two-thirds">
 
     <h2 class="nhsuk-heading-l">Information shared by NHS organisations</h2>
@@ -642,7 +647,7 @@
 {# ============================================ #}
 {# OTHER DOCUMENTATION                   #}
 {# ============================================ #}
-<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="evidence">
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-6" id="documentation">
   <div class="nhsuk-grid-column-two-thirds">
     
     <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-5">
