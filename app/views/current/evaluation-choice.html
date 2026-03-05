@@ -1,18 +1,14 @@
-{% extends 'layout.html' %}
+{% extends prototypeVersion + '/layouts/layout-signed-in.html' %}
 
-{% set pageName = "Compass - Quick share evaluation" %}
-{% set serviceHeader = "Compass" %}
+{% set pageName = "Share with the network" %}
+{% set serviceHeader = "Search medical product evaluations" %}
 
 {% block beforeContent %}
   {{ breadcrumb({
     items: [
       {
-        text: "Home",
+        text: "Back to dashboard",
         href: "/"
-      },
-      {
-        text: "Share evaluation",
-        href: "/share-evaluation"
       }
     ],
     attributes: {
@@ -25,49 +21,42 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-    <h1 class="nhsuk-heading-xl">Share your evaluation</h1>
+    <h1 class="nhsuk-heading-l">What do you want to share today?</h1>
+    <p>Both types of document help other trusts make better procurement decisions. Share one or both.</p>
+  </div>
+  </div>
 
-    <p class="nhsuk-body-l">Choose how you'd like to share your evaluation:</p>
+  <div class="nhsuk-grid-row">
+  
+  <div class="nhsuk-grid-column-one-half">
 
-    <div class="nhsuk-grid-row nhsuk-u-margin-top-6">
+    <div class="nhsuk-card nhsuk-card--clickable nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link" href="quick-share-upload-multiple">Product evaluation</a>
+        </h2>
+        <p class="nhsuk-card__description">A report or document from when your trust trialled, assessed or reviewed a medical product.</p>
       
-      <!-- Option 1: Quick Share -->
-      <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card nhsuk-card--clickable">
-          <div class="nhsuk-card__content">
-            <h2 class="nhsuk-card__heading nhsuk-heading-m">
-              <a class="nhsuk-card__link" href="/quick-share-upload">Quick share</a>
-            </h2>
-            <p class="nhsuk-card__description">
-              <strong>Upload existing evaluation documents</strong>
-            </p>
-          
-          
-          </div>
-        </div>
       </div>
-
-      <!-- Option 2: Full Evaluation -->
-      <div class="nhsuk-grid-column-one-half">
-        <div class="nhsuk-card nhsuk-card--clickable">
-          <div class="nhsuk-card__content">
-            <h2 class="nhsuk-card__heading nhsuk-heading-m">
-              <a class="nhsuk-card__link" href="/evaluation-details">Full evaluation form</a>
-            </h2>
-            <p class="nhsuk-card__description">
-              <strong>Create a structured evaluation</strong>
-            </p>
-
-
-          
-          </div>
-        </div>
-      </div>
+    </div>
 
     </div>
 
-  
+  <div class="nhsuk-grid-column-one-half">
+
+    <div class="nhsuk-card nhsuk-card--clickable nhsuk-u-margin-bottom-6">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link" href="upload-business-case">Business case</a>
+        </h2>
+        <p class="nhsuk-card__description">A document making the strategic, clinical or financial case for procuring a product.</p>
+      </div>
+    </div>
+
+   
 
   </div>
+
 </div>
+
 {% endblock %}
