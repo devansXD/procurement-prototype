@@ -1,7 +1,7 @@
 {% extends prototypeVersion + '/layouts/layout-signed-in.html' %}
 
 {% set pageName = "Search medical technologies - Compass" %}
-{% set serviceHeader = "Compass" %}
+{% set serviceHeader = "Search medical technologies" %}
 
 {% block beforeContent %}
 {% from "breadcrumb/macro.njk" import breadcrumb %}
@@ -134,8 +134,8 @@
               <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-1">Supplier market share</h3>
               <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-4">Advanced dressings only &middot; 52 products</p>
 
-              <div class="app-pie-wrap">
-                <svg class="app-pie-svg" width="140" height="140" viewBox="0 0 140 140" aria-hidden="true">
+              <div class="app-pie-wrap" style="display:flex;flex-direction:row;align-items:center;gap:20px;">
+                <svg class="app-pie-svg" width="140" height="140" viewBox="0 0 140 140" aria-hidden="true" style="flex-shrink:0;">
                   <path d="M70 70 L70 10 A60 60 0 0 1 118 103 Z" fill="#005eb8"/>
                   <path d="M70 70 L118 103 A60 60 0 0 1 42 127 Z" fill="#007f3b"/>
                   <path d="M70 70 L42 127 A60 60 0 0 1 14 56 Z" fill="#ffb81c"/>
@@ -145,7 +145,7 @@
                   <text x="70" y="80" text-anchor="middle" font-size="10" fill="#000000">products</text>
                 </svg>
 
-                <div class="app-supplier-legend">
+                <div class="app-supplier-legend" style="flex:1;min-width:0;">
                   <div class="app-supplier-legend__item">
                     <div class="app-supplier-legend__swatch" style="background:#005eb8;"></div>
                     <div class="app-supplier-legend__body">
@@ -221,7 +221,7 @@
                 <strong class="nhsuk-tag nhsuk-tag--green">New</strong>
               </div>
               <div class="innovation-row">
-                <span class="nhsuk-body-s" style="flex:1;"><strong><a href="product-page-wound-care">HealVac NPWT System</a></strong> &mdash; 11 trusts &middot; 2 years old</span>
+                <span class="nhsuk-body-s" style="flex:1;"><strong><a href="product-page-wound-care?product=aquaseal-foam-dressing">AquaSeal Foam Dressing</a></strong> &mdash; 11 trusts &middot; 2 years old</span>
                 <strong class="nhsuk-tag nhsuk-tag--blue">Growing</strong>
               </div>
             </div>
@@ -375,10 +375,10 @@
             <div class="nhsuk-card nhsuk-card--clickable">
               <div class="nhsuk-card__content">
                 <h4 class="nhsuk-card__heading nhsuk-heading-s">
-                     <a class="nhsuk-card__link" href="product-page-wound-care?healvac-npwt-system">HealVac NPWT System</a>
+                     <a class="nhsuk-card__link" href="product-page-wound-care?product=aquaseal-foam-dressing">AquaSeal Foam Dressing</a>
                 </h4>
                 <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-bottom-2">
-                  M&ouml;lnlycke Health Care &middot; Advanced dressings &rsaquo; Foam
+                  Advanced Woundcare Therapeutics &middot; Advanced dressings &rsaquo; Foam
                 </p>
                 <dl class="nhsuk-summary-list">
                   <div class="nhsuk-summary-list__row">
