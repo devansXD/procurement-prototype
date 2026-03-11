@@ -1,0 +1,153 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout-hero-histories.html' %}
+<!--
+  In /app/views/layout.html you can:
+    - change the header and footer
+    - add custom CSS and JavaScript
+-->
+
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This is often not needed on the homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they are the same.
+-->
+{% set pageName = "Design history 4" %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-xl">Wrapping up the alpha phase</h1>
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">Date: March 2026 | Phase: Alpha Sprint 6</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+      <p class="nhsuk-body-m"><blockquote>&QUOT;We swept user research transcripts to identify remaining pain points and ensure feedback is reflected in the prototype ahead of handover to the beta team. We also created experimental dashboards and data visualisations to test ways of contextualising search results, as well as a new flow for sharing different types of documents.&QUOT;</blockquote></p>
+
+    <!-- ============ THE PROBLEM ============ -->
+    <h2 class="nhsuk-heading-l">The problem</h2>
+
+    <p>After completing our alpha service assessment, we were given two sprints to wrap up and prepare a final handover for the beta team. We knew there were key iterations from recent user research rounds and earlier feedback that we had not yet had time to action.</p>
+
+    <p>We used our remaining time to address these from a user-centred design perspective, so that the prototype was in good shape for the team picking it up next.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ KEY DESIGN DECISIONS ============ -->
+    <h2 class="nhsuk-heading-l">Key design decisions</h2>
+
+    <h3 class="nhsuk-heading-m">1. Updated search filters following IA discussion</h3>
+    <p>After reviewing what we actually know at this stage, we decided to hold back advanced filter options. We do not yet have sufficient evidence to implement them well, and introducing filters prematurely risks creating a misleading sense of precision.</p>
+
+    <h3 class="nhsuk-heading-m">2. Experimental search results views with data visualisation</h3>
+    <p>We created experimental views of the search results page that incorporate data visualisations — including supplier market share and adoption across similar trusts — to test whether additional context helps users shortlist with more confidence.</p>
+
+    <h3 class="nhsuk-heading-m">3. Searching by care setting as an additional entry point</h3>
+    <p>We introduced care setting as a new way to jump into the service, giving users a more clinical starting point alongside category and keyword search.</p>
+
+    <h3 class="nhsuk-heading-m">4. New step in the sharing flow to specify document type</h3>
+    <p>We added a choice screen early in the sharing flow, allowing users to indicate whether they are uploading an evaluation or a business case before proceeding. This reduces ambiguity and enables more appropriate downstream routing.</p>
+
+    <h3 class="nhsuk-heading-m">5. Visuals to support understanding of product pages</h3>
+    <p>After hearing that users expected and wanted to see product imagery, we added a product image to the product page to aid recognition and give the page a more grounded, real-world feel.</p>
+
+    <h3 class="nhsuk-heading-m">6. Stripped-back homepage content</h3>
+    <p>Based on consistent user feedback about information density, we reduced the content on the homepage to its essentials. Users were not reading the longer explanatory text, and its presence was slowing orientation.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ CONTENT UPDATES ============ -->
+    <h2 class="nhsuk-heading-l">Content updates</h2>
+
+    <p>Alongside structural changes, we made a range of content improvements across the prototype informed by user research findings and legal guidance.</p>
+
+    <h3 class="nhsuk-heading-m">Reducing information density</h3>
+    <p>We further reduced text throughout the prototype, particularly on the homepage and on product and evaluation cards, responding to recurring feedback about feeling overwhelmed by content.</p>
+
+    <h3 class="nhsuk-heading-m">Surfacing personal activity</h3>
+    <p>Saved items and recent searches are now more prominently displayed on the search page within a dedicated "Your activity" area, making it easier for returning users to pick up where they left off.</p>
+
+    <h3 class="nhsuk-heading-m">Accessibility and legibility</h3>
+    <p>We increased the contrast of text that a user found difficult to read during a research session.</p>
+
+    <h3 class="nhsuk-heading-m">Country of manufacture</h3>
+    <p>We added a "country of manufacture" row to product cards following legal advice. The previous design risked inadvertently promoting UK-manufactured products above others, which was not our intention.</p>
+
+    <h3 class="nhsuk-heading-m">Clarifying adoption numbers</h3>
+    <p>The "using this" count on product cards was updated to better reflect what it actually represents. Users were confused by the number, which does not necessarily match procurement outcomes or uploaded documents.</p>
+
+    <h3 class="nhsuk-heading-m">Action-oriented copy</h3>
+    <p>We reviewed copy across the service to ensure it was clear, concise, and accurate. For example, we updated language around the evaluation lead role to reflect that this is not always a clinician.</p>
+
+    <h3 class="nhsuk-heading-m">Contextualising the dashboard</h3>
+    <p>We added clarifying copy to the dashboard to give users the additional context they wanted around what it means to search and share on the service.</p>
+
+    <h3 class="nhsuk-heading-m">Service name</h3>
+    <p>We updated the service name following user feedback gathered across several name options tested in research sessions.</p>
+
+    <h3 class="nhsuk-heading-m">Source for cost data</h3>
+    <p>We added a source citation for cost data on product pages to give users confidence in where figures come from.</p>
+
+    <h3 class="nhsuk-heading-m">Multiple answers on the uploading page</h3>
+    <p>We addressed a need identified in research for users to be able to give multiple answers to the procurement outcome question, and added a follow-up question for those who did not end up procuring a product.</p>
+
+    <h3 class="nhsuk-heading-m">Terminology for "evaluation"</h3>
+    <p>In some parts of the service, we updated the word "evaluation" to alternative terms such as experience, contribution, and document. Research showed that "evaluation" carries a specific meaning for some users — typically a formal clinical evaluation — that did not always match how we were using the term on the service.</p>
+
+    <h3 class="nhsuk-heading-m">What makes a "good" upload</h3>
+    <p>We began exploring what users need to know to feel confident about what they are sharing, and whether guidance around upload quality would reduce hesitation to submit.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ HOW IT TESTED ============ -->
+    <h2 class="nhsuk-heading-l">How it tested</h2>
+
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p>Testing findings to be added following final research sessions.</p>
+    </div>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <!-- ============ PRIORITIES FOR BETA ============ -->
+    <h2 class="nhsuk-heading-l">Content areas to prioritise in beta</h2>
+
+    <h3 class="nhsuk-heading-m">Accessibility</h3>
+    <p>A full accessibility review is needed, including finding a way to make PDFs that users may upload and share accessible. This should test a range of approaches: service-side and user-side manual adjustments, format conversion tools, and AI-assisted options.</p>
+
+    <h3 class="nhsuk-heading-m">Subcategory visualisation and upload journeys</h3>
+    <p>Further testing of the subcategory data visualisation is needed, alongside business case and product evaluation-specific upload journeys — including whether a narrower definition of document types would better serve users.</p>
+
+    <h3 class="nhsuk-heading-m">Information architecture</h3>
+    <p>Formal IA work including tree testing and card sorting would help validate the current structure and surface where users are getting lost or confused.</p>
+
+    <h3 class="nhsuk-heading-m">Search results and filters</h3>
+    <p>In-depth work on search results and filters was deliberately deferred from alpha. This is a significant area of design work for beta, particularly around what filters are useful and how results should be ranked and presented.</p>
+
+    <h3 class="nhsuk-heading-m">Product page hierarchy</h3>
+    <p>The product pages are long and contain a lot of information. Hierarchy work is needed to establish the right order for categories and cards, and to ensure the most decision-relevant content is prominent.</p>
+
+    <h3 class="nhsuk-heading-m">Content management planning</h3>
+    <p>Longer-term planning is needed around how content on the service will be managed, maintained, and kept accurate over time.</p>
+
+    <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+    <p class="nhsuk-body-s nhsuk-u-secondary-text-color">
+      <strong>Tags:</strong> Alpha, Wrap-up, Handover, Content, Data visualisation, Sharing flow, Search, Filters, Accessibility
+    </p>
+
+  </div>
+</div>
+{% endblock %}
